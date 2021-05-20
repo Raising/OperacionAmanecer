@@ -1,0 +1,66 @@
+$title-width: 20;
+$others: 100 - $title-width;
+
+.common-table-expansible {
+    @for $i from 2 to 20 {
+        $first-el-width: $title-width * 1%;
+        $elements-width: ($others / $i) * 1%;
+
+        .table-cols-#{$i}, .subTable-cols-#{$i} {
+            th {
+                width: $elements-width;
+            }
+
+            th:first-child {
+                width: $first-el-width;
+            }                    
+        }
+
+        tr.table-cols-#{$i} {
+            td {
+                width: $elements-width;
+            }
+
+            td:first-child {
+                width: $first-el-width;
+            }
+        }
+
+        .subTable-cols-#{$i} {
+            tbody tr {
+                td {
+                    width: $elements-width;
+                }
+
+                td:first-child{
+                    width: $first-el-width;
+                }
+
+            }
+        }
+    }
+    
+    .b-table-details > td {
+        padding: unset;
+    }
+
+    .table-expanded-button {
+        cursor: pointer;
+    }
+}
+
+table.vue-ads-border {
+    border: 0;
+
+    .vue-ads-border-b {
+        & > th {
+            border:0;
+            border-bottom: $border-default;
+            background-color: $background-thead;
+        }
+    }
+    .vue-ads-border-r {
+        border-right: 0;
+        text-align: left; // SDC Modal step 1
+    }
+}

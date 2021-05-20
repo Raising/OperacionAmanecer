@@ -1,0 +1,9 @@
+//loading position style
+.loading {
+    .modal {
+        top: calc((100% / 3) - 35px);
+        left: calc((100% / 2) - 35px);
+        width: 5rem;
+        height: 5rem;
+    }
+}

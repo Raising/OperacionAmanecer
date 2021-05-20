@@ -1,0 +1,389 @@
+$component-width: 525px;
+$component-margin-left: auto;
+$component-margin-right: auto;
+
+$component-padding: 50px 20px 10px 20px;
+$font-weight: 600;
+$transition: all 1.2s;
+
+$title-top: -45px;
+$title-font-weight: 600;
+$title-font-size: 1.25rem;
+$title-margin: 5px -20px;
+
+$level-number-separation-from-bar: 25px;
+$level-string-width: 20%;
+$level-string-padding: 0px 5px;
+$level-strings-width: 100%;
+$level-string-border-left-color: $corporative-white; /*#666;*/
+$level-string-border-left: $border-width-medium solid $level-string-border-left-color;
+$level-string-and-number-with: 20%;
+$level-number-separation-from-bar: 25px;
+$level-number-left-separation: 15px;
+$level-number-zero-right: -5px;
+$level-number-color: map-get($theme-colors, 'secondary');;
+$level-no-value-background-color: #DADADA;
+
+$value-mark-number-padding-top: 3px;
+$value-mark-number-padding-left: 15px;
+$value-mark-number-padding: $value-mark-number-padding-top $value-mark-number-padding-left;
+$mark-number-separation-from-bar: -$level-number-separation-from-bar;
+$mark-color: $detail;
+$mark-shadow-color: #999;
+$mark-width: 11px;
+$mark-height: 11px;
+$mark-border-width: 4.5px;
+$mark-border: $mark-border-width solid $corporative-white;
+$mark-separation-from-bar: 50%;
+$mark-arrow-border-size: 7.5px;
+$mark-arrow-border-left-and-right: $mark-arrow-border-size solid transparent;
+$mark-arrow-border-bottom: $mark-arrow-border-size solid $mark-color;
+$mark-arrow-top: -22.5px;
+$mark-shadow: 0px 0px 10px $mark-shadow-color;
+$mark-arrow-content-top: 15%;
+$mark-arrow-content-left: -80%;
+
+$value-line-mark-number-border-width: 4px;
+$value-line-mark-number-border: $value-line-mark-number-border-width solid $mark-color;
+
+$bar-padding: 2px;
+$bar-border-width: $border-width-medium;
+$bar-border: $bar-border-width solid transparent;
+$bar-border-radius: $border-radius-capsule;
+$border-radius: $border-radius-capsule;
+
+$result-padding: 5px 7px; 
+$result-font-weight: 600;
+$result-font-size: 0.8rem;
+$result-margin: 20px 0px 0px 0px;
+$result-text-width: 110px;
+
+// $max-levels: 5;
+// $level-size: 255 / $max-levels;
+// @mixin levelsColors {
+//   @for $i from 1 through $max-levels {
+//     &.level-#{$i} {
+//       background-color: rgb($i * $level-size, 255 - ($i * $level-size), 0);
+//       //background-color: mix(red, green, $i);
+//     }
+//   }
+// }
+
+// @function color-diff($color-a, $color-b) {
+//   $hue: hue($color-a) - hue($color-b);
+//   $saturation: saturation($color-a) - saturation($color-b);
+//   $lightness: lightness($color-a) - lightness($color-b);
+
+//   $function-hue: 'adjust-hue';
+//   $function-saturation: if($saturation > 0, 'desaturate', 'saturate');
+//   $function-lightness: if($lightness > 0, 'darken', 'lighten');
+
+//   @return (
+//     #{$function-hue}: -($hue),
+//     #{$function-saturation}: abs($saturation),
+//     #{$function-lightness}: abs($lightness),
+//   );
+// }
+
+// @function apply-color-diff($color, $diff) {
+//   @each $key, $value in $diff {
+//     $color: call($key, $color, $value);
+//   }
+//   @return $color;
+// }
+
+@mixin markPosition {
+  @for $i from 0 through 100 {
+    &.val-#{$i} {
+      right: unquote("calc( #{percentage($i)/100} - #{($mark-width + $mark-border-width * 2) / 2} )");
+    }
+  }
+}
+
+@mixin valueMarkPosition {
+  @for $i from 0 through 100 {
+    &.val-#{$i} {
+      right: unquote("calc( #{percentage($i)/100} - #{($mark-width + ($mark-border-width * 2) + ($value-mark-number-padding-left * 2)) / 2} + #{$value-line-mark-number-border-width / 2})");
+    }
+  }
+}
+
+@mixin valueLineMarkPosition {
+  @for $i from 0 through 100 {
+    &.val-#{$i} {
+      right: unquote("calc( #{percentage($i)/100} - #{$value-line-mark-number-border-width / 2} )");
+    }
+  }
+}
+
+.ax-thermometer {
+  padding: $component-padding;
+  width: $component-width !important;
+  margin-left: $component-margin-left;
+  margin-right: $component-margin-right;
+
+  .title {
+    position: relative;
+    top: $title-top;
+    text-align: center;
+    font-size: $title-font-size;
+    font-weight: $title-font-weight;
+    margin: $title-margin;
+  }
+
+  .bar {
+    width: 100%;
+    background-color: $level-string-border-left-color;
+    border-radius: $bar-border-radius;
+    border: $bar-border;
+    position: relative;
+    padding: $bar-padding;
+    box-shadow: $box-shadow-light;
+  }
+
+  .result {
+    // margin: $result-margin;
+    // text-align: center;
+    // padding: $result-padding;
+    // font-weight: $result-font-weight;
+    // font-size: $result-font-size;
+
+    // & .icon-green svg {
+    //   color: $success-darker;
+    // }
+    // & .icon-red svg {
+    //   color: $error-lighter;
+    // }
+
+    text-align: center;
+    font-size: $result-font-size;
+    padding: $result-padding;
+    font-weight: $result-font-weight;
+    width: $result-text-width;
+    border-radius: $border-radius-capsule;
+
+    &.level-1 {
+      background-color: $background-risk-color-maximum;
+      color: $risk-color-maximum;
+    }
+    &.level-2 {
+      background-color: $background-risk-color-high;
+      color: $risk-color-high;
+    }
+    &.level-3 {
+      background-color: $background-risk-color-medium;
+      color: $risk-color-medium;
+    }
+    &.level-4 {
+      background-color: $background-risk-color-light;
+      color: $risk-color-light;
+    }
+    &.level-5 {
+      background-color: $background-risk-color-minimum;
+      color: $risk-color-minimum;
+    }
+
+    svg:not(:root) {
+      color: inherit;
+    }
+  }
+
+  .value-mark-number {
+    position: absolute;
+    transition: $transition;
+    z-index: 1;
+    top: unquote('calc( #{-$level-number-separation-from-bar} + #{-$value-mark-number-padding-top} - #{($mark-height + $mark-border-width * 2) / 2} )');
+    border-radius: $border-radius-capsule;
+    background-color: $mark-color;
+    color: $corporative-white;
+    font-weight: $result-font-weight;
+    padding: $value-mark-number-padding;
+
+    @include valueMarkPosition;
+  }
+
+  .value-mark-line {
+    border-left: $value-line-mark-number-border;
+    transition: $transition;
+    z-index: 1;
+    height: 30px;
+    position: absolute;
+    top: -15px;
+
+    @include valueLineMarkPosition;
+  }
+
+  .value-mark {
+    position: absolute;
+    width: $mark-width;
+    background-color: $mark-color;
+    height: $mark-height;
+    top: unquote('calc( #{$mark-separation-from-bar} - #{($mark-height + $mark-border-width * 2) / 2} )');
+    box-shadow: $mark-shadow;
+    transition: $transition;
+    border-radius: $border-radius-extra-big;
+    border: $mark-border;
+    box-sizing: content-box;
+
+    @include markPosition;
+  }
+
+  .levels-strings {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    
+    .level-number {
+      font-weight: normal;
+      position: absolute;
+      width: $level-string-and-number-with;
+      top: -$level-number-separation-from-bar;
+      margin-left: -$level-number-left-separation;
+      text-align: left;
+      color: $level-number-color;
+      
+      .marks {
+        width: 100%;
+        margin: 0px -3px;
+
+        .mark {
+          padding: 0px !important;
+          background-color: transparent !important;
+          
+          &:before {
+            content: " ";
+            position: relative;
+            left: calc(50% - 1px);
+            display: block;
+            border-left: 1px solid $level-number-color;
+            height: 3px !important;
+            top: 15px;
+          }
+        }
+      }
+
+      .number {
+        top: -10px;
+        position: relative;
+
+        &.half-number {
+          font-size: .7rem;
+          
+          &:before {
+            height: 6px;
+            top: 20px;
+          }
+        }
+
+        &:before {
+          content: " ";
+          position: absolute;
+          left: calc(50% - 1px);
+          border-left: 1px solid $level-number-color;
+          height: 8px;
+          top: 20px;
+        }
+      }
+
+      &.zero {
+        text-align: right;
+        right: $level-number-zero-right;
+        // position: absolute;
+        // right: -1px;
+      }
+    }
+
+    .level-string {
+      font-weight: $font-weight;
+      width: $level-string-and-number-with;
+      text-align: center;
+      border-left: $level-string-border-left;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: $level-string-padding;
+      color: $corporative-white;
+      padding: 3px 5px;
+
+      &:first-child {
+        border-left: 0px;
+        border-top-left-radius: $border-radius;
+        border-bottom-left-radius: $border-radius;
+      }
+      &:last-child {
+        border-top-right-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+      }
+
+      //@include levelsColors;
+      
+      &.gray {
+        background-color: $level-no-value-background-color !important;
+      }
+
+      &.level-6 {
+        background-color: $secondary-dark !important;
+      }
+      &.level-5 {
+        background-color: $risk-color-maximum;
+      }
+      &.level-4 {
+        background-color: $risk-color-high;
+      }
+      &.level-3 {
+        background-color: $risk-color-medium;
+      }
+      &.level-2 {
+        background-color: $risk-color-light;
+      }
+      &.level-1 {
+        background-color: $risk-color-minimum;
+        .level-number {
+          margin-left: -18px;
+        }
+      }
+      &.level-0 {
+        background-color: $secondary-light !important;
+      }
+    }
+  }
+}
+
+.ax-scale-icp {
+  width: 1000px !important;
+
+  .tooltip {
+    position: relative;
+    opacity: 1;
+
+    .tooltip-inner {
+      background-color: transparent;
+    }
+
+    .form-control{
+      text-align: right;
+
+      &:read-only, &:disabled {
+        margin-left: 7px;
+        text-align: center !important;
+      }
+    }
+  }
+
+  .arrow-icp {
+    position: absolute;
+    width: 100%;
+    bottom: -11px;
+    text-align: center;
+  }
+
+  .levels-strings {
+    .level-string {
+      .level-number {
+        margin-left: -45px !important;
+      }
+    }
+  }
+
+}

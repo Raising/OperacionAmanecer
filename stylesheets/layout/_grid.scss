@@ -1,0 +1,121 @@
+.lx-grid-layout {
+    .grid-controls {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding: $padding-header-grid;
+    }
+}
+
+.table {
+    tr {
+      height: $height-tr;
+
+      &:nth-of-type(even) {
+          background-color: $background-tr-even;
+      }
+    }
+    thead {
+        th {
+            border-top: 0 !important;
+    
+            div {
+              outline: none;
+            }
+        }
+    }
+
+}
+
+.contextMenu{
+    width: max-content;
+    background: $corporative-white;
+    position: fixed;
+    z-index: 500;
+    border-radius: $border-radius-medium;
+    border: $border-width-small solid $secondary-light;
+    box-shadow: $box-shadow-light;
+    
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        
+        & > div {
+            padding: $padding-medium;
+            border-radius: $border-radius-medium;
+
+            &:hover {
+                background-color: $white-smoke;
+                color: $primary;
+                cursor: pointer;
+            }
+        }
+        a {
+            text-decoration: none;
+            color: inherit !important;
+            
+            &.disabled {
+                color: $secondary-light !important;
+            }
+          }
+
+        .dropdown {
+            width: 100%;
+            font-size: $font-size-ax-grid;
+            button {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                font-size: $font-size-ax-grid;
+                background-color: transparent;
+                border: none;
+                color: inherit;
+                min-height: auto;
+                border-radius: 0;
+                padding: 0;
+
+                &:focus, &:active {
+                    background-color: transparent;
+                }
+            }
+
+            &.show {
+                .dropdown-toggle {
+                    background-color: transparent;
+                    color: inherit;
+                }
+            }
+        }
+
+        .dropdown-menu {
+            max-height: 500px;
+            overflow-y: auto;
+            overflow-x: hidden;
+          }
+    }
+
+    &.hidden{
+        display: none;
+    }
+}
+
+.contextMenuOverlay{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left:0px;
+    z-index: 499;
+}
+
+.general-configurator {
+    table, th, td {
+        border: $border-width-small solid $color-td-ax-grid;
+        border-collapse: collapse;
+    }
+
+    td,
+    th {
+        padding: $padding-medium;
+    }
+}

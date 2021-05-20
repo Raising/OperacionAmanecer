@@ -1,0 +1,39 @@
+.ax-form-numeric-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .form-numeric-operator {
+    width: $width-operator;
+    min-width: $min-width-operator;
+  }
+
+  .form-numeric-value,
+  .form-numeric-range {
+    width: $width-values;
+  }
+
+  .form-numeric-range {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    & > * {
+      width: $width-range-elements;
+
+      &::placeholder {
+        text-transform: capitalize;
+      }
+
+      &:-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        text-transform: capitalize;
+      }
+
+      &::-ms-input-placeholder {
+        /* Microsoft Edge */
+        text-transform: capitalize;
+      }
+    }
+  }
+}

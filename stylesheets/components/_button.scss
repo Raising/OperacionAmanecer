@@ -1,0 +1,213 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+
+button{
+    @include button;
+
+    &.discard {
+        background:  $secondary-light;
+        border-color: $secondary-middle-light;
+
+        &:active, &:focus{
+            background: inherit;
+            color: inherit;
+
+            svg {
+                color: $color-icon;
+            }
+        }
+
+        &:hover {
+            background: $secondary-lighter;
+            border-color: $secondary-middle-light;
+        }
+    }
+
+    &.header {
+        background-color: $corporative-white;
+        color: $color-body;
+        font-weight: bold;
+        border: 0;
+
+        &:focus, &:hover, &:active {
+            background-color: inherit;
+            color: inherit;
+        }
+
+        &:hover {
+            background-color: $background-tr-hover;
+        }
+
+        svg {
+            color: $primary;
+        }
+    }
+}
+
+.btn-primary{
+    color: $corporative-white;
+}
+
+.btn, .btn-secondary{
+    @include button;
+}
+
+.btn-outline-primary {
+    border-color: $primary;
+    background: $corporative-white;
+    color: $primary;
+
+    &:hover{
+        background: $primary;
+        border-color: $primary;
+        color: $corporative-white;
+    }
+}
+
+.button-config-grid{
+    background: $border-color-button-config-grid;
+
+    svg {
+        color: $secondary-light;
+        width: $width-button-plus-open-children;
+        height: $width-button-plus-open-children;
+    }
+
+    &:hover, &:focus{
+        border-color: $border-color-button-config-grid;
+        background: $border-color-button-config-grid;
+    }
+}
+
+.button-asegurar, .button-aniadido{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    //flex-wrap: nowrap;
+    padding: $padding-button-asegurar;
+    height: $height-button-asegurar !important;
+    line-height: $line-height-button-asegurar;
+    border-radius: $border-radius-medium;
+    width: $width-button-asegurar !important;
+    font-size: $font-size-td !important;
+    border: $border-width-small solid transparent;
+    width: max-content !important;
+    margin: auto; 
+    
+    svg{
+        height: $height-icon-in-button;
+        color: $corporative-white;
+    }
+}
+
+.button-asegurar {
+    background: $primary;
+    color: $corporative-white !important;
+
+    svg{
+        color: $corporative-white !important;
+    }
+
+    &:hover, &:hover svg{
+        background-color: $detail-lighter;
+        opacity: 0.9;
+        transition: 0.2s;
+    }
+
+    &:active, &:focus{
+        background: $detail-lighter !important;
+    }
+}
+
+.button-aniadido {
+    background: $corporative-white;
+    color: $smart-gray !important;
+    border-color: $smart-gray;
+
+    svg{
+        color: $smart-gray !important;
+    }
+
+    &:hover, &:hover svg{
+        background-color: $secondary-lighter;
+        opacity: 0.9;
+        transition: 0.2s;
+    }
+
+    &:active, &:focus{
+        background: $secondary-lighter !important;
+    }
+}
+
+.double-button {
+    border-radius: $border-radius-form-control;
+    border: $border-width-medium solid $primary;
+
+    &.xl {
+        label, button {
+            padding: $padding-medium $padding-xxl;
+        }
+    }
+    label, button {
+        display: flex;
+        border-radius: 0;
+        border: 0;
+
+        &.active {
+            background-color: $primary !important;
+            color: $corporative-white !important;
+        }
+
+        &:not(.active){
+            @include opposite-button;
+        }
+
+        &:not(:disabled):not(.disabled):active {
+            color: $primary;
+            background-color: $white-smoke;
+        }
+    }
+}
+
+.button-center-line {
+    .line {
+        border-top: $border-width-medium solid $primary;
+        margin-top: calc(#{$height-input} /2);
+    }
+
+    button {
+        display: flex;
+        align-items: center;
+        @include opposite-button;
+    }
+}
+
+.button-bottom-select {
+    @include button;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: $font-size-normal;
+    border-radius: 0 0 $border-radius-vue-treeselect__menu $border-radius-vue-treeselect__menu !important;
+    width: 100%;
+    min-height: $min-height-button-bottom-select !important;
+}
+
+.with-icon {
+    button {
+        @include with-icon;
+    }
+
+    a {
+        svg {
+            color: $color-icon;
+        }
+        &:hover, &:focus {
+            svg {
+                color: $detail;
+            }
+        }
+    }
+}

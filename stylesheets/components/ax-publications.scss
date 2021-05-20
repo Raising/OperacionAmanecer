@@ -1,0 +1,44 @@
+.ax-publications {
+  .event-headers {
+    background-color: $smart-gray;
+    padding: $padding-event-headers;
+    text-transform: uppercase;
+    font-size: $font-size-event-name;
+    color: $corporative-white;
+
+    .borme-icon {
+      position: relative;
+      top: $top-borme-icon;
+    }
+  }
+
+  .event-list {
+    padding: $padding-event-list;
+    .event-name {
+      text-transform: uppercase;
+      font-weight: bold;
+      margin: $margin-event-name;
+      color: $smart-gray;
+
+      .priority-icons {
+        color: $error-lighter;
+        font-style: italic;
+        margin-right: $margin-right-priority-icon;
+        font-size: $font-size-priority-icon;
+      }
+
+      .icon {
+        margin-left: $margin-left-icon;
+      }
+    }
+
+    .event-info {
+      .title {
+        font-weight: bold;
+      }
+
+      font-size: $font-size-event-info;
+      border-bottom: $border-bottom-event-info;
+    }
+  }
+}

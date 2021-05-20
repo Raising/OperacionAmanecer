@@ -1,0 +1,47 @@
+
+@for $i from 0 to length($color-collection) {
+    .ax-comment-block {
+
+        &.#{nth($class-collection, $i+1)} {
+            background-color:  nth($background-color-collection , $i+1 );
+            border-radius: $border-radius-medium;
+            
+            .header {
+                display: flex;
+                font-size: $font-size-h3;
+                font-weight: bold;
+                color: nth($color-collection , $i+1 );
+                align-items: center;
+                // border-bottom: $border-width-medium solid nth($color-collection , $i+1 );
+
+            }
+            
+            .row {
+                display: flex;
+                flex-flow: row;
+
+            /*  :nth-child(1) {
+                    margin: $margin-right-icon; // 2px
+                }
+            */
+
+                svg {
+                    color: nth($color-collection , $i+1 );
+                    margin-right:  $margin-right-icon;
+                }
+
+            }
+
+            hr {
+                display: block;
+                margin: $margin-small 0;
+                padding: unset;
+             //   border-style: dashed;
+            }
+
+            p {
+                margin-bottom: unset;
+            }
+        }
+    }
+}

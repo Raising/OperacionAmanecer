@@ -1,0 +1,56 @@
+@charset 'UTF-8';
+// 1. Configuration and helpers
+@import 'abstracts/variables.scss',
+'abstracts/functions',
+'abstracts/mixins';
+// 2. Vendors
+@import 'vendors/normalize',
+'node_modules/bootstrap/scss/bootstrap',
+'node_modules/bootstrap-vue/src/index.scss',
+'../node_modules/@riophae/vue-treeselect/dist/vue-treeselect.css',
+'../node_modules/splitpanes/dist/splitpanes.css',
+'../node_modules/vue-slider-component/theme/default.css',
+'../node_modules/vue-ads-table-tree/dist/vue-ads-table-tree.css',
+'vendors/_boostrap_overwrite.scss';
+// 3. Base stuff
+@import 'base/base',
+'base/fonts',
+'base/typography',
+'base/helpers',
+'base/icons',
+'base/loading';
+// 4. Layout-related sections
+@import 'layout/header',
+'layout/body',
+'layout/footer',
+'layout/form',
+'layout/expandable-horizontal-layout',
+'layout/grid',
+'layout/globalposition',
+'layout/lx-dragable-graph-node',
+'layout/widget';
+// 5. Components
+@import 'components/button',
+'components/rxge-context-menu',
+'components/side-menu',
+'components/form-input',
+'components/ax-form-date-range',
+'components/ax-form-numeric',
+'components/ax-nav',
+'components/ax-multi-range-slider',
+'components/ax-filter-form',
+'components/ax-table-extended',
+'components/ax-paginacion',
+'components/ax-filter-form-category',
+'components/ax-modal',
+'components/ax-recommendation-block',
+'components/table',
+'components/connector-canvas'
+;
+
+// 6. Page-specific styles
+@import 'pages/home',
+'pages/login',
+'pages/flow_graph';
+// 7. Themes
+@import 'themes/default';

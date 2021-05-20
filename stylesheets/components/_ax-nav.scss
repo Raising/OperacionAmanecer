@@ -1,0 +1,136 @@
+// ------------------------------------------------------------------------------------------
+// This file contains all styles related to the dropdown of the body of the site/application.
+// ------------------------------------------------------------------------------------------
+
+.body {
+    .admission-config .dropdown-menu{
+        min-height: 250px;
+        height: 100%;
+    }
+    .dropdown-menu {
+        padding: 0;
+        font-size: $font-size-h6;
+
+        li {
+            .dropdown-item, .dropdown-item a {
+                padding: $padding-medium;
+                text-decoration: none;
+                color: $color-body !important;
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+
+                &:hover {
+                    background: $white-smoke;
+                    color: $primary !important;
+
+                    svg {
+                        color: $primary;
+                    }
+                }
+
+                &.disabled, &.disabled:hover {
+                    color: $secondary-light !important;
+                }
+            }
+        }
+    }
+}
+
+.menu {
+    background-color: $primary-darker;
+    padding-left: $padding-big;
+    list-style-type: none;
+
+    .router-link-exact-active, .router-link-exact-active:focus, .router-link-exact-active:active, .router-link-exact-active:hover,
+    .router-link-active, .router-link-active:focus, .router-link-active:active, .router-link-active:hover
+    {
+        @include nav-link-navegator;
+    }
+
+    .nav-link {
+        border-radius: 0 !important;
+        padding: $padding-small;
+        margin: $margin-small $margin-medium;
+        text-transform: uppercase;
+        font-size: $font-size-menu;
+        border-bottom: $border-width-medium solid transparent;
+
+        &.router-link-active {
+            &:hover {
+                border-bottom: $border-width-medium solid $primary !important;
+            }
+        }
+        &:not(.router-link-exact-active), &:not(.router-link-active){
+            &:hover{
+                @include nav-link-navegator;
+            }
+        }
+    }
+    a{
+        color: $color-body !important;
+        text-decoration: none;
+
+        &:hover {
+            color: $primary !important;
+        }
+    }
+
+    .router-link-active {
+        color: $primary !important;
+    }
+}
+
+.menu-responsive {
+    @include with-icon;
+    display: none;
+    margin-left: $margin-big;
+}
+
+@media screen and (max-width: map-get($breakpoints, md)) {
+    .menu-responsive {
+        display: block;
+    }
+    header {
+        z-index: 999;
+        height: auto;
+
+        .menu {
+            //display: flex;
+            //justify-content: flex-end;
+
+            .navbar-collapse {
+                width: 100%;
+                display: flex;
+                flex-wrap: inherit;
+                position: absolute;
+                top: calc(#{$height-header});
+                background-color: $corporative-white;
+                box-shadow: $box-shadow-light;
+                z-index: 999;
+                border-radius: 0 0 $border-radius-medium $border-radius-medium;
+                width: calc(100% - (#{$margin-big})*2);
+                
+
+                li {
+                    width: $percent-col-4;
+
+                    .nav-link {
+                        border-bottom: $border-width-small solid transparent;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+@media screen and (max-width: map-get($breakpoints, xs)) {
+    header {
+        .menu {
+            li {
+                width: $percent-col-6;
+            }
+        }
+    }
+}

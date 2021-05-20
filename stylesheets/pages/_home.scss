@@ -1,0 +1,127 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the home page.
+// -----------------------------------------------------------------------------
+$homeInfoHeight: 80px;
+$homeTabsHeight: 30px;
+
+$homeHeaderHeight: $homeInfoHeight + $homeTabsHeight; 
+.ModuleFrame{
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+
+    .WindowsHeight{
+        height: 100vh;
+    }
+    
+    .wrapper {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: stretch;
+       // border-radius: $border-radius-medium;
+    }
+
+    .InfoHeader{
+        height: $homeInfoHeight;   
+    }
+    .SelectionHeader{
+        height: $homeTabsHeight;
+    }
+}
+
+
+.principal {
+    height: $height-principal;
+    line-height: $height-principal;
+    color: $corporative-white;
+
+    .title-principal{
+        color: $secondary-dark; 
+        font-weight: bold; 
+        margin-left: $margin-big; 
+        font-size: $font-size-principal;
+    }
+}
+
+// Notificaciones
+.rounded-number {
+    background-color: $primary;
+    color: $corporative-white;
+    font-size: $font-size-notification;
+    line-height: 2;
+    border-radius: $border-radius-rounded;
+    padding: 2px 4px;
+    height: $height-icon-small;
+    display: flex;
+    align-items: center;
+}
+
+.group-day {
+  font-weight: bold;
+  font-size: $font-size-normal;
+}
+
+.list-complete-item {
+  transition: all 0.5s;
+}
+
+.list-complete-leave-active {
+  position: absolute;
+}
+
+.list-complete-enter, .list-complete-leave-to
+/* .list-complete-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.notifications-list {
+  max-height: 400px;
+  overflow: auto;
+  bottom: 0;
+}
+
+.notification-card {
+    width: 350px;
+    border: $border-width-small solid $secondary-lighter;
+    border-left: $border-width-medium solid $primary;
+    border-radius: $border-radius-medium;
+
+    .evaluation {
+        padding: 0 $padding-small;
+        font-size: $font-size-notification;
+    }
+
+    .notification-description {
+        font-size: $font-size-notification;
+        color: $secondary-middle-light;
+    }
+
+    .hour-notifications-card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $secondary-lighter;
+        font-size: $font-size-notification;
+        border-radius: $border-radius-big;
+        padding: 0;
+    }
+    .close-notification {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        cursor: pointer;
+        max-height: $height-icon-small;
+        border-radius: $border-radius-rounded;
+        
+        &:hover {
+            background-color: $secondary-lighter;
+        }
+    }
+}
+
+
+

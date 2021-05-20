@@ -1,0 +1,186 @@
+/******************************************************
+Este css tambien incluye el funcionamiento del side menu 
+******************************************************/
+
+//$height-container-report-section: 100vh;
+
+//$padding-title-report-section: $padding-small;
+//$color-title-report-section: $color-body;
+//$font-size-title-report-section: 80rem;
+$width-custom-dropdown: $min-width-vue-treeselect__menu;
+//$icon-color: $color-title-report-section;
+
+//$no-margin: 0px;
+// $background-header-report-section: blue; //$smart-gray;
+// $report-section-title-letter-spacing: 0.5px;
+
+//$padding-container-report-section: 0px $padding-big;
+//$report-section-background-color: $white-smoke;
+//$report-section-margin: 0px 0px 20px 0px;
+//$border-color-report-section: $secondary-lighter;
+//$report-section-border: $border-width-small solid $border-color-report-section;
+//$report-section-height: auto;
+//$report-section-padding: 0px 0px 20px 0px;
+//$report-section-padding-first-child: 0px 0px 20px 0px;
+//$report-section-padding-last-child: 20px 0px 0px 0px;
+
+//$report-section-header-border-bottom: $border-width-medium solid $background-header-report-section;
+
+//$icon-button-margin-left: 0;
+
+//$report-sections-header-padding: 0px 50px 0px 35px;
+//$report-sections-header-margin: -15px 0px 10px 0px;
+//$report-sections-header-z-index: 100;
+
+//$multi-widget-row-first-padding: 0px;
+//$multi-widget-row-last-padding: 0px;
+
+#sections-header {
+  //  padding: $report-sections-header-padding;
+  //  margin: $report-sections-header-margin;
+  position: relative;
+  //  z-index: $report-sections-header-z-index;
+
+  .dropdown-custom-element {
+    display: flex;
+    // width: $width-custom-dropdown;
+    width: $width-side-menu;
+    align-items: center;
+    margin-bottom: $margin-small;
+
+    .lx-keyvalue {
+      width: 100%;
+    }
+  }
+}
+
+#sections {
+  .debugger-pdf-size {
+    display: none;
+  }
+
+  kendo-pdf-document {
+    width: $full-width;
+    
+    .new-platform .ax-widget {
+      border: 1px solid $lighter-gray;
+      border-radius: $border-radius-medium;
+    }
+
+    .report-export-header {
+      display: flex !important;
+      margin-bottom: $margin-bottom-export-header;
+
+      .report-name {
+        font-size: $font-size-report-name;
+        font-weight: bold;
+      }
+    }
+
+    .widget-header {
+      .with-icon {
+        display: none !important;
+      }
+    }
+
+    .debug-pdf-mode .page-break {
+      background-color: lightcoral;
+    }
+
+    .force-hide {
+      display: none !important;
+    }
+
+    svg {
+      display: none !important;
+    }
+
+    img.only-pdf {
+      display: block !important;
+    }
+
+    .debugger-pdf-size {
+      display: block;
+    }
+  }
+
+  position: relative;
+  height: calc(
+    #{$height-body} - #{$height-row-filter-grid} - #{$margin-bottom-row-filter-grid} - #{$padding-body2}
+  );
+  overflow-y: auto;
+
+  .row-filter-grid {
+    padding: 0;
+  }
+
+  .widget {
+    align-items: flex-start;
+  }
+  //background-color: $background-body;
+  //padding: $padding-container-report-section;
+  /*
+  .ax-report-section {
+     //border: $report-section-border;
+     //margin: $report-section-margin;
+
+    .section-header {
+      //border-bottom: $report-section-header-border-bottom;
+      //background-color: $background-header-report-section;
+
+      .title {
+        position: relative;
+      //  text-transform: uppercase;
+      //  padding: $padding-title-report-section;
+      //  font-weight: bold;
+      //  font-size: $font-size-title-report-section;
+      //  letter-spacing: $report-section-title-letter-spacing;
+        background: white;
+        a{
+          color: $color-child-side-menu;
+        }
+      }
+      
+       .icon {
+         text-align: right;
+
+         button {
+        //   margin-left: $icon-button-margin-left;
+        //   color: $icon-color;
+         }
+       }
+       
+    }
+
+    .section-content {
+      // .multi-widget-row {
+      //   &:first-child {
+      //     padding-left: $multi-widget-row-first-padding;
+      //   }
+      //   &:last-child {
+      //     padding-right: $multi-widget-row-last-padding;
+      //   }
+      // }
+
+      .section {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: stretch;
+        justify-content: space-between;
+      }
+    }
+  }*/
+  .widget-wrapper {
+    margin-bottom: $margin-big;
+  }
+}
+
+@each $type, $value in $breakpoints {
+  @media screen and (max-width: $value) {
+    .force-breakpoint-#{$type} {
+      flex: 0 0 100% !important;
+      max-width: 100% !important;
+    }
+  } 
+}

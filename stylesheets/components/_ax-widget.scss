@@ -1,0 +1,51 @@
+.widget-modal-body {
+  padding: unset !important;
+  border-radius: 0px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.ax-widget {
+  //border: $border-ax-widget;
+  //margin: $margin-ax-widget;
+  //background-color: $background-ax-widget;
+  //padding-left: unset;
+  //padding-right: unset;
+
+  .widget-header {
+    //background-color: $background-header-report-section;
+
+    .title {
+      background-color: $background-title-ax-widget;
+      color: $font-color-title-ax-widget;
+      font-size: $font-size-title-ax-widget;
+      //text-transform: capitalize;
+      font-weight: bold;
+      padding: $padding-title-ax-widget;
+    }
+
+    .icon {
+      text-align: right;
+      /*
+      button {
+        margin-left: $icon-button-margin-left;
+        color: $icon-color;
+      }
+    */
+    }
+  }
+
+  .widget-content {
+    // min-height: $min-height-ax-widget-content;
+
+    .widget {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    padding: $padding-ax-widget-content;
+  }
+}

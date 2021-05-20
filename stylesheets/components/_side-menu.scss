@@ -1,0 +1,297 @@
+//SideMenu style
+
+.sideMenu {
+ 
+  width: $width-side-menu;
+  min-width: $width-side-menu;
+  transition: 0.3s;
+  background: $menu-background;
+
+  &.toggled {
+    margin-left: $margin-big - $width-side-menu;
+  
+    & .toggle-menu {
+      transition: 0.3s;
+      
+      .chevron-icon {
+        svg {   
+          transform: rotate(135deg );
+          
+          margin-left: 8px;
+          margin-top: -8px;
+        }
+        
+      }
+    }
+    .side-menu-container {
+      display: none;
+    }
+  }
+
+  .toggle-menu {
+    width: $width-toggle-menu;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    background: transparent;
+    //right: unquote("calc(0px - #{$width-toggle-menu})");
+    //right: 10px;
+    left: -14px;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 999;
+
+    .chevron-icon {
+      display: block;
+      margin-top: $margin-small;
+      background: $secondary;
+      padding: $padding-chevron-icon;
+      transform: rotate(45deg);
+      width: 32px;
+      height: 32px;
+      border-radius: 11px;
+      svg { 
+        transition: 0.3s;  
+        transform: rotate(-45deg );
+        color: $menu-text;
+        margin-left: 6px;
+        margin-top: -6px;
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .side-menu-container {
+    display: block;
+    list-style: none;
+    padding: 0;
+    overflow-y: auto;
+   
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    .menu-header{
+      font-size: $font-size-h4;
+      text-align: center;
+      font-weight: 700;
+      padding: $margin-medium;
+      background-color: $corporative-white;
+      border-bottom: solid 2px $primary;
+      height: 42px;
+      margin-bottom: $margin-small;
+    }
+
+    & > li:last-child {
+      //  border-bottom: $border-top-width-li solid $background-side-menu;
+      margin-bottom: $margin-bottom-last-child-side-menu;
+    }
+
+    & > .vertical-menu-item {
+      padding-left: $padding-small;
+      // padres
+      //background: $background-side-menu;
+      color: $lighter-gray;
+      //margin: $padding-box;
+      //border-radius: $border-radius-parent;
+      //border: $border-width-medium solid $background-side-menu;
+      .row:hover{
+        background-color: $menu-background-highlight;
+      }
+      &.active {
+        // background: $background-side-menu-active;
+        // border-color: $background-side-menu-active;
+        color: gold;
+      }
+    }
+  }
+
+  ul {
+    padding-left: 0;
+  }
+
+  .vertical-menu-item .vertical-menu-item-childs-container > ul {
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  .vertical-menu-item {
+    position: relative;
+    // &:hover{
+    //   color: $primary-light;
+    // }
+    svg {
+      color: $color-parent-side-menu;
+    }
+
+    & > * {
+      width: 100%;
+      font-size: $font-size-side-menu;
+      cursor: pointer;
+    }
+
+    .vertical-menu-text-slot {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .vertical-menu-add-to-graph-slot{
+      position: absolute;
+      right: $margin-small;
+    }
+
+    .vertical-menu-item-childs-container {
+      .slot-active{
+        color: $primary;
+      }
+    }
+
+    .vertical-menu-item {
+      // hijo
+      color: $color-child-side-menu;
+      padding: 0 0;
+
+      svg {
+        color: $color-child-side-menu;
+      }
+
+      &.active {
+        svg {
+          color: $primary;
+        }
+      }
+    }
+
+    .vertical-menu-item-parent-container {
+      padding: 0px;
+      min-height: $min-height-side-menu-item;
+      @include flex-total;
+
+      .btn-secondary:not(:disabled):not(.disabled):active:focus {
+        background: transparent !important;
+        border: 0;
+
+        svg {
+          outline: none;
+        }
+      }
+
+      .vertical-menu-item-link {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        // &:hover,
+        // &:hover svg {
+        //   //color: $primary;
+        //   //opacity: 0.7;
+        // }
+
+        .vertical-menu-icon-slot {
+          margin-right: $margin-right-icon;
+          width: $height-icon-small;
+          & > span { // iconos de 16px
+            display: flex;
+            justify-content: center;
+            width: $height-icon-small;
+          }
+
+          svg {
+            width: $height-icon-small;
+            height: $height-icon-small;
+          }
+        }
+
+        .vertical-menu-item-link {
+          width: 100%;
+          justify-content: space-between;
+          //margin-right: $position-badge;
+        }
+      }
+
+      .badge {
+        position: absolute;
+        right: $position-badge;
+        color: $corporative-white;
+        padding: $padding-badge;
+        border-radius: $border-radius-rounded;
+
+        &.badge-primary {
+          background-color: $primary-light;
+        }
+      }
+      /*
+      &:hover {
+        background: $background-menu-item-hover;
+        color: $color-body;
+      }
+*/
+      .vertical-menu-button-toggle {
+        background: transparent !important;
+        border-color: transparent;
+        color: inherit;
+        position: relative;
+        width: 16px;
+        height: 16px;
+        transform: rotate(0deg);
+        left: -4px;
+
+
+        &:focus {
+          box-shadow: none;
+        }
+
+        >svg{
+          position: relative;
+          left: 2px;
+        }
+      }
+      
+      &.collapsed>.vertical-menu-button-toggle {
+        transform: rotate(-90deg);
+      }
+    }
+
+    .vertical-menu-item-childs-container {
+    //  background: $background-vertical-menu-item; // color del espacio del hijo
+
+      li {
+        padding-left: $padding-medium;
+        list-style-type: none;
+      }
+    }
+  }
+}
+/*
+@media screen and (max-width: map-get($breakpoints, md)) {
+  .sideMenu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 998;
+
+    .toggle-menu .chevron-icon {
+      box-shadow: 3px 0 5px rgba(0, 0, 0, 0.15);
+
+      svg {
+        margin-left: -4px;
+      }
+    }
+
+    &.toggled {
+      margin-left: -260px;
+
+      .toggle-menu {
+        left: 260px;
+
+        .chevron-icon {
+          box-shadow: -3px 0 5px rgba(0, 0, 0, 0.15);
+        }
+      }
+    }
+  }
+}
+*/

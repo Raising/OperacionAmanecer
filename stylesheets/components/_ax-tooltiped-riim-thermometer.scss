@@ -1,0 +1,143 @@
+/***************************
+Museo Tooltip Thermomether
+***************************/
+$bar-shadow: 0px 0px 10px #CCC;
+
+.ax-compared-riim-thermometer {
+  .component-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    .label {
+      font-weight: bold;
+      font-size: $font-size-label-component-header;
+    }
+    .result {
+      display: flex;
+      font-size: $font-size-label-result-component-header;
+      padding: $padding-medium;
+      border-radius: $border-radius-medium;
+
+      svg {
+        width: $height-icon-medium;
+        height: $height-icon-medium;
+      }
+    }
+  }
+
+  .footer {
+    .trend-icon {
+      &.icon-red svg {
+        color: $risk-color-maximum;
+      }
+
+      &.icon-green svg {
+        color: $risk-color-minimum;
+      }
+    }
+  }
+}
+
+.ax-thermometer-tooltip {
+  .tooltip-inner {
+    box-shadow: $bar-shadow;
+  }
+
+  .tooltip-body {
+    border-top: $border-width-small solid $corporative-white;
+    padding: $padding-small;
+  }
+
+  &.ax-thermometer-bottom-tooltip {
+    top: $border-bar-wrapper-width !important;
+  }
+
+  &.ax-thermometer-top-tooltip {
+    top: -$border-bar-wrapper-width !important;
+  }
+}
+
+.ax-tooltiped-riim-thermometer {
+  padding: $padding-component;
+}
+
+/*
+.help-string {
+  font-size: 0.9rem;
+}
+*/
+
+.bar-wrapper {
+  margin-left: $margin-left-bar-wrapper;
+  z-index: 1;
+  position: relative;
+
+  .separator {
+    // padding: $padding-bar-wrapper;
+    width: $width-separator;
+    border: $border-separator;
+    position: absolute;
+    z-index: 0;
+    top: unquote('calc( (#{$height-level-string} + #{$border-bar-wrapper-width}) / 2 )');
+    left: $separator-left;
+  }
+
+  .bar {
+    box-shadow: $bar-shadow;
+    border-radius: $border-radius-bar-wrapper;
+    border: $border-bar-wrapper;
+    background-color: $corporative-white;
+    width: $width-bar-levels-strings;
+    // border-radius: $border-radius-bar;
+    position: relative;
+    // background: $background-bar-levels-strings;
+  }
+
+  .levels-strings {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    color: $text-color-bar-levels-strings;
+    font-weight: bold;
+    font-size: $font-size-bar-levels-strings;
+    border-radius: $border-radius-capsule;
+
+    .level-string {
+      font-weight: bold;
+      width: $width-level-string-and-number;
+      text-align: center;
+      border-left: $level-string-border-left;
+      height: $height-level-string;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $corporative-white;
+
+      &.level-5 {
+        background-color: $risk-color-maximum;
+        border-top-right-radius: $border-radius-capsule;
+        border-bottom-right-radius: $border-radius-capsule;
+      }
+      &.level-4 {
+        background-color: $risk-color-high;
+      }
+      &.level-3 {
+        background-color: $risk-color-medium;
+      }
+      &.level-2 {
+        background-color: $risk-color-light;
+      }
+      &.level-1 {
+        background-color: $risk-color-minimum;
+        border-top-left-radius: $border-radius-capsule;
+        border-bottom-left-radius: $border-radius-capsule;
+      }
+
+      &:first-child {
+        border-left: none;
+      }
+    }
+  }
+}

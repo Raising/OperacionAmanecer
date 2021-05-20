@@ -1,0 +1,317 @@
+small {
+  font-size: 0.7em;
+}
+
+.col-sm-12 {
+  padding: 0;
+}
+
+.row {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.my-childs-without-padding-left {
+  & > * {
+    padding-left: 0 !important;
+  }
+}
+
+/*
+ * Multiselect list
+ */
+.vue-treeselect--has-value {
+  .vue-treeselect__multi-value {
+    margin-bottom: 0;
+  }
+}
+
+.vue-treeselect__multi-value {
+  height: $height-input-vue-treeselect__multi-value;
+  padding: 0;
+  margin: 0;
+
+  .vue-treeselect__multi-value-item-container {
+    padding: 0;
+    margin-right: $space-between-filters-multi-value;
+
+    .vue-treeselect__multi-value-item {
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      padding: 0;
+      background: $corporative-white;
+      color: $primary;
+      border: $border-width-small solid $primary;
+      margin: $margin-vue-treeselect__multi-value-item;
+      border-radius: 50px;
+      transition: 0.3s;
+
+      &:hover {
+        background: $primary;
+        //     border-color: $corporative-black;
+        transition: 0.3s;
+
+        .vue-treeselect__multi-value-label {
+          color: $corporative-white;
+        }
+
+        .vue-treeselect__value-remove {
+          color: $corporative-white;
+        }
+        svg {
+          color: $corporative-white;
+        }
+      }
+
+      svg {
+        color: $primary;
+      }
+
+      /* .vue-treeselect__multi-value-label{
+        color: $secondary;
+      }
+      
+    
+      .vue-treeselect__value-remove{
+        color: $primary;
+      }*/
+    }
+  }
+}
+
+.vue-treeselect__value-remove {
+  border: 0;
+}
+
+.vue-treeselect__checkbox--checked {
+  background: $primary;
+  border-color: $primary;
+}
+
+.vue-treeselect__label-container {
+  &:hover {
+    .vue-treeselect__checkbox--checked {
+      border-color: $primary;
+      color: $primary;
+    }
+
+    .vue-treeselect__checkbox {
+      border-color: $primary;
+      color: $primary;
+    }
+
+    .vue-treeselect__checkbox--checked {
+      background: $primary;
+    }
+  }
+}
+
+.vue-treeselect__control {
+  height: $height-input;
+  background-color: $background-form-control;
+  color: $color-body;
+  font-size: $font-size-input-filters-components;
+  border: $border-width-small solid $border-color-form-control;
+  border-radius: 0;
+
+  .vue-treeselect__placeholder {
+    line-height: $height-input;
+  }
+}
+
+/*.custom-control {
+  /// Seguro de Crédito
+  margin: $margin-graph-indicator;
+}*/
+
+.custom-checkbox {
+  // Seguro de Crédito
+  //@include form-control;
+  line-height: $line-height-big;
+}
+
+.custom-control-label {
+  // Seguro de Crédito
+  cursor: pointer;
+  width: max-content; // Configuracion de admision
+
+  &::before,
+  &::after {
+    display: flex;
+    align-items: center;
+    top: 0px;
+    margin: 4px 2px;
+  }
+
+  .custom-switch & {
+    &:after {
+      top: 2px;
+    }
+  }
+}
+
+.custom-control-input {
+  &:checked {
+    background-color: $primary;
+    color: $corporative-white;
+  }
+
+  &:checked ~ .custom-control-label::before {
+    border-color: $primary;
+  }
+}
+
+/// Grid Expansible
+.progress {
+  background-color: $secondary-light;
+}
+
+/// Pagination Select Pages
+.custom-select {
+  height: $height-input;
+  padding: $padding-custom-select;
+  background-color: $background-custom-select;
+  font-size: $font-size-action-container;
+
+  // Form control
+  border: $border-width-small solid $border-color-form-control;
+  border-radius: $border-radius-form-control;
+  max-width: 100%; //calc(#{$min-width-custom-select-sm}*1.5);
+
+}
+
+.custom-select.custom-select-sm {
+  width: $width-custom-select-sm;
+  min-width: $min-width-custom-select-sm;
+  background-color: $background-custom-select-sm;
+}
+
+/// Form Cibtrik
+.vue-treeselect--focused:not(.vue-treeselect--open) .vue-treeselect__control {
+  @include shadow-orange-corporative-select;
+}
+
+/// Funcionalities inputs
+input[type='date' i]::-webkit-inner-spin-button {
+  height: $height-spin-date-form-control;
+}
+/*
+.btn-secondary:not(:disabled):not(.disabled):active, 
+.btn-secondary:not(:disabled):not(.disabled).active, 
+.show > .btn-secondary.dropdown-toggle {
+  @include button;
+}
+*/
+.margin-auto.btn-secondary:not(:disabled):not(.disabled):active {
+  margin: auto;
+}
+
+/// Login
+.custom-control-input {
+  &:checked ~ .custom-control-label::before {
+    background-color: $primary;
+  }
+}
+
+/// Admission
+.bg-dark-gray {
+  background-color: $secondary-light;
+}
+
+.bg-soft-gray {
+  background-color: $secondary-lighter;
+}
+
+.modal-dialog {
+  margin: auto;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+/// Grid Sticky
+.b-table-sticky-header {
+  //max-height: -webkit-fill-available !important;
+  //overflow-y: inherit;
+  //max-height: -webkit-fill-available !important;
+  overflow-y: inherit; // si fuese auto aparecería doble scroll en la tabla. Por ejemplo: Seguro de Crédito > Cartera Asegurable
+  max-height: 100%;
+  //min-height: $table-min-height;
+  margin-bottom: 0;
+
+  > .table {
+    &.b-table {
+      > thead {
+        > tr {
+          > th {
+            top: -1px;
+            background-color: $corporative-white;
+            vertical-align: middle;
+            border-top: 0;
+            min-width: $min-width-th;
+          }
+        }
+      }
+    }
+    td {
+      vertical-align: middle;
+      text-align: left;
+    }
+    tr {
+      &:hover {
+        @include tr-hover;
+      }
+    }
+  }
+}
+
+.IBI_PageBg {
+  font-family: $text-font-stack;
+}
+
+.iframe-global-position {
+  max-height: $max-height-iframe-global-position;
+  min-height: $min-height-iframe-global-position;
+}
+
+.panel-posicion-global {
+  @include marco;
+  @include flex-total;
+  height: 100%;
+  overflow: hidden;
+  .embed-responsive {
+    width: 100%;
+    height: 100%;
+    max-width: 2000px;
+    margin: auto;
+  }
+
+  iframe,
+  .iframe {
+    width: 100% !important;
+    height: 100% !important;
+    body {
+      overflow: hidden;
+    }
+  }
+}
+
+.container {
+  // Posicion Global, Solicitud de admision
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+.container-fluid {
+  padding: 0;
+}
+.flex-expand {
+  flex: 2;
+}
+
+.form-control{
+  height: 48px !important;
+}

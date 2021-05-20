@@ -1,0 +1,40 @@
+.horizontal-resizable-layout {
+  width: 100%;
+  height: 100%;
+
+  &.splitpanes--horizontal {
+
+    &.overflow-auto {
+      .splitpanes__pane {
+        overflow: auto;
+      }
+    }
+
+    .splitpanes__splitter {
+      background-color: $background-side-menu;
+      height: $height-splitpanes__splitter;
+      border-top: $border-width-small solid $background-vertical-menu-item;
+      border-bottom: $border-width-small solid $background-vertical-menu-item;
+
+      &:before {
+        display: block;
+        content: "";
+        width: $width-before-splitpanes__splitter;
+        height: $height-before-splitpanes__splitter;
+        position: relative;
+        top: $top-before-splitpanes__splitter;
+        left: $right-before-splitpanes__splitter;
+        margin-top: $margin-top-before-splitpanes__splitter;
+        margin-left: $margin-left-before-splitpanes__splitter;
+        border-top: $border-width-small solid $detail;
+        border-bottom: $border-width-small solid $detail;
+      }
+
+      &:hover {
+        &:before {
+          border-color: $detail;
+        }
+      }
+    }
+  }
+}

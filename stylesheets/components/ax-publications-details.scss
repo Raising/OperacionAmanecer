@@ -1,0 +1,11 @@
+
+.ax-publications-details {
+  margin: $margin-top-publications-details;
+  padding: $padding-publications-details;
+
+  & > * {
+    font-size: $font-size-event-info;
+    border-bottom: $border-bottom-event-info;
+  }
+
+}

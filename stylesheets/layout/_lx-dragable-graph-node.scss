@@ -1,0 +1,71 @@
+$tittleHeight : 22px;
+.lx-dragable-graph-node {
+
+  background-color: teal;
+  border: black 1px solid;
+  position: absolute;
+  border-radius: 3px;
+
+  .tittle{
+    font-size: 16px;
+    margin: 2px;
+    width: 100%;
+    height: $tittleHeight;
+    background: rgb(37, 70, 97);
+    color:lightgray;
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    position: absolute;
+    z-index: 20;
+    border-bottom: solid 1px green ; ;
+
+    .tooltip-helper{
+      float: right;
+      margin-right: 3px;
+    }
+  }
+
+  .inputs, .outputs{
+    padding: 3px;
+    padding-top: 6px;
+    height: 100%;
+    position: relative;
+    box-sizing: border-box;
+    color:lightgray;
+    border-top: $tittleHeight transparent solid;
+    &.full{
+      width: 100%;
+    }
+    .port{
+      font-size: 12px;
+      overflow: hidden;
+      height: 16px;
+      width: 100%;
+      &:nth-child(n+2){
+        border-bottom:solid grey 1px;
+      }
+      &.input{
+        padding-left:2px;
+      }
+
+      &.output{
+        padding-right:2px;
+        text-align: right;
+      }
+    }
+    
+  }
+  .inputs{
+    width: 60%;
+    background: rgb(37, 70, 97);
+    border-right:solid 1px green ;
+    position: absolute;
+    left: 0px;
+  }
+  .outputs{
+    background: rgb(23, 49, 90);
+    width: 40%;
+    position: absolute;
+    right: 0px;
+  }
+}

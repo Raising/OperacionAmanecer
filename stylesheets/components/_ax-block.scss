@@ -1,0 +1,18 @@
+//$ax-block-columns: 12;
+
+.ax-block {
+  .block-header {
+    .title {
+      font-size: $font-size-ax-block;
+    }
+  }
+
+  .table-responsive {
+    .thead-light{
+      th {
+        background: transparent;
+        border-color: $secondary-light;
+      }
+    }
+  }
+}

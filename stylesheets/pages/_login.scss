@@ -1,0 +1,149 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the home page.
+// -----------------------------------------------------------------------------
+
+
+.login{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    font-family: $default-text-login-font;
+    .left-login{
+        position: relative;
+        display: flex;
+        align-items: stretch;
+        flex-grow: 1;
+        background-color: $primary;
+        overflow: hidden;
+
+        .background-login-content{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .content-title-icon-login{
+            z-index: 25;
+            width: 55%;
+            height: 500px;
+            padding-left: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: space-around;
+            white-space: nowrap;
+            .toolbox-icon{
+                margin-top: 5%;
+                height: 150px;                
+            }
+            p{
+                color: white;
+            }
+            .title-login{
+                margin: 0;
+                font-weight: 800;
+                font-size: 80px;
+                line-height: 96px;
+                letter-spacing: -0.04em;
+            }
+            .subtitle-login{
+                font-size: 28px;
+                font-weight: 400;
+                line-height: 40px;
+            }
+        }
+    }
+    .rigth-login{        
+        overflow: auto;
+        background-color: white;
+        width: 32%;
+        padding-left: 3%;
+        padding-right: 3%;
+        min-width: 350px;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: stretch;
+
+        .top-rigth-login{
+            height: 36%;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-end;
+
+            p{
+                margin: 0;
+            }
+
+            .title-top-rigth-login{
+                margin-bottom: 6%;
+                font-style: normal;
+                font-weight: 800;
+                font-size: 44px;
+                line-height: 48px;
+            }
+
+            .subtitle-top-rigth-login{
+                font-family: $default-text-login-font;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 24px;
+            }
+
+            .lx-login-msg{
+
+                height: 68px;
+                min-height: 68px;
+                margin: 5% 0% 10% 0;
+
+                .textMsgLogin{
+                    font-weight: 400;
+                    font-size: 14px;
+                    text-align: center;
+                }
+            }
+
+        }
+
+        .center-rigth-login{
+            height: 300px;
+            white-space: nowrap;
+            label{
+                color: gray;
+                margin-top: 1%;
+                margin-bottom: 1%;
+            }
+
+            .subtitle-top-rigth-login{
+                white-space: nowrap;
+            }
+
+            .forgot-pass{
+                font-size: 14px;
+                padding-top: 1.2%;
+            }
+
+            .rememberMeCheckBox{
+                padding-left: 5%;
+            }
+
+            .eye-icon {
+                position: absolute;
+                bottom: 30%;
+                right: 15px;
+                cursor: pointer;
+            }
+
+            #doLoginButton{
+                height: 48px;
+                font-size: 18px;
+                border-radius: 8px;
+            }
+        }
+    }
+}

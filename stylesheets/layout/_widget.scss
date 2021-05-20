@@ -1,0 +1,297 @@
+
+.widget-slider {
+  min-height: $height-widget-generic;
+  padding-top: $margin-widget-generic;
+  padding-bottom: $margin-widget-generic;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+
+  &.widget-slider-md {
+    // Conjunto de widgets de Posicion Global
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    padding: 0 0 $padding-medium 0;
+    overflow-x: auto;
+    justify-content: left;
+    min-height: $height-widget-slider-md;
+    padding-top: $padding-widget-slider-md;
+/*
+    .marco {
+      width: max-content;
+      
+      .container-fluid {
+        width: max-content;
+      }
+    }*/
+    & ~ .grid-insurable-operation { // Seguro de Credito
+      height: calc(100% - #{$total-height-widget-md});
+    }
+
+    canvas {
+      max-height: $max-height-widget-md !important;
+    }
+/*
+    .widget-body {
+      max-width: $max-width-comment
+    }*/
+
+    .widget-comment {
+      max-width: $max-width-comment;
+      margin: auto;
+    }
+
+    & > .col {
+      min-width: $min-width-widget-slider-md;
+      max-width: max-content;
+    }
+  }
+
+  &.widget-slider-lg {
+    // Conjunto de widgets de Posicion Global
+    display: flex;
+    min-height: $height-widget-slider-lg;
+    padding-top: $padding-widget-slider-lg;
+
+    .widget-body {
+      height: $max-height-widget-lg !important;
+
+
+    }
+    canvas {
+      height: $max-height-widget-lg !important;
+    }
+
+    & ~ .grid-insurable-operation { // Seguro de Credito
+      height: calc(100% - #{$total-height-widget-lg}) !important;
+    }
+  }
+
+  & > .col-3 {
+    width: 300px;
+    max-width: max-content;
+  }
+
+  & > .col-4 {
+    width: 350px;
+    max-width: max-content;
+  }
+
+  & > .col-5 {
+    width: 400px;
+    max-width: max-content;
+  }
+
+  & > .col-6 {
+    width: 450px;
+    max-width: max-content;
+  }
+
+  .form {
+    @include flex-for-column;
+    justify-content: space-around;
+    height: 100%;
+    padding-left: 0;
+  }
+
+  canvas {
+    height: $max-height-widget-slider !important;
+    width: auto !important;
+    float: right;
+  }
+  .container-fluid {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-content: space-between;
+  }
+}
+
+.grid-insurable-operation { // Seguro de Credito
+  //margin: $margin-default 0;
+  height: calc(100% - #{$total-height-widget-generic});
+  min-height: $grid-min-height;
+
+  .paginable-table-row {
+    /*position: absolute;
+    left:12px;
+    right:12px;
+    top:100px;
+    bottom:80px;*/
+    //height: calc(100vh - 620px) /*Altura de los elementos externos al ax-grid: 620px */
+    flex: 2;
+    overflow-y: auto;
+
+    .b-table-sticky-header {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.widget-header {
+  // Posicion global, Seguro de credito
+  display: flex;
+  flex-wrap: nowrap;
+  text-transform: initial;
+  min-height: $min-height-widget-header !important; // this is equal to two lines of header
+  font-size: $font-size-widget-header;
+  font-weight: bold;
+}
+
+.widget-body {
+  display: flex;
+  align-items: flex-end !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap;
+  justify-content: space-between !important;
+  //height: $max-height-widget-slider;
+  flex-grow: 2;
+  margin: $margin-small 0;
+  //min-width: max-content;
+  width: 100%;
+
+  &.resize-canvas {
+    .chartjs-size-monitor {
+      width: 0;
+    }
+    .chartjs-render-monitor {
+      max-width: $max-width-widget-slider-resize;
+    }
+  }
+
+  .only-graph{
+    width: 100%;
+    max-width: 100%;
+
+    canvas {
+      width: 100% !important;
+    }
+  }
+
+  .value-widget {
+    font-size: $font-size-value-widget;
+    font-weight: bold;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 0;
+  }
+
+  .widget-slider & {
+    // Seguro de Crédito
+    align-items: initial;
+  }
+
+  .insurable-riim-widget &{
+    // Seguro de Crédito
+    align-items: center !important;
+
+    canvas {
+      height: $height-canvas-insurable-riim !important;
+      width: 100% !important;
+    }
+  }
+
+  .insurable-debtors & {
+    //align-items: center !important;
+
+    .field {
+      min-width: 110px;
+    }
+  }
+}
+
+.widget-comment {
+  display: inline-flex !important;
+  align-items: center;
+  width: 100%;
+  height: $height-widget-comment !important;
+  padding: $padding-widget-comment;
+  font-size: $font-size-widget-comment;
+  font-weight: bold;
+  justify-content: center;
+
+  & > div {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .form-control, button { // Global Position - Financiable
+    min-height: $height-form-control-widget-comment;
+    height: $height-form-control-widget-comment;
+  }
+}
+
+/// Element widget
+.dot {
+  // Circle of widget comment
+  @include circle-widget-comment;
+
+  .greenborder & {
+    background-color: $color-comment-widget-successful;
+  }
+
+  .redborder & {
+    background-color: $primary-dark;
+  }
+}
+
+.redborder,
+.greenborder {
+  border: $border-width-medium solid;
+  border-radius: $border-radius-small;
+
+  svg {
+    height: $width-circle-widget-comments;
+  }
+}
+
+.greenborder {
+  border-color: $color-comment-widget-successful;
+  //background: $background-comment-widget-successful;
+  color: $color-comment-widget-successful;
+
+  svg {
+    color: $color-comment-widget-successful;
+  }
+}
+
+.redborder {
+  border-color: $color-comment-widget-unsuccessful;
+  //background: $background-comment-widget-unsuccessful;
+  color: $color-comment-widget-unsuccessful;
+
+  svg {
+    color: $color-comment-widget-unsuccessful;
+  }
+}
+
+@media screen and (min-width: 1600px /*map-get($breakpoints, xl)*/) {
+  .widget-slider {
+    &.widget-slider-md {
+      justify-content: center !important;
+      //min-height: 190px;
+    }
+  }
+}
+
+@media screen and (max-width: map-get($breakpoints, lg)) {
+  .widget-slider {
+    justify-content: left !important;
+
+    &.justify-content-center {
+      justify-content: center !important;
+    }
+  }
+}

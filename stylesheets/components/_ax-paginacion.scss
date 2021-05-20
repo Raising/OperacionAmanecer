@@ -1,0 +1,81 @@
+.ax-paginacion, .footer-grid{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: $margin-big;
+
+  .custom-select {
+    width: $width-select;
+  }
+}
+
+
+.pagination{
+    max-width: max-content;
+    margin: $margin-footer-grid;
+
+    .page-link {
+        width: $height-page-link-paginator;
+        height: $height-page-link-paginator;
+        line-height: $line-height-page-link-paginator; 
+        margin: $margin-pagination-grid-between-links;
+        padding: 0;
+        color: $smart-gray !important; 
+        background: $background-page-link;
+        border-color: $border-color-page-link;
+    //  border-bottom: $border-default;
+        text-align: center;
+        text-decoration: none; 
+        outline: none;
+
+        &:hover{
+          background: $secondary-light;
+        }
+
+        &:focus {
+            box-shadow: 0 0;
+        }
+    }
+
+    .ax-select {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.page-item{
+    
+    &.active{
+        .page-link, .page-link:hover{
+            background: $background-page-item-active;
+            color: $corporative-white !important;
+            font-weight: bold; 
+            border-color: $border-color-page-link;
+        }
+    } 
+
+    &.disabled{
+        .page-link{
+            color:  $secondary-light !important;
+            background: $background-page-link;
+            border-color: $border-color-page-link;
+        }
+    }
+
+    .page-link{
+      border-radius: $border-radius-small;
+    }
+
+    &:first-child .page-link, 
+    &:nth-child(2) .page-link, 
+    &:nth-last-child(2) .page-link, 
+    &:last-child .page-link{
+        width: $height-page-link-paginator;
+        height: $height-page-link-paginator;
+        line-height: $line-height-page-link-paginator;
+        padding: 0;
+        font-size: $font-size-page-link;
+        text-align: center;
+        border-color: $border-color-page-link;
+    }
+}

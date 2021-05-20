@@ -1,0 +1,59 @@
+
+.delay-of-overdue-debt-table-wrapper {
+  .hide-table-headers {
+    tr {
+      height: $height-hide-table-headers !important;
+      line-height: $height-hide-table-headers;
+
+      &:nth-child(1) {
+          display: none;
+      }
+    }
+  }
+
+  .b-table-details {
+      & > td {
+          padding-top: $height-hide-table-headers !important;
+
+          .row-details-overdue-table-children {
+              table {
+                  margin-top: $height-hide-table-headers !important;
+              }
+          }
+      }
+  }
+
+  tbody {
+    tr {
+      background-color: $secondary-lighter;
+
+      .first-column {
+        font-weight: bold;
+      }
+
+      .row-details-overdue-table-children {
+        tbody {
+          tr {
+            background-color: $white-smoke;
+
+            .subTable {
+              tbody {
+                tr {
+                  background-color: $white;
+
+                  &:hover {
+                    background-color:  $secondary-light;
+
+                    & td:hover {
+                      background-color: transparent;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

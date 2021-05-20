@@ -1,0 +1,67 @@
+// Valor 1, etiqueta Mínimo, color verde oscuro
+// Valor 2, etiqueta Moderado, color verde claro,
+// Valor 3, etiqueta Elevado, amarillo 
+// Valor 4, etiqueta Máximo, color naranja
+// Valor 5, etiqueta Default, color rojo
+
+.ax-riim-bar{
+    @for $i from 1 through 6 {
+        .category-#{$i} {
+            height: 28px !important;
+        }
+    }
+    .rim-bar{
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        .category-1, .category-2, .category-3, .category-4, .category-5{
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+        .category-1{
+            background-color: $success-dark;
+            //background-image: linear-gradient(to top,$success-dark 0,$success-dark 40%, $success-dark 70% ,$success-dark 100%);
+            width: 20%;
+        }
+        .category-2{
+            background-color: $success;
+            //background-image: linear-gradient(to top,$success 0,$success 40%, $success-light 70% ,$success 100%);
+            width: 40%;
+        }
+        .category-3{
+            background-color: $error;
+            //background-image: linear-gradient(to top,$warning 0,$warning 40%, $warning-tint 70% ,$warning 100%);
+            width: 60%;
+        }
+        
+        .category-4{
+            background-color: $primary-light;
+            //background-image: linear-gradient(to top,$primary-light 0,$primary-light 40%, $primary-light-tint 70% ,$primary-light 100%);
+            width: 80%;
+        }
+        .category-5{  
+            background-color: $error-dark;
+            //background-image: linear-gradient(to top,$error-dark 0,$error-dark 40%, $error-darker 70% ,$error-dark 100%);
+            width: 100%;
+        }
+        .riim-description{
+            z-index: 1;
+        }
+        .bg{
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            z-index: -1;
+            .bg-line{
+                border-style: solid;
+                width: 20%;
+                height: 100%;
+                border-right: $border-width-small solid $secondary-middle-light;
+            }
+            .bg-line-zero{
+                border-left: $border-width-small solid $secondary-middle-light;
+            }
+        }
+    }
+    
+}

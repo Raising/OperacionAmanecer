@@ -1,0 +1,14 @@
+.ax-form-numeric {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .form-numeric-operator {
+        width: calc(15% - 10px);
+        min-width: $min-width-operator;
+    }
+
+    .form-numeric-value {
+        width: calc(85% - 10px);
+    }
+}

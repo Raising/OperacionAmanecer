@@ -1,0 +1,148 @@
+.sideMenu.toggled {
+    .ax-report-side-menu {
+        display: none;
+    }
+}
+
+.ax-report-side-menu {
+    height: $height-body;
+    overflow: auto;
+
+/*
+    .title { // menu-header
+        display: flex;
+        padding: $padding-box;
+        font-size: $font-size-side-menu;
+        font-weight: bold;
+    }
+*/
+    .nav-link {
+        padding: 0;
+        word-break: break-word;
+        
+        .nav-item{
+            a{
+                color: $color-child-side-menu !important;
+            }
+            &.active {
+                font-weight: bold;
+                a{
+                    color: $primary !important;
+                }
+            }
+        }
+    }
+    .section-link {
+        background: $background-side-menu;
+        color: $color-parent-side-menu;
+        margin: $padding-box;
+        margin-bottom: 0;
+        border-radius: $border-radius-parent;
+        //border: $border-width-medium solid $background-side-menu;
+
+        &.active {
+            background: $background-side-menu-active;
+            color: $color-parent-side-menu-active;
+            border-color: $background-side-menu-active;
+        }
+    }
+
+    .section-wrapper {
+        &:last-child {
+            margin-bottom: $margin-bottom-last-child-section-link;
+        }
+    }
+
+    .section-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        //  width: calc(100% - #{$min-width-button-toggle});
+        width: 100%;
+        padding: $padding-section-title;
+        min-height: 30px;
+        color: $color-section-title-report;
+        border-radius: $border-radius-small $border-radius-small 0 0;
+
+        &.active {
+            background-color: $primary;
+        }
+
+        &:hover,
+        &:hover svg {
+            //color: $primary;
+            opacity: 0.7;
+        }
+
+        .text {
+            padding: $padding-text-section-title;
+        }
+
+        svg {
+            color: $color-section-title-report;
+        }
+
+        .custom-edit {
+            color: $corporative-white;
+        }
+    }
+
+    .widget-link-container {
+        background-color: $corporative-white;
+
+        .widget-link {
+            padding: $padding-box;
+
+            &:hover {
+                a{
+                    color: $primary !important;
+                }
+            }
+        }
+    }
+
+    .custom-edit {
+        background: transparent !important;
+        border: none !important;
+        //color: $corporative-white;
+
+
+    }
+      
+    .my-custom-checkbox {
+        width: $font-size-normal;
+        height: $font-size-normal;
+        margin: 0 $margin-small;
+        border-radius: $border-radius-small;
+        display: inline-block;
+        border: $border-width-small solid $secondary-light;
+        position: relative;
+      
+        &:hover {
+          background: lighten( $smart-gray, 50%);
+        }
+      
+        &[checked] {
+          background: $primary;
+      
+          &:hover {
+            background: $primary-dark;
+          }
+      
+          &:before {
+            content: '';
+            display: block;
+            background-image: $image-custom-checkbox;
+            height: $height-custom-checkbox;
+            margin: $margin-custom-checkbox;
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
+        }
+    }
+      
+    .visibility-box {
+        display: flex;
+        align-items: center;
+    }
+}

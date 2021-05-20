@@ -1,0 +1,14 @@
+.ax-columns-referenced-table-bar {
+    font-weight: bold;
+    .pre-label {
+        width: $width-pre-label;
+    }
+    .referenced-table-bar {
+        min-width: 4%;
+    }
+    .bar {
+        height: $bar-height-ax-columns-referenced-table-bar;
+        margin: $bar-margin-ax-columns-referenced-table-bar;
+        border-radius: $border-radius-bar;
+    }
+}

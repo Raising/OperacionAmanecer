@@ -1,0 +1,152 @@
+//Components by filters
+
+$columns: 12;
+//$button-font-size: 10px;
+
+.form-control {
+  @include form-control;
+}
+
+textarea.form-control {
+  line-height: 1;
+  font-size: 1rem !important;
+  font-weight: 100 !important;
+
+  &:disabled {
+    border-radius: 0;
+    color: $secondary-middle-light;
+  }
+}
+
+
+.selectors-container {
+  @include flex-total;
+  align-items: center;
+  padding: 0;
+  margin-right: $margin-medium;
+}
+
+.selector {
+  background-color: $white-smoke;
+  border-radius: $border-radius-rounded;
+  padding: $padding-small $padding-medium;
+  font-weight: bold;
+  border: 0;
+  margin-right: $margin-small;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $secondary-lightest;
+  }
+
+  &.selected {
+    background-color: $primary;
+    color: $corporative-white;
+
+    &:hover {
+      background-color: $primary-light;
+    }
+  }
+
+  &.sm {
+    padding: 2px $padding-small;
+    font-size: $font-size-h5;
+  }
+}
+
+.filters-header { // List Admission (for example)
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  //background-color: $background-filters-header;
+  //color: $corporative-white; 
+  font-size: $font-size-title-filters-header;
+  padding: $padding-header-grid;
+
+  .title {
+    display: block;
+    float: left;
+    justify-content: flex-start;
+  }
+
+  .actions-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    //background-color: $background-filters-header;
+    color: $corporative-white;
+    font-size: $font-size-action-container;
+
+    .title {
+      font-size: $font-size-title-filters-header;
+    }
+   /* & > *{
+        margin: 0 $margin-medium;
+    }*/
+    .links{
+      font-size: $font-size-title-filters-header;
+      padding: $padding-links-actions-container;
+      a{
+        color: $corporative-white;
+        &:hover{
+          color: $primary;
+        }
+      }
+    }
+/*
+    .buttons {
+        button {
+            padding: $padding-button-filters-header;
+            font-size: $font-size-normal;
+            background: $primary;
+            &:hover{
+                background: $corporative-white;
+                color: $primary;
+            }
+        }
+    } */
+  }
+}
+
+.filters-components{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    flex: 2;
+    padding: $padding-filters-panel;
+    padding-top: 0;
+  //  height: $height-filters-components;
+  //  max-height: $max-height-filters-components;
+    overflow-x: hidden;
+    overflow-y: auto;
+  //  border: $border-width-medium solid $background-filters-header;
+
+    .vue-treeselect__menu-container {
+        padding: 0 $padding-medium;
+        font-size: $font-size-input-filters-components;
+    }
+
+    & > div{
+      min-width: $min-width-div-filters-components;
+    }
+
+    & > * {
+      margin:  0; 
+      flex-grow: 1;
+    }
+    
+    .links {
+      & * {
+        margin: $links-items-margin;
+      }
+    }
+/*
+    .buttons {
+      button {
+        padding: $button-padding;
+      }
+    }*/
+    @include itemsPerRow;
+}

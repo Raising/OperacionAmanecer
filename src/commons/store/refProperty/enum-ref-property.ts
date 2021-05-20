@@ -1,0 +1,9 @@
+export enum MutationName {
+  SET_FIELD = 'SET_FIELD',
+  SET_FORM_FIELDS = 'SET_FORM_FIELDS',
+  SET_PROPS_COLLECTION = 'SET_PROPS_COLLECTION',
+  CLEAR = 'CLEAR',
+  DELETE_ALL_STATE = 'DELETE_ALL_STATE',
+}
+
+export enum ActionName {}

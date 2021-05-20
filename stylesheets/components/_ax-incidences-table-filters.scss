@@ -1,0 +1,33 @@
+.ax-incidences-table-filters {
+    .button{
+        border-radius: $border-radius-rounded;
+        border-color: $primary;
+        min-height: 20px;
+        &.primary{
+            background-color: $corporative-white;
+            color: $primary;
+        }
+        &.primary-outline{
+            background-color: $primary;
+            color: $corporative-white;
+        }       
+    }
+    .primary-span{
+        background-color: $primary;
+        padding: 2px;
+        color: $corporative-white;
+        border-color: $primary;
+        border-radius: $border-radius-rounded;
+    }
+    .primary-outline-span{
+        background-color: $corporative-white;
+        padding: 2px;
+        color: $primary;
+        border-color: $primary;
+        border-radius: $border-radius-rounded;
+    }     
+    .title-total{
+        height: 1.5rem;
+        width: 2rem;
+    }  
+}

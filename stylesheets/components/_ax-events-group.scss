@@ -1,0 +1,76 @@
+$columns: 12;
+// right: unquote("calc( #{percentage($i)/100} - #{$mark-width / 2} )");
+
+@mixin itemsPerRow {
+  @for $i from 1 through $columns {
+    &.columns-#{$i} {
+      & > * {
+        //width: 100% / $i;
+        width: unquote("calc( #{100/$i}% - #{$margin-big} )");
+        //flex-grow: 1;
+        @if $i != 1 {
+          // padding-left: $columns-padding-left;
+          // padding-right: $columns-padding-right;
+          margin-right: $margin-big;
+        }
+      }
+    }
+  }
+}
+
+.ax-events-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: $margin-big;
+
+  @include itemsPerRow;
+  
+  .events-group {
+    .year {
+      font-size: $font-size-ax-events-group-year;
+      margin: $margin-small 0;
+      border-bottom: $border-width-small solid $color-border-bottom-ax-events-group-year;
+      font-weight: bold;
+    }
+
+    .years-events-list {
+      .modalLink {
+        color: $color-year-event-list;
+      }
+    }
+  }
+
+  .ax-events-see-all {
+    width: 100%;
+    text-align: center;
+    margin-top: $margin-big;
+  }
+
+  .ax-events-see-all-button {
+    cursor: pointer;
+    // text-decoration: underline;
+    text-decoration: none;
+
+/*    &:hover {
+
+      svg {
+        color: $color-hover-button;
+      }
+    }*/
+    svg{
+      color: $corporative-white;
+    }
+  }
+}
+
+.modalLink {
+  text-decoration: underline;
+  color: $primary;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

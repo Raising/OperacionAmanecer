@@ -1,0 +1,103 @@
+$alpha-decrement: .23;
+
+.pdf-viewer-content {
+    height: 65vh;
+}
+
+.ax-annual-report-header, .ax-annual-report-detail {
+    
+    &:not(.ax-annual-report-detail) {
+        display: block;
+        padding: $padding-header-default;
+        width: 100%;
+    }
+    
+    h6 {
+        margin: unset;
+    }
+
+    &.col {
+        padding-left: unset;
+    }
+
+    @for $i from 1 to 5 {    
+        &.level-#{$i} {
+            background: rgba(
+                            map-get($rgb-smart-gray, r), 
+                            map-get($rgb-smart-gray, g), 
+                            map-get($rgb-smart-gray, b), 
+                            1 - ($i * $alpha-decrement));
+            padding-left: $i * $padding-big;
+
+            h6 {
+                color: if($i == 1, $corporative-white, $corporative-white);
+            }
+        }
+
+        .level-#{$i} {
+            padding-left: $i * $padding-big;
+        }
+    }
+}
+
+.ax-annual-report-detail {
+    padding: $padding-big 0;
+/*
+    .detail-item {
+        padding-top:  $padding-field-in-form;
+        padding-bottom: $padding-field-in-form;
+    }
+
+    .detail-label-title {
+        font-weight: bold;
+    }
+
+    .detail-content {
+        background: rgba(199, 198, 198, 0.33);
+        border-bottom: $border-width-small solid $corporative-black;
+        padding-left: $padding-field-in-form;
+        padding-right: $padding-field-in-form;
+
+        &.link {
+            cursor: pointer;
+            color: $detail;
+            border-bottom: $border-width-small solid $detail;
+        }
+        //@include form-control;
+    }
+*/
+    .semaphore {
+        width: 12px;
+        height: 12px;
+        display: block;
+        border-radius: 10px;
+        
+        &.normal {
+            background-color: $success;
+        }
+
+        &.problems {
+            background-color: $warning-light;
+        }
+
+        &.deficient {
+            background-color: $warning;
+        }
+
+        &.doubtful {
+            background-color: $error-light;
+        }
+
+        &.loss {
+            background-color: $error;
+        }
+
+        &.no-calification {
+            background-color: $info;
+        }
+    }
+
+    hr {
+        margin-bottom: unset;
+    }
+}

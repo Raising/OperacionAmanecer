@@ -1,0 +1,15 @@
+.ax-widget-tab {
+    .card-header {
+        // background-color: transparent;
+        .nav-tabs {
+            .nav-link {
+                border: 0px;
+                border-radius: 0px;
+            }
+        }
+    }
+
+    .card-body {
+        background: $background-body;
+    }
+}

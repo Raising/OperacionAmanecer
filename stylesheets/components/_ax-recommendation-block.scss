@@ -1,0 +1,18 @@
+.ax-recommendation-block {
+    @include info-panel;
+
+    .header {
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+
+        span {
+            font-size: $font-size-recommendation-block;
+            font-weight: bold;
+        }
+    }
+
+    .recommendation-ico svg{
+        color: $primary;
+    }
+}

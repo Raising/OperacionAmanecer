@@ -1,0 +1,58 @@
+stages:
+  - build
+  - publish
+  - deploy
+
+build:
+  stage: build
+  image: node:latest
+  script:
+    - npm install --unsafe-perm
+    - npm run test:unit
+    - npm run-script build-dev
+  artifacts:
+    paths:
+      - dist
+#    untracked: true
+
+publish:
+  dependencies: 
+    - build
+  stage: publish
+  variables:
+    DOCKER_HOST: tcp://localhost:2375
+    DOCKER_TLS_CERTDIR: ''
+  image: docker:latest
+  services:
+    - docker:19-dind
+  script:
+    - ls
+    - docker info
+    - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+  only:
+    - master
+deploy-dev:
+  stage: deploy
+  variables:
+    ENVIRONMENT: DEV
+  image: alpine:3.8
+  script:
+    - echo $CI_BUILDS_DIR
+    - echo $CI_CONCURRENT_ID
+    - echo $CI_PROJECT_NAME
+    - values_file=values-`echo $ENVIRONMENT | tr [:upper:] [:lower:]`.yaml
+    - apk add --no-cache git curl bash
+    - git clone https://${CI_USERNAME}:${CI_PUSH_TOKEN}@gitlab.axesor.com/aris/perestroika/charts/${CI_PROJECT_NAME}-chart.git
+    - cd $CI_PROJECT_NAME-chart
+    - git config --global user.email "gitlab@gitlab.com"
+    - git config --global user.name "GitLab CI/CD"
+    - ls -ltra
+    - export ACTUAL_COMMIT=`cat $values_file |grep tag:|awk '{print $2}'`
+    - echo $ACTUAL_COMMIT
+    - echo $CI_COMMIT_SHORT_SHA
+    - sed -i "s/$ACTUAL_COMMIT/\"$CI_COMMIT_SHORT_SHA\"/g" $values_file
+    - cat $values_file
+    - git commit -am '[skip ci] $ENVIRONMENT image update'
+    - git push origin master

@@ -1,0 +1,25 @@
+.flow-graph-header{
+  background-color: $corporative-white;
+  padding: $padding-medium;
+  border-bottom: solid 2px $primary;
+  font-size: $font-size-h4;
+  height: 42px;
+  .saveButton{
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    background: $secondary-middle-dark;
+    
+  }
+}
+
+.flow-graph-canvas {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  padding: $padding-small;
+  background-color: #70836f;
+  box-shadow: inset 0px 0 6px 0px rgba(0,0, 0.3,0.7) ;
+  border-bottom: 43.5px solid transparent;
+ 
+}

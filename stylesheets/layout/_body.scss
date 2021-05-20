@@ -1,0 +1,29 @@
+.body {
+  width: 100%;
+  overflow: auto;
+  font-size: $font-size-body;
+  color: $color-body;
+  height: 100% ;
+  overflow: hidden;
+ 
+}
+
+.bg-img-body {
+  background: url(/img/layout/img-background.jpg) !important;
+  background-repeat: repeat-x !important;
+  background-position-y: $background-position-y-body2 !important;
+  
+}
+
+.MainContent{
+  height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+  margin-top: 4px ;
+  border-bottom: ($height-principal + 4px) transparent solid;
+}
+
+.content-with-widgets {
+  height: calc(100% - #{$height-widget-generic} - #{$margin-widget-generic} * 2);
+  min-height: $grid-min-height;
+}

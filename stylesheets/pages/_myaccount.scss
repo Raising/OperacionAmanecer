@@ -1,0 +1,56 @@
+.filter-date-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .custom-select {
+        margin: 0 2px;
+    }
+    
+    button {
+        display: flex;
+        align-items: center;
+        border-radius: $border-radius-rounded;
+        border: $border-width-small solid $border-color-form-control;
+        padding: $padding-medium;
+        background: $corporative-white;
+
+        svg {
+            margin-right: $margin-small;
+        }
+        
+        &:hover {
+            color: $primary;
+            border-color: $primary !important;
+            background: $corporative-white !important;
+
+            svg {
+                color: $primary !important;
+            }
+        }
+    }
+
+    .btn.selected {
+        color: $corporative-white;
+        background-color: $primary;
+        border-color: $primary !important;
+
+        svg {
+            color: $corporative-white;
+        }
+
+        &:hover {
+            color: $corporative-white;
+            background: $detail-light !important;
+
+            svg {
+                color: $corporative-white !important;
+            }
+        }
+    }
+}
+
+.filter-date {
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,13 @@
+.ax-form-date-range {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .from-date {
+        width: calc(50% - 10px);
+    }
+
+    .to-date {
+        width: calc(50% - 10px);
+    }
+}

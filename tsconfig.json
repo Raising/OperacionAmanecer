@@ -1,0 +1,71 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    //"module": "esnext",
+    "module": "commonjs",
+    "rootDir": "./",
+    "outDir": "./build",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    //   "noImplicitThis": false,
+    "baseUrl": ".",
+    "types": [
+      "webpack-env",
+      "jest",
+      "webpack"
+    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@COMMONS/*": [
+        "src/commons/*"
+      ],
+      "@MODELS/*": [
+        "models/*"
+      ],
+      "@SOLUTION/*": [
+        "src/solution/*"
+      ],
+      "@NODEMODULES/*": [
+        "node_modules/*"
+      ],
+      "@DASHBOARD/*": [
+        "src/modules/dashboard/*"
+      ],
+      "@FLOWEDIT/*": [
+        "src/modules/flow-edit/*"
+      ],
+      "@HQ/*": [
+        "src/modules/headquarters/*"
+      ],
+      "@DEFAULT/*": [
+        "src/modules/default/*"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  "include": [
+    "models/**/*.ts",
+    "server/**/*.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

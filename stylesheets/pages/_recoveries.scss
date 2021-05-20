@@ -1,0 +1,150 @@
+.text-editor-menu {
+    @include flex-total;
+    //background-color: $corporative-white;
+    border: $border-width-small solid $secondary-lighter;
+    border-radius: $border-radius-form-control $border-radius-form-control 0 0 ;
+    border-bottom: 0;
+    padding: $padding-medium;
+
+    .select-button-editor-text {
+        border-radius: $border-radius-form-control;
+        border: $border-small-default !important;
+        border-color: transparent !important;
+
+        &:hover {
+            border: $border-small-default !important;
+
+            button:hover {
+                border: 0 !important;
+            }
+        }
+    }
+
+    button {
+        //@include with-icon;
+        background: transparent;
+        color: $color-icon;
+        border-radius: $border-radius-form-control;
+        font-size: $font-size-normal;
+
+        svg {
+            color: $color-icon;
+        }
+
+        &:hover, &:focus, &:active {
+            background: $secondary-lighter !important;
+            border: $border-small-default !important;
+
+            svg {
+                color: $color-icon;
+            }
+        }
+
+        &.btn-link:hover {
+            color: $color-icon;
+        }
+    }
+
+    .button-editor-text {
+        svg {
+            color: $color-icon;
+        }
+
+        &:hover, &:focus, &:active {
+            background: transparent !important;
+            color: $detail !important;
+
+            svg {
+                color: $detail;
+            }
+        }
+    }
+
+    .custom-color-menu {
+        flex-wrap: wrap;
+        min-width: $width-custom-color-menu;
+        width: $width-custom-color-menu;
+        max-width: $width-custom-color-menu;
+
+        &.dropdown-menu.show {
+            display: flex;
+        }
+    }
+
+      .custom-color-selector {
+        width: $width-item-custom-color-menu;
+        border:0.2px solid transparent;
+
+        &:hover {
+            opacity: 0.8;
+            border-color: $secondary-lighter;
+        }
+        .dropdown-item:hover {
+            background-color: inherit !important;
+        }
+      }
+
+      .custom-fields-selector {
+        max-width: $width-custom-color-menu;
+      }
+
+}
+
+.ProseMirror {
+    height: $max-height-ax-grid;
+    overflow-y: auto;
+    background-color: $corporative-white;
+    border: $border-width-small solid $secondary-lighter;
+    border-radius: 0 0 $border-radius-form-control $border-radius-form-control ;
+    padding: $padding-medium;
+
+    .has-focus {
+        margin: $margin-small 0;
+    }
+
+    & &-selectednode.custom-field {
+        //border-radius: 3px;
+        box-shadow: $box-shadow-light;
+        border-color: $secondary !important;
+        background-color: $secondary-middle-dark;
+    }
+
+    .custom-field {
+        background: $secondary-light;
+        border: $border-default;
+        border-color: transparent;
+        cursor: pointer;
+    }
+}
+
+.template-fields-container {
+    max-height: $max-height-ax-grid;
+    overflow: auto;
+}
+
+
+.graph-container {
+    & > svg {
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: 600px !important;
+    }
+
+    .diagram-container-square, .diagram-container-circle, .diagram-container-diamond {
+        & > rect, & > circle, & > polygon {
+            fill: $primary-lightest !important;
+            stroke: $primary !important;
+            stroke-width: $border-width-medium !important;
+        }
+    }
+
+    .edgeLabel {
+        background-color: $corporative-white !important;
+
+        rect {
+            opacity: 1 !important;
+            background-color: $corporative-white !important;
+            fill: $corporative-white !important;
+        }
+    }
+  }

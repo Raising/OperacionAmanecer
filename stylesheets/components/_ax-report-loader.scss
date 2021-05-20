@@ -1,0 +1,10 @@
+$loader-containers-width: 20%;
+
+.ax-report-loader {
+  background-color: $corporative-white;
+  border-radius: $border-radius-medium;
+
+  .loaders-container {
+    width: $loader-containers-width;
+  }
+}

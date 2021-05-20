@@ -1,0 +1,113 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+.w-header {
+    height: $height-w-header;
+    display: flex;
+    background: $primary;
+    padding-top: $padding-small; 
+    border-bottom: solid 2px $lighter-gray; 
+
+    & img {
+        height: $height-img-w-header;
+        margin: 0 10px;
+    }
+}
+
+.nav{
+    &.navegator{
+        justify-content: flex-end;
+        font-size: $font-size-navegator;
+
+        & > li {
+            margin: 0 $margin-small;
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+        .title-navegator-w-header{
+            display: block;
+            margin-left: $margin-small;
+        }
+
+        svg {
+            height: $height-icon-navegator;
+            color: $color-navegator;
+        }
+        .exit {
+          svg {
+            height: $height-icon-exit-navegator;
+          }
+        }
+        
+        .btn-secondary:not(:disabled):not(.disabled):active, 
+        .btn-secondary:not(:disabled):not(.disabled).active, 
+        .show > .btn-secondary.dropdown-toggle,
+        button:active,
+        button:focus{
+            background: $primary-lighter;
+            color: $corporative-white;
+
+            svg {
+                color: $corporative-white;
+            }
+        }
+
+        .dropdown-menu {
+            box-shadow: $box-shadow-light;
+            border-color: transparent;
+            border-radius: $border-radius-medium;
+        }
+
+        button{
+            background: transparent;
+            border-color: transparent;
+            border-radius: $border-radius-big;
+            color: $color-navegator;
+            padding: $margin-button-navegator;
+            font-size: $font-size-navegator;
+            margin: 0;
+            align-items: center;
+
+            &:hover{
+                background: $primary !important;
+                color: $corporative-white;
+                border-color: transparent !important;
+
+                svg {
+                    color: $corporative-white;
+                }
+            }
+
+            &.dropdown-toggle:active, &.dropdown-toggle:focus  {
+                border-radius: $border-radius-big !important;
+            }
+
+            &.dropdown-item {
+                margin: 0;
+                border-radius: 0;
+                &:hover {
+                    background-color: transparent !important;
+                    color: $primary;
+
+                    svg {
+                        color: $primary !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: map-get($breakpoints, md)) {
+    .nav{
+        &.navegator{
+            .title-navegator-w-header{
+                display: none;
+            }
+        }
+    }
+}

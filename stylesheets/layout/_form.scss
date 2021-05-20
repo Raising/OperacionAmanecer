@@ -1,0 +1,38 @@
+.lx-keyvalue {
+
+    .title {
+        display: flex;
+        color: $secondary-middle-light;
+        margin-right: $margin-2 !important;
+        font-size: $font-size-body;
+        align-items: center; // Cuando son select tiene que estar centrado
+    }
+
+    .value {
+        //@include form-control;
+        color: $secondary-dark;
+        font-weight: bold;
+        min-height: $height-input;
+        align-items: center;
+        font-size: $font-size-body;
+    }
+
+    &.lx-keyvalue-left-right {
+        width: 100%;
+        margin-bottom: $margin-2 !important;
+
+        .row { // Solicitud de admision
+            display: flex;
+            align-items: center;
+            margin: $margin-form-between-row 0;
+        }
+        .value {
+            display: flex;
+            align-items: center;
+            min-height: auto;
+        }
+    }
+    .medium-size {
+        margin-top: $margin-small;
+    }
+}

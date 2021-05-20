@@ -1,0 +1,245 @@
+// -----------------------------------------------------------------------------
+// When having several themes, this file contains everything related to the
+// default one.
+// -----------------------------------------------------------------------------
+
+.child-element-group {
+  list-style: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/// Size
+.w-max-content {
+  width: max-content;
+}
+
+.w-min-content {
+  width: min-content;
+}
+
+.h-max-content {
+  height: max-content;
+}
+
+.h-min-content {
+  height: min-content;
+}
+
+.without-border {
+  border: 0;
+}
+
+.int {
+  // interrogation tooltip
+  background-color: $primary;
+  color: $corporative-white;
+  padding: 3px 7px;
+  border-radius: $border-radius-medium;
+  margin-left: 7px;
+}
+
+/// Margin and Padding, Spaces
+.space-between-divs {
+  margin: 0 $margin-big;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.margin-w-default {
+  margin-left: $margin-big;
+  margin-right: $margin-big;
+}
+
+.padding-w-default {
+  padding-left: $padding-big;
+  padding-right: $padding-big;
+}
+
+.margin-h-default {
+  margin-top: $margin-big;
+  margin-bottom: $margin-big;
+}
+
+.padding-h-default {
+  padding-top: $padding-big;
+  padding-bottom: $padding-big;
+}
+
+.without-h-padding {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.without-h-margin {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/// Cursor
+.cursor-movement {
+  cursor: move;
+}
+
+/// Line-height
+.line-height-small {
+  line-height: $line-height-small;
+}
+
+.line-height-big {
+  line-height: $line-height-big;
+}
+
+// Alignment
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.type-date {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.type-number {
+  display: block;
+  text-align: right;
+  width: 100%;
+}
+
+// Flex
+.flex {
+  display: flex;
+}
+
+.flex-total {
+  @include flex-total;
+}
+
+.flex-for-column {
+  @include flex-for-column;
+
+  &.marco {
+    .widget-body {
+      height: $max-height-body-flex-for-column !important;
+
+      canvas {
+        height: $max-height-body-flex-for-column;
+      }
+    }
+
+    .widget-comment {
+      display: none !important;
+      padding: 0;
+      height: 0 !important;
+    }
+
+    .widget-info {
+      display: none;
+    }
+  }
+}
+
+.flex-complete-center {
+  @include flex-complete-center;
+}
+
+.align-items-flex-end {
+  align-items: flex-end !important;
+}
+
+.justify-content-flex-end {
+  justify-content: flex-end !important;
+}
+
+.tiny-size {
+  font-size: $font-size-label-tiny-size !important;
+  width: 100%;
+}
+
+.small-size {
+  font-size: $font-size-label-small-size !important;
+  width: 100%;
+}
+
+.medium-size {
+  font-size: $font-size-label-medium-size !important;
+  font-weight: bold;
+  width: 100%;
+}
+
+.big-size {
+  font-size: $font-size-label-big-size !important;
+  font-weight: bold;
+  width: 100%;
+}
+
+// Selectores
+.header-treeselect {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: $border-default;
+  margin-bottom: $margin-medium;
+  padding-bottom: $padding-small;
+  width: 100%;
+
+  svg {
+    width: 16px;
+  }
+}
+
+// ellipsis
+.text-ellipsis {
+  display: block;
+  text-overflow: ellipsis;
+}
+
+.pointer {
+    cursor: pointer !important;
+}
+
+//Colors
+.text-color-body {
+  color: $color-body !important;
+}
+.text-secondary-middle-light {
+  color: $secondary-middle-light !important;
+}
+.text-success {
+  color: $success !important;
+}
+.text-error {
+  color: $error !important;
+}
+.text-info {
+  color: $corporative-blue !important;
+}
+.bg-body {
+  background-color: $background-body !important;
+}
+
+.over {
+  overflow-y: auto;
+  height: 90%;
+}
+
+// Rotaciones
+.rotate90 {
+  svg{
+    transform: rotate(90deg);
+  }
+}
+
+.rotate180 {
+  svg{
+    transform: rotate(180deg);
+  }
+}

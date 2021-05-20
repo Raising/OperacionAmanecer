@@ -1,0 +1,16 @@
+
+.table-extended-header{
+    th{
+        position: relative;
+        .draggable, .resizable, .vdr{
+            //height: available !important;
+            //height: -webkit-fill-available !important;
+            //height: -moz-available !important;
+            border: none;
+            //padding: $padding-medium 0;
+        }
+    }
+    .column-to-drag{
+        opacity: 0.5;
+    }
+}

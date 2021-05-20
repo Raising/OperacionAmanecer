@@ -1,0 +1,129 @@
+$result-text-padding: 5px 5px;
+$result-text-width: 110px;
+
+.ax-counter {
+  height: $height-ax-counter;
+  position: relative;
+  overflow: hidden;
+  .counter {
+    //position: absolute;
+    width: $width-counter;
+    height: $height-counter;
+    background: $background-counter;
+    z-index: 1;
+
+    &.no-value {
+      filter: grayscale(100%);
+    }
+
+    .needle {
+      position: relative;
+      top: $top-needle;
+      width: $width-counter;
+      height: $height-counter;
+      background: $backgorund-needle;
+      //background-size: contain;
+      //transform: rotate(3deg);
+      z-index: 2;
+      transition: $transition;
+    }
+
+    // .range-background {
+    //   width: $width-counter;
+    //   height: $height-counter;
+    //   background-size: contain;
+    //   top: $background-top-range;
+    //   position: absolute;
+    //   z-index: 0;
+    //   transition: $transition;
+
+    //   &.no-value {
+    //     background: none !important;
+    //   }
+
+    //   &.level-1 {
+    //     background: $background-range-1;
+    //   }
+    //   &.level-2 {
+    //     background: $background-range-2;
+    //   }
+    //   &.level-3 {
+    //     background: $background-range-3;
+    //   }
+    //   &.level-4 {
+    //     background: $background-range-4;
+    //   }
+    //   &.level-5 {
+    //     background: $background-range-5;
+    //   }
+    // }
+
+    .result {
+      position: relative;
+      top: $result-top;
+
+      .percent {
+        text-align: center;
+        font-size: $top-percent-result-result;
+        font-weight: bold;
+        position: relative;
+        top: $percent-top;
+        color: $detail;
+
+        &.inactive {
+          height: $top-percent-result-result;
+        }
+      }
+
+      .text {
+        text-align: center;
+        font-size: $font-size-text-result;
+        top: $top-text-result;
+        position: relative;
+        font-weight: bold;
+        padding: $result-text-padding;
+        min-width: $result-text-width;
+        border-radius: $border-radius-capsule;
+
+        &.level-5 {
+          background-color: $background-risk-color-maximum;
+          color: $risk-color-maximum;
+        }
+        &.level-4 {
+          background-color: $background-risk-color-high;
+          color: $risk-color-high;
+        }
+        &.level-3 {
+          background-color: $background-risk-color-medium;
+          color: $risk-color-medium;
+        }
+        &.level-2 {
+          background-color: $background-risk-color-light;
+          color: $risk-color-light;
+        }
+        &.level-1 {
+          background-color: $background-risk-color-minimum;
+          color: $risk-color-minimum;
+        }
+
+        svg:not(:root) {
+          color: inherit;
+        }
+
+        .trend-icon {
+          & svg {
+            width: $width-trend-icon;
+            position: relative;
+          }
+
+          &.icon-green svg {
+            color: $success-darker;
+          }
+          &.icon-red svg {
+            color: $error-lighter;
+          }
+        }
+      }
+    }
+  }
+}

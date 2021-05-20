@@ -1,0 +1,260 @@
+$columns: 12;
+
+@mixin sectionsPerRow {
+  @for $i from 1 through $columns {
+    &.sectionsPerRow-#{$i} {
+      width: 100% / $i;
+      @if $i != 1 {
+        padding: 0 $padding-between-containers-filter-form;
+      }
+    }
+  }
+}
+
+.ax-filter-container {
+  position: absolute;
+  z-index: 100;
+  right: 0;
+  top: 0;
+  bottom: $bottom-filters;
+}
+
+.ax-filter-form-category {
+  // Buscador, Seguimiento
+  //height: $height-tree-select-menu;
+  width: 280px;
+  background-color: $corporative-white;
+  padding: 0 !important;
+  border-radius: $border-radius-modal;
+  z-index: 999;
+  box-shadow: $box-shadow-light;
+
+  position: absolute;
+  top: 10px;
+  right: 65px;
+  bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  max-height: inherit;
+  height: inherit !important;
+  min-height: 100px;
+
+  .filters-panel {
+    //max-height: $height-list-tree-select-menu;
+    overflow: auto;
+    padding: $padding-filters-panel;
+    //padding: 0;
+    padding-top: 0;
+    flex: 2;
+    display: block;
+
+    .filters-panel-item {
+      @include flex-complete-center;
+      @include flex-total;
+      border-bottom: $border-small-default;
+      margin: $margin-small 0;
+      padding-bottom: $padding-small;
+
+      .title {
+        font-size: $font-size-normal;
+        font-weight: bold;
+      }
+    }
+    .round {
+      background-color: $secondary;
+      color: $corporative-white;
+      font-size: $font-size-label-tiny-size;
+      border-radius: $border-radius-rounded;
+      padding: $padding-small $padding-medium;
+      font-weight: bold;
+
+      &.filtered {
+        background-color: $primary;
+      }
+    }
+    .expand-icon {
+      font-weight: bold;
+      font-size: large;
+    }
+    /*.selectors-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0px;
+      margin-right: $margin-big;
+    }*/
+
+    .header {
+      display: flex;
+      width: 100%;
+      margin: 0;
+      margin-bottom: $margin-small;
+      padding: $padding-small;
+
+      .name {
+        display: flex;
+        align-items: center;
+        font-size: $font-size-h5;
+        color: $secondary-middle-light;
+        padding: $padding-small;
+  
+        &.active {
+          color: $primary;
+          border-bottom: $border-width-medium solid $primary;
+          
+          svg {
+            color: $primary;
+          }
+        }
+      }
+  
+      .ax-filter-form-by-category {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+  
+        .category-search {
+          align-self: flex-end;
+          margin-top: $margin-big;
+        }
+  
+        & > div {
+          margin: $margin-field-in-form;
+          padding: $padding-big;
+        }
+      }
+    }
+
+    .field-group {
+      width: 100%;
+      
+      .field {
+        display: none;
+
+        &.active {
+          display: block;
+        }
+      }
+    }
+  }
+  .category-section {
+    max-height: max-content !important;
+    height: max-content !important;
+    min-height: 100px;
+    flex: inherit !important;
+    padding: 0;
+
+    .ax-filter-form-by-category {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .category-search {
+        align-self: flex-end;
+        margin-top: $margin-big;
+      }
+
+      & > div {
+        margin: $margin-field-in-form;
+      }
+    }
+
+  }
+}
+
+
+// Filtros
+.sumfilters {
+  vertical-align: top;
+  background-color: $primary;
+  //border: $border-width-small solid $corporative-white;
+  border-radius: $border-radius-rounded;
+  box-shadow: $box-shadow-light;
+  padding: $top-sumfilters $right-sumfilters;
+  color: $corporative-white;
+  position: absolute;
+  font-size: $font-size-label-tiny-size;
+  top: calc(0px - #{$top-sumfilters});
+  right: calc(0px - #{$right-sumfilters});
+
+  .navegator & {
+    right: calc(0px - (#{$right-sumfilters} * 2));
+  }
+}
+
+
+// Filtro - Menu Contextual
+
+.cuadro {
+  height: 21px;
+  position: relative;
+  width: 21px;
+  top: -3px;
+  left: 23px;
+  background-color: lightblue;
+  border: 1px solid darkgrey;
+  margin-left: -21px;
+}
+
+
+.color-container {
+  //padding: 2px;
+  //margin-right: 3px;
+  @include flex-complete-center;
+  border: 1px solid transparent;
+  width: calc(#{$height-icon-small} + #{$padding-medium});
+  height: calc(#{$height-icon-small} + #{$padding-medium});
+  border-radius: $border-radius-rounded;
+  text-align: center;
+  margin-right: $margin-small;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.selected {
+      border: $border-width-small dashed $secondary;
+      background-color: transparent !important;
+  }
+
+  .type-1 {
+    background-color: $background-type-1;
+  }
+
+  .type-2 {
+    background-color: $background-type-2;
+  }
+
+  .type-3 {
+    background-color: $background-type-3;
+  }
+
+  .type-4 {
+    background-color: $background-type-4;
+  }
+
+  .type-5 {
+    background-color: $background-type-5;
+  }
+
+  .dot {
+    width: $height-icon-small;
+    height: $height-icon-small;
+    border-radius: $border-radius-rounded;
+    margin: 0;
+
+    &.text {
+      font-size: $font-size-label-medium-size;
+      height: 36px;
+    }
+  }
+
+  .medium-size {
+    text-align: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+}

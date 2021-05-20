@@ -1,0 +1,9 @@
+//$ax-block-columns: 12;
+
+.ax-act {
+  .priority-icon {
+    & svg {
+      color: $primary;
+    }
+  }
+}

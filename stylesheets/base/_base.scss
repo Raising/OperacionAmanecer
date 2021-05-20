@@ -1,0 +1,151 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+/**
+ * Set up a decent box model on the root element
+ */
+html,* {
+  box-sizing: border-box;
+}
+
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/**
+ * Basic styles for links
+ */
+a {
+  color: $primary !important;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  @include on-event {
+    color: $color-body;
+  }
+}
+
+body{
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+
+header {
+  //position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: $corporative-white;
+  height: $height-header;
+}
+
+.header{
+  .title{
+    font-size: 32px;
+    font-weight: bold;
+    color: inherit;
+  }
+}
+
+.header-dark{
+  background: $smart-gray;
+  color: $corporative-white;
+}
+
+iframe{
+  width: 100%;
+  height: 100%;
+}
+
+th {
+  font-size: $font-size-th !important;
+}
+
+td {
+  font-size: $font-size-td;
+  vertical-align: middle;
+}
+
+.min-width-td{
+  min-width: $min-width-td;
+}
+
+th,td,tr{
+  outline: none;
+}
+
+// Barras de Scroll
+.scroller{  // Firefox Scrollbar
+  position: relative;
+  scrollbar-color: $secondary-middle-light transparent;
+  scrollbar-width: thin;
+  padding: 20px 10px 20px 10px;
+  border: 0;
+}
+
+::-webkit-scrollbar-track {  // chrome y Safari Scrollbar
+  background-color: transparent;
+}
+
+::-webkit-scrollbar {  // chrome y Safari Scrollbar
+	width: 12px;
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {  // chrome y Safari Scrollbar
+	border-radius: $border-radius-small;
+  background-color: $secondary-middle-light;
+  height: auto;
+  width: auto;
+  &:hover{
+    opacity: 0.8;
+  }
+}
+
+label {
+  margin-bottom: $margin-small;
+  display: flex;
+  align-items: center;
+}
+
+h1, h2, h3, h4, h5{
+  font-weight: bold;
+}
+
+.tooltip {
+  font-size: 10px;
+  z-index: 999;
+
+  .arrow {
+    &:before {
+      border-bottom-color: $detail !important;
+      border-top-color: $detail !important;
+    }
+    &:after {
+      border-bottom-color: $detail !important;
+      border-top-color: $detail !important;
+    }
+  }
+
+  .tooltip-inner {
+    background: $detail;
+    font-size: 0.56rem;
+    font-family: $text-font-stack;
+    padding: $padding-small;
+  }
+}

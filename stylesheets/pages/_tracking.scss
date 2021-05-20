@@ -1,0 +1,68 @@
+
+// Individual Alerts
+.detail-width {
+  @include marco;
+  width: calc(100vw - #{$width-side-menu} - 100px);
+  //background: $secondary-lightest;
+  border: $border-default;
+
+  header { // Tracking Config
+    @include flex-total;
+
+    &:hover {
+      background-color: $background-tr-hover !important;
+    }
+  }
+
+  table {
+    tr {
+      background: transparent !important;
+
+      th, td {
+        border-color: $secondary-light;
+      }
+    }
+  }
+
+  &.fixed { // Movible ax-grid
+    position: fixed;
+    max-height: 120px;
+    text-align: center;
+    word-wrap: break-word;
+  }
+}
+
+.modal-xl {
+  .detail-width {
+    &.fixed {
+      @media (min-width: 1200px){
+        max-width: calc(1140px - 100px);
+      }
+
+      @media (min-width: 992px){
+        max-width: calc(800px - 100px);
+      }
+    }
+  }
+}
+
+#alert-detail-table thead {
+  visibility: visible !important;
+}
+
+#alert-detail-table th {
+  display: table-cell !important;
+  padding: $padding-big;
+  height: 100% !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.green svg {
+  color: $success;
+}
+
+.red svg {
+  color: $error;
+}

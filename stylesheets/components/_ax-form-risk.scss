@@ -1,0 +1,171 @@
+@function setTextColor($background-color) {
+    @if (lightness( $background-color ) < 50) {
+      @return $color-body;
+    }
+    @else {
+      @return $corporative-white;
+    }
+}
+
+.icp-color-maximum {
+  .progress-bar {
+    background-color: $risk-color-maximum;
+    margin: initial;
+  }
+}
+
+.icp-color-high {
+  .progress-bar {
+    background-color: $risk-color-high;
+    margin: initial;
+  }
+}
+
+.icp-color-medium {
+  .progress-bar {
+    background-color: $risk-color-medium;
+    margin: initial;
+  }
+}
+
+.icp-color-light {
+  .progress-bar {
+    background-color: $risk-color-light;
+    margin: initial;
+  }
+}
+
+.icp-color-minimum {
+  .progress-bar {
+    background-color: $risk-color-minimum;
+    margin: initial;
+  }
+}
+
+.ax-form-risk {
+  &.monocromatic {
+    &.gray {
+      .progress-bar {
+        background-color: $secondary-middle-light !important;
+        margin: initial;
+        & .text-inside {
+          color: setTextColor($secondary-middle-light);
+        }
+      }
+    }
+    &.blue {
+      .progress-bar {
+        background-color: $detail !important;
+        margin: initial;
+        & .text-inside {
+          color: setTextColor($detail);
+        }
+      }
+    }
+    &.green {
+      .progress-bar {
+        background-color: $success-darker !important;
+        margin: initial;
+        & .text-inside {
+          color: setTextColor($success-darker);
+        }
+      }
+    }
+  }
+
+  &.render-inline {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .risk-bar {
+      width: calc(100% - #{$width-progress-text});
+      order: $order-risk-bar;
+    }
+
+    .progress-text {
+      width: $width-progress-text;
+      order: $order-progress-text;
+    }
+  }
+
+  .progress-text {
+    text-align: center;
+  }
+
+  .risk-bar {
+    .text-inside {
+      // position: absolute;
+      // width: 100%;
+      // text-align: center;
+      font-weight: bold;
+    }
+
+    &.bueno, &.no-definido {
+      .progress-bar {
+        & .text-inside {
+          color: setTextColor($success-darker);
+        }
+
+        background-color: $success-darker;
+        margin: initial;
+      }
+    }
+
+    &.aceptable, &.mínimo {
+      .progress-bar {
+        & .text-inside {
+          color: setTextColor($risk-color-minimum);
+        }
+
+        background-color: $risk-color-minimum;
+        margin: initial;
+      }
+    }
+
+    &.deficiente, &.moderado {
+      .progress-bar {
+        & .text-inside {
+          color: setTextColor($risk-color-light);
+        }
+
+        background-color: $risk-color-light;
+        margin: initial;
+      }
+    }
+    
+    &.crítico, &.elevado {
+      .progress-bar {
+        & .text-inside {
+          color: setTextColor($risk-color-medium);
+        }
+
+        background-color: $risk-color-medium;
+        margin: initial;
+      }
+    }
+
+    &.impago, &.máximo {
+      .progress-bar {
+        & .text-inside {
+          color: setTextColor($risk-color-high);
+        }
+
+        background-color: $risk-color-high;
+        margin: initial;
+      }
+    }
+
+    &.nd, &.default {
+      .progress-bar {
+        & .text-inside {
+          color: setTextColor($risk-color-maximum);
+        }
+
+        background-color: $risk-color-maximum;
+        margin: initial;
+      }
+    }
+  }
+}

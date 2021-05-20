@@ -1,0 +1,27 @@
+.sales-evolution {
+    .table-header {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        height: auto;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+      
+        &:before {
+          content: '';
+          width: 100%;
+          display: block;
+          padding-bottom: 25%;
+        }
+      
+        .table-title {
+          position: absolute;
+          width: 100%;          
+          display: flex;
+          align-items: flex-end;
+        }
+    }
+}

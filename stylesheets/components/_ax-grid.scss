@@ -1,0 +1,563 @@
+.ax-grid {
+  font-size: $font-size-ax-grid;
+  width: 100%;
+  height: 100%;
+  min-height: 250px;
+  overflow: scroll;
+
+  table {
+    width: 100%;
+
+    th {
+      height: $height-th;
+      text-align: center; // text-align de las cabeceras
+      background-position: right $margin-medium center !important; // posicion ordenar
+      z-index: 99 !important;
+
+      div {
+        outline: none;
+        z-index: 99 !important;
+      }
+
+      &:focus, &:active {
+        z-index: 100 !important;
+
+        div {
+          z-index: 100 !important;
+          background-color: $corporative-white;
+          opacity: 0.7;
+        }
+      }
+    }
+
+    td {
+      max-width: 0;
+      padding-left: $padding-medium;
+
+      span[role="img"] {
+        width: max-content;
+        display: flex;
+        margin: auto;
+      }
+
+      div {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      &:first-child {
+        // La primera columna está siempre a la izquierda
+        div {
+          margin: 0;
+        }
+      }
+    }
+
+    tr {
+      height: $height-tr;
+
+      &:nth-child(even) {
+        background-color: $background-tr-even !important;
+      }
+    }
+
+    .table-extended-header th .draggable, 
+    .table-extended-header th .resizable, 
+    .table-extended-header th .vdr,
+    .b-table th // hay que cambiarla por una nueva para Seguro de credito
+    {
+      height: $height-th !important;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      //display: flex;
+      vertical-align: middle;
+      align-items: center;
+      padding-top: calc((#{$height-th} - #{$font-size-th} - 5px) / 2); // centrar el th
+      padding-bottom: 0;
+      padding-right: $padding-extra-big; // SEGUIMIENTO - este padding sirve para dejarle el espacio al icono de SORT COLUMN
+
+      padding-left: $padding-small;
+      text-align: left;
+    }
+
+    .vdr {
+      position: relative;
+    }
+
+    .handle, .handle-mr {
+      // elemento para resize la cabecera
+      display: block !important;
+      height: calc(#{$height-th} / 2) !important; // la mitad de la altura de la cabecera
+      margin-top: 0; //calc(-#{$height-th} / 4) !important;
+      border: 0;
+      border-right: $border-width-medium solid $secondary-light !important;
+      width: 8px;
+      right: 0 !important;
+      background-color: transparent;
+      top: calc((#{$height-th} - (#{$height-th} / 2)) /2);
+      cursor: url($img-cursor-resize) 10 10, auto !important;
+
+      &:hover {
+        transition: 0.3s;
+        border-color: $detail !important;
+        background-color: transparent;
+      }
+    }
+
+    .open-clildren-button {
+      // botón (+) de los grid (va quitado)
+      width: $width-button-plus-open-children;
+      min-width: $width-button-plus-open-children;
+      max-width: $width-button-plus-open-children;
+      line-height: 18px;
+      font-size: 14px;
+      padding: 0;
+      margin-bottom: 1px;
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+      background: $primary;
+      color: $corporative-white;
+      border-radius: $border-radius-medium;
+    }
+
+    .btn-secondary:not(:disabled):not(.disabled):active {
+      color: $corporative-white;
+      background-color: transparent;
+      border: none;
+    }
+
+    .b-table-details {
+      &:hover {
+        background: none !important;
+      }
+      // Hijo (+) -> Seguimiento
+      &-enter-active,
+      &-leave-active {
+        transition: transform 1500ms;
+        transform-origin: top center;
+      }
+
+      &-enter,
+      &-leave-to {
+        transform: scaleY(0);
+      }
+
+      thead {
+        visibility: collapse;
+      }
+
+      td {
+        color: $secondary-middle-light;
+        font-size: $font-size-child-ax-grid;
+      }
+    }
+  }
+
+  .table-hover {
+    tbody{
+      tr {
+        background-color: $background-tr;
+  
+        td {
+          color: $color-td-ax-grid;
+  
+          .children-table {
+            background: $background-children-table-tr-hover;
+  
+            tr,
+            tr:nth-of-type(even) {
+              background-color: $background-tr-hover;
+            }
+  
+            tr {
+              td {
+                color: $color-td-ax-grid;
+                background: $background-children-table-tr-hover;
+  
+                &:nth-child(1) {
+                  div {
+                    &.row {
+                      margin-left: 50px;
+                    }
+                  }
+                }
+              }
+  
+              &:hover {
+                color: $color-td-ax-grid;
+  
+                td {
+                  color: $color-tr-hover;
+                  background-color: $smart-gray;
+                }
+              }
+            }
+          }
+        }
+        &:hover {
+          @include tr-hover;
+          /*background-color: $background-tr-hover;*/
+          td {
+            /*color: $color-tr-hover;*/
+  
+            &:hover {
+              /*background-color: $background-tr-hover;*/
+  
+              .children-table {
+                tr {
+                  td {
+                    color: $color-td-ax-grid;
+                  }
+                  &:hover {
+                    td {
+                      color: $color-tr-hover;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .vue-treeselect {
+    @include form-control;
+    height: max-content;
+    position: absolute;
+    width: $width-vue-treeselect__control-arrow-container;
+    //  height: 1rem;
+    right: 0; // $right-vue-treeselect__control-arrow-container;
+    z-index: 101;
+    margin-top: 0px;
+    margin-right: 0px; // poner el filtro de columnas en sus sitio
+    // height: max-content;
+
+    &.vue-treeselect--open {
+      height: 90%;
+    }
+
+    &:hover {
+      .vue-treeselect__control {
+        background: $detail;
+        border-color: $detail;
+        .vue-treeselect__control-arrow-container {
+          background-color: $corporative-white;
+        }
+      }
+    }
+
+    &.vue-treeselect--open {
+      .vue-treeselect__control {
+        background-color: $corporative-white;
+        border-color: transparent;
+        box-shadow: 0 0 transparent;
+
+        .vue-treeselect__control-arrow-container {
+          background-color: $detail;
+        }
+      }
+    }
+
+    &:not(.vue-treeselect--disabled):not(.vue-treeselect--focused) .vue-treeselect__control:hover {
+      border-color: transparent;
+    }
+
+    .vue-treeselect__control {
+      background: $corporative-white;
+      border-color: $corporative-white;
+      border-radius: $border-radius-small;
+
+      .vue-treeselect__value-container,
+      .vue-treeselect__multi-value,
+      .vue-treeselect__x-container {
+        display: none;
+      }
+
+      .vue-treeselect__control-arrow-container {
+        //width: $width-vue-treeselect__control-arrow-container;
+        //height: $height-th;
+
+        background-color: $color-icon;
+        mask: url('/img/layout/columns.svg') no-repeat center !important;
+        background-size: 16px 16px;
+
+        svg {
+          display: none;
+          color: transparent; // quitar el icono de flechita
+        }
+      }
+    }
+
+    .vue-treeselect__menu-container {
+      position: initial; // Overwrite of position:absolute that it come by default
+
+      .vue-treeselect__menu {
+        min-width: $min-width-vue-treeselect__menu;
+        right: $margin-right-vue-treeselect__control-arrow-container; // 15px; Antes -12px;
+        top: 0;
+        bottom: $bottom-filters;
+        padding: 0;
+        max-height: inherit !important;
+        background: $background-vue-treeselect__menu;
+        box-shadow: $box-shadow-light;
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+        border: 0;
+        border-radius: $border-radius-medium;
+        // height: max-content;
+
+        & > .row, 
+        & > .vue-treeselect__list {
+          background-color: $background-vue-treeselect__menu;
+        }
+
+        .vue-treeselect__list {
+          flex: 2;
+          min-height: 90px;
+          overflow: auto;
+          margin-bottom: $margin-small;
+          margin: 0;
+          border-bottom: $margin-small solid $background-vue-treeselect__menu;
+
+          .vue-treeselect__list-item {
+            height: 24px;
+            line-height: 24px;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .vue-treeselect__menu--transition {
+      &-enter-active,
+      &-leave-active {
+        transition: transform 150ms;
+        transform-origin: top center;
+      }
+
+      &-enter,
+      &-leave-to {
+        transform: scaleY(0);
+      }
+    }
+  }
+
+  .risk-bar {
+    height: $height-risk-bar-ax-grid;
+    .progress-bar {
+      height: 100%;
+      margin: 0;
+    }
+  }
+
+  .search-module & {
+    // Grid de seguro de crédito
+    /*height: calc(
+      #{$height-body} - #{$margin-bottom-filters-top-grid} - #{$height-bottom-filters-top-grid} - #{$height-pagination} -
+        #{$margin-big} * 2
+    );*/
+    /* EXPLICATION
+     *  #{$height-body} -                                                                  // altura total del body
+     *  #{$margin-bottom-filters-top-grid} - #{$height-bottom-filters-top-grid} -          // altura y margen de los filtros de arriba del grid
+     *  #{$height-pagination} -                                                            // altura de la paginacion
+     *  #{$margin-big}*2);                                                    // quito el padding del body; (*2) es uno por top y otro por bottom
+     */
+    tr:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.cell-with-button {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.row-filter-grid {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: $margin-bottom-row-filter-grid;
+
+  .btn-secondary:not(:disabled):not(.disabled):active {
+    // Como el button:focus
+    background-color: $detail;
+    border-color: $detail;
+    opacity: 0.7;
+    box-shadow: 0 0;
+
+    .search-company & {
+      border-top-right-radius: $border-radius-extra-big !important;
+      border-bottom-right-radius: $border-radius-extra-big !important;
+    }
+
+    svg {
+      color: $corporative-white;
+    }
+  }
+
+  .filter-date {
+    // Seguimiento empresa
+    label {
+      margin-bottom: 0;
+    }
+  }
+
+  button {
+    @include with-icon;
+    max-height: $min-width-button-with-icon;
+
+    &.with-text{
+      @include button;
+
+      &:hover {
+        border: 0;
+        background: $primary-lighter !important;
+      }
+    }
+  }
+
+  .custom-control { // Admission componentes de Estado
+    margin: $margin-medium;
+  }
+
+  .business-units {
+    position: absolute;
+    width: $width-business-units;
+    z-index: 102;
+  }
+
+  .search-company {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+
+    input {
+      border-right: 0;
+      border-radius: 0;
+      border-top-left-radius: $border-radius-big;
+      border-bottom-left-radius: $border-radius-big;
+      border: $border-width-small solid $background-search-company;
+      background-color: $background-search-company;
+
+      &:focus {
+        background-color: $corporative-white;
+        border: $border-width-small solid $background-search-company;
+        box-shadow: 0 0 transparent;
+      }
+    }
+
+    button {
+      background-color: $background-search-company !important;
+      border: $border-width-small solid $background-search-company;
+      border: none;
+      border-radius: 0;
+      border-top-right-radius: $border-radius-big;
+      border-bottom-right-radius: $border-radius-big;
+      border-left: 0;
+      margin: 0 !important;
+
+      &:active, &:focus {
+        border-radius: 0 !important;
+        border-top-right-radius: $border-radius-big !important;
+        border-bottom-right-radius: $border-radius-big !important;
+      }
+
+      &:hover {
+        background-color: $detail !important;
+        border-color: $detail !important;
+
+        svg {
+          color: $corporative-white;
+        }
+      }
+    }
+  }
+}
+
+.search-module-autocomplete {
+  @include marco;
+  margin: auto;
+  top: $top-search-module-autocomplete;
+  bottom: $bottom-search-module-autocomplete;
+  height: calc(100% - #{$top-search-module-autocomplete} - #{$bottom-search-module-autocomplete});
+  height: min-content;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 999;
+  left: 33%;
+  width: 33%;
+  padding: 0;
+  margin: initial;
+
+  .list-group { // Buscador autocompletar
+    position: relative;
+    z-index: 1;
+    width: 100%;
+
+    .list-group-item {
+      border-radius: 0 !important;
+      border: 0;
+      padding: $padding-small;
+      background-color: $corporative-white !important;
+      min-height: auto;
+      //padding: 0 $padding-small;
+      &:hover {
+        background: $white-smoke !important;
+      }
+    }
+  }
+}
+/*
+.pdf-page-break {
+  .table {
+    td:first-child {
+    //  min-width: 120px;
+    }
+  }
+}
+*/
+.b-table-row-selected {
+  background-color: $primary !important;
+
+  td {
+    color: $corporative-white !important;
+    background-color: $primary !important;
+    svg {
+      color: $corporative-white;
+    }
+  }
+}
+
+.max-height-ax-grid {
+  max-height: $max-height-ax-grid;
+}
+
+.height-grid-pagination {
+  height: calc(#{$height-pagination} + #{$max-height-ax-grid})
+}
+
+.debtor-name {
+  font-weight: bold;
+}
+
+.contract-code {
+  font-weight: bold;
+  text-decoration: underline;
+  text-align: center;
+}
+
+.dragHighLight {
+  &.left {
+    border-left: $border-dragHighLight !important;
+  }
+  &.right {
+    border-right: $border-dragHighLight !important;
+  }
+}

@@ -1,0 +1,123 @@
+$num-months: 14;
+
+$head-table-background-color: $secondary-lightest;
+
+$first-column-width: 14%;
+$first-column-padding: 0.5rem 1rem;
+
+//Header
+$cell-padding-left: 0px;
+$cell-padding-right: 0px;
+
+//Main table
+$main-table-font-size: .8rem;
+$main-table-cell-padding: 0px .45rem;
+
+$point-width: 10px;
+$point-margin-left: 5px;
+
+$footer-font-size: .7rem;
+$footer-padding: .45rem .1rem;
+
+.bk-report-microfinance-table {
+  .head-table {
+    text-transform: capitalize;
+    background-color: $head-table-background-color;
+    
+    tr:first-child th:first-child {
+      // padding: $first-column-padding !important;
+      width: $first-column-width;
+    }
+    th {
+      width: calc((100% - #{$first-column-width}) / #{$num-months});
+      padding-left: $cell-padding-left !important;
+      padding-right: $cell-padding-left !important;
+    }
+  }
+  .main-table {
+    .entity-name.d-none {
+      display: table-row !important;
+    }
+
+    thead {
+      display: none;
+    }
+    td {
+      width: $first-column-width;
+      // padding: $first-column-padding;
+      border-right-color: transparent !important;
+    }
+    td + td {
+      width: calc((100% - #{$first-column-width}) / #{$num-months});
+      text-align: right;
+      padding: $main-table-cell-padding !important;
+      font-size: $main-table-font-size;
+    }
+
+    tr td:first-child {
+      & > span {
+        display: flex;
+        font-weight: 700;
+        align-items: center;
+      }
+    }
+
+    .entity-name {
+      background-color: $white-smoke;
+    }
+
+    .calification-point {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+
+      .point {
+        width: $point-width;
+        height: $point-width;
+        margin-left: $point-margin-left;
+        border-radius: $border-radius-medium;
+
+        &.minimum {
+          background-color: $risk-color-minimum;
+        }
+        &.light {
+          background-color: $risk-color-light;
+        }
+        &.medium {
+          background-color: $risk-color-medium;
+        }
+        &.high {
+          background-color: $risk-color-high;
+        }
+        &.maximum {
+          background-color: $risk-color-maximum;
+        }
+
+      }
+    }
+  }
+
+  .calification-bar {
+    & .minimum {
+      background-color: $risk-color-minimum;
+    }
+    & .light {
+      background-color: $risk-color-light;
+    }
+    & .medium {
+      background-color: $risk-color-medium;
+    }
+    & .high {
+      background-color: $risk-color-high;
+    }
+    & .maximum {
+      background-color: $risk-color-maximum;
+    }
+  }
+
+  .footer {
+    font-size: $footer-font-size;
+    padding: $footer-padding;
+  }
+}

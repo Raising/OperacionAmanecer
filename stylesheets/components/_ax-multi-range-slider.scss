@@ -1,0 +1,44 @@
+//Multirange Slider style
+
+.ax-form-multi-range-slider {
+  width: 100%;
+
+  .vue-slider-dot-tooltip-inner {
+    background-color: $primary;
+    border-color: $primary;
+  }
+
+  .vue-slider-process {
+    background-color: $primary;
+  }
+  // .multi-range {
+  //   // display: flex;
+  //   // align-items: center;
+  //   .multi-range.higher {
+  //     position: absolute;
+  //     left: 0px;
+  //     height: 0px;
+  //     padding: $padding-higher-slider;
+
+  //     &::-webkit-slider-runnable-track {
+  //       background-color: $background-higher-slider;
+  //     }
+  //     &::-moz-range-track {
+  //       background-color: $background-higher-slider;
+  //     }
+  //     &::-ms-track {
+  //       background-color: $background-higher-slider;
+  //     }
+
+  //     &::-webkit-slider-thumb {
+  //       margin-top: $margin-top-higher-slider;
+  //     }
+  //     &::-moz-range-thumb {
+  //       margin-top: $margin-top-higher-slider;
+  //     }
+  //     &::-ms-thumb {
+  //       margin-top: $margin-top-higher-slider;
+  //     }
+  //   }
+  // }
+}

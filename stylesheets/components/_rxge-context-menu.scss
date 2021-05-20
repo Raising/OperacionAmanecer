@@ -1,0 +1,81 @@
+.context-menu{
+    position: absolute;
+    width: max-content;
+    color: $menu-text;
+    z-index: 500;
+    border-radius: 4px;
+    overflow: hidden;
+    &.ingraph{
+        background-color: $menu-background;
+        width: 150px;
+        height: 100px;
+    }
+
+    .header{
+        width: 100%;
+        text-align: center;
+        height: 23px;
+        background-color: $menu-header-background;
+        position: relative;
+        border-bottom: solid 1px $menu-header-separator;
+        .tittle{
+            font-size: 18;
+            font-weight: 800;
+            padding-top: 1px;
+        }
+        .add-to-path-icon {
+            position: absolute;
+            left: 0px;
+            font-size: 18px;
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            padding-left: $padding-small;
+            svg{
+                margin-top:2px;
+                
+                color: $menu-text;
+            }
+            
+            &:hover>svg{
+                color: $menu-text-highlight ;
+            }
+        }
+    }
+
+    .context-menu-item{
+        height: 20px;
+        position: relative;
+        padding: 1px 2px;
+        color:$menu-text;
+        &:hover{
+            background-color: $menu-background-highlight;
+        }
+        .name{
+            width: 100%;
+            height: 100%;
+            font-size: 14px;
+            font-weight: 400;
+
+
+        }
+        .add-to-path-icon{
+            position: absolute;
+            right:0px;
+            height: 100%;
+            top:0px;
+            svg{
+                color:$menu-text;
+            }
+        }
+    }
+}
+
+
+.context-menu-overlay{
+    position: fixed;
+    z-index: 499;
+    height: 100vh;
+    width: 100vw;
+   
+}

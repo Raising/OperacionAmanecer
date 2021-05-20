@@ -1,0 +1,14 @@
+.ax-static-tooltip {
+    border: $border-static-tooltip;
+    padding: $padding-static-tooltip;
+    border-radius: $border-radius-static-tooltip;
+    color: $color-static-tooltip;
+    background-color: $background-static-tooltip;
+    font-size: $font-size-tooltip;
+    
+    &.top {
+        position: absolute;
+        width: $width-static-tooltip;
+        bottom: $bottom-static-tooltip;
+    }
+}

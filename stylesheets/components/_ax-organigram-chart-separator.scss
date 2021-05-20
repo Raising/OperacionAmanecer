@@ -1,0 +1,32 @@
+.ax-organigram-chart-separator {
+  .separator {
+    height: 20px;
+    .separator-top {
+      width: calc(50% - 10px);
+    }
+    .separator-middle {
+      -webkit-transform: rotate(45deg);
+      transform: rotate(225deg);
+      margin-left: 2px;
+      margin-right: 2px;
+      width: 14px;
+      height: 14px;
+      top: -5px;
+      position: relative;
+    }
+    .top {
+      border-top: $border-width-medium solid $color-separator-ax-oganigram;
+    }
+    .bottom {
+      border-top: $border-width-medium solid $color-separator-ax-oganigram;
+    }
+    .middle-top {
+      border-top: $border-width-medium solid $color-separator-ax-oganigram;
+      border-left: $border-width-medium solid $color-separator-ax-oganigram;
+    }
+    .middle-bottom {
+      border-top: $border-width-medium solid $color-separator-ax-oganigram;
+      border-left: $border-width-medium solid $color-separator-ax-oganigram;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+.ax-form-read-only {
+ // border-top: $border-top-component;
+/*
+    .title {
+      padding: $padding-title;
+      font-size: $font-size-title-container;
+      font-weight: bold;
+      border-bottom: $title-border-bottom;
+    }
+*/
+    @for $i from 1 to 5 {    
+      .indentation-#{$i} {
+          padding-left: $i * $padding-big;
+      }
+    }
+    .column {
+      //border-right: $border-right-column;
+
+      .column-title {
+        padding: $padding-column-title;
+        font-weight: bold;
+        border-bottom: $border-bottom-column-title;
+      }
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+
+    .tooltip-empty {
+      min-width: $tooltip-width;
+    }
+}
+
+

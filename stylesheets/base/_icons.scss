@@ -1,0 +1,57 @@
+/**
+ * Basic typography style for icons
+ */
+
+.arrow-up-circle-icon,
+.arrow-down-circle-icon {
+  // header dark
+  svg {
+    color: $primary;
+  }
+}
+
+.close-icon {
+  svg {
+    color: $error !important;
+  }
+  &:hover,
+  &:focus {
+    svg {
+      color: $error-dark !important;
+    }
+  }
+}
+
+.arrow-right {
+  cursor: pointer;
+
+  svg:hover {
+    color: $detail-light;
+  }
+}
+
+.chevron-down-icon,
+.chevron-up-icon {
+  // Deudores asegurables -> clicar en una entidad
+  cursor: pointer;
+}
+
+a svg,
+a svg:not(:root) {
+  color: $primary;
+  vertical-align: inherit;
+}
+
+.icon-small {
+  svg {
+    width: $height-icon-small;
+    height: $height-icon-small;
+  }
+}
+
+.icon-big {
+  svg {
+    width: $height-icon-big;
+    height: $height-icon-big;
+  }
+}

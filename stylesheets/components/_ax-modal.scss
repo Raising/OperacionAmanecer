@@ -1,0 +1,129 @@
+.marco {
+  @include marco;
+}
+
+.modal {
+  //margin-top: $ax-widget-modal-mt;
+  overflow: hidden !important;
+  display: flex;
+  align-items: center;
+}
+
+.modal-block {
+  width: calc(#{$width-modal-ax-widget} - #{$padding-modal-ax-widget});
+}
+
+.modal-content {
+  background-color: $background-modal;
+  border: none;
+
+  .modal-xl &{
+    max-height: $height-modal-content-xl;
+  }
+
+  .modal-lg &{
+    max-height: $height-modal-content-lg;
+  }
+
+  .modal-md &{
+    max-height: $height-modal-content-md;
+  }
+
+  .modal-sm &{
+    max-height: $height-modal-content-sm;
+  }
+
+
+  //  width: inherit;
+
+  .modal-body {
+    background: $background-body-modal;
+    padding: $padding-big;
+    border-radius: $border-radius-modal;
+    flex-grow: 2;
+    overflow: auto;
+
+    & > *:not(button) {
+      padding: 0;
+      margin: 0;
+    }
+
+    & > div {
+      //padding: inherit !important;
+      margin: auto !important;
+    }
+
+    dt,
+    dd {
+      margin-bottom: $margin-small;
+    }
+    .btn span {
+      vertical-align: text-bottom;
+    }
+
+    table thead th {
+      position: sticky;
+      top: -1px;
+      //background-color: $secondary-lightest;
+      text-align: left;
+      z-index: 2;
+    }
+
+    .table-container > .row,
+    .paginable-table-container > .row {
+      max-height: $max-height-ax-grid;
+      overflow-y: scroll;
+    }
+  }
+  .modal-footer {
+    border: 0;
+    padding: $padding-big;
+  }
+}
+
+.modal-header {
+  background: $background-modal;
+  padding-bottom: 0;
+  border: 0;
+  padding: $padding-big;
+  height: auto;
+  align-items: start;
+  border-top-left-radius: $border-radius-modal;
+  border-top-right-radius: $border-radius-modal;
+
+  .modal-title {
+    align-items: center;
+    font-size: $font-size-h2;
+    font-weight: bold;
+
+    .modal-md & {
+      font-size: $font-size-h3;
+    }
+  }
+
+  .close {
+    padding: 0;
+    margin: 0;
+    width: max-content;
+    min-width: max-content;
+    max-width: max-content;
+    opacity: $opacity-middle;
+
+    &:hover,
+    &:focus {
+      background: transparent !important;
+      color: inherit;
+      @include shadow(0, 0, 0, 0);
+    }
+  }
+}
+/*
+.modal-invoice-basket {
+  p {
+    margin: $margin-graph-indicator !important;
+    line-height: $line-height-paragraph-check;
+  }
+*/
+#international_rates .modal-content .modal-body table thead th {
+  top: -15px;
+}

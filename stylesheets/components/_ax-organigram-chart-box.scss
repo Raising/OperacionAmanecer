@@ -1,0 +1,38 @@
+.ax-organigram-chart-box {
+  .consulted-society-box {
+    height: $height-consulted-society-box;
+  }
+  .society {
+    height: 36px;
+    transition: all linear .2s;
+    color: $corporative-white;
+    border-radius: 0 0 $border-radius-modal $border-radius-modal;
+
+    .expand{
+      visibility: hidden;
+    }
+    p {
+      border: $border-width-medium solid $corporative-white;
+      padding: 2px;
+      border-radius: $border-radius-small;
+      width: max-content;
+      margin-right: 0;
+      margin-left: auto;
+  }
+  }
+  p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  .society-head {
+    height: 120px;
+    transition: all linear .2s;
+    background-color: $corporative-white;
+    border: $border-width-medium solid;
+    border-radius: $border-radius-modal $border-radius-modal 0 0;
+    padding: $padding-big;
+  }
+}

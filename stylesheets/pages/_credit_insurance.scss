@@ -1,0 +1,695 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the credit insurance.
+// -----------------------------------------------------------------------------
+
+.secure-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: $background-secure-panel;
+  color: $corporative-white;
+  border-radius: $border-radius-secure-panel;
+  width: $width-secure-panel;
+  transform: scale(1);
+  transition: 0.5s;
+  height: $height-secure-panel;
+
+  * {
+    margin: 0;
+  }
+
+  &:hover {
+    transform: scale(1.02);
+    transition: 0.5s;
+
+    img.arm-lock-man {
+      //margin-top: -8px;
+      margin-top: -9px;
+      transform: rotate(-8deg);
+      transition: 0.5s;
+    }
+    img.head-lock-man {
+    //  margin-left: 72px;
+      margin-left: 78px;
+      transform: rotateY(180deg);
+      transition: 0.2s;
+    }
+    .lock {
+      img, svg {
+        margin-top: -77px;
+        margin-left: 154px;
+        transition: 0.5s;
+        color: $primary;
+      }
+      .lock-icon {
+        svg, img{
+          transition: 0s;
+          visibility: hidden;
+        }
+      }
+      .lock-open-icon {
+        svg, img {
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  .body-lock-man {
+    margin-top: -94px;
+    display: block;
+    position: absolute;
+  }
+  img.lock-man {
+    width: $width-secure-panel;
+    position: absolute;
+    z-index: 99;
+  }
+  img.arm-lock-man {
+    //margin-left: 107px;
+    margin-left: 111px;
+    //margin-top: -8px;
+    margin-top: -9px;
+    width: 95px;
+    z-index: 1;
+    transition: 0.5s;
+    transform: rotate(-8deg);
+    transition: 0.5s;
+  }
+  img.head-lock-man {
+    //margin-left: 80px;
+    margin-left: 85px;
+    width: 30px;
+    position: absolute;
+    transition: 0.2s;
+  }
+  .lock {
+    svg, img {
+      margin-top: -77px;
+      margin-left: 154px;
+    }
+  }
+  .lock-icon,
+  .lock-open-icon {
+    position: absolute;
+    svg,img {
+      display: block;
+      visibility: visible;
+      color: $background-secure-panel;
+      z-index: 1;
+      transition: 0.5s;
+    }
+  }
+
+  .lock-open-icon {
+    svg,img {
+      visibility: hidden;
+    }
+  }
+
+  .flex-for-column {
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    height: calc(100% - #{$height-button-i-want-to-insured-secure-panel});
+
+    .medium-size {
+      width: auto;
+    }
+  }
+
+  button {
+    border-radius: 0 0 $border-radius-secure-panel $border-radius-secure-panel;
+    border: 0;
+    width: 100%;
+    text-transform: uppercase;
+    height: $height-button-i-want-to-insured-secure-panel;
+    &:hover {
+      @include button;
+      opacity: 0.8;
+      border-radius: 0 0 $border-radius-secure-panel $border-radius-secure-panel;
+    }
+  }
+}
+
+.graph-indicator {
+  width: $width-graph-indicator;
+  //margin: 0 2%;
+  //padding: 0;
+  //@include extreme-without-margin;
+  *:not(.custom-select *) {
+    // Seguro de Crédito
+    margin: 0;
+    padding: 0;
+  }
+  canvas {
+    max-height: 40px;
+  }
+}
+/*
+.widget-slider {
+  .insurable-debt-widget {
+    min-width: $min-width-insurable-debt-widget;
+    max-width: $max-width-insurable-debt-widget;
+  }
+
+  .insurable-riim-widget {
+    display: block;
+    min-width: $min-width-insurable-riim-widget;
+    max-width: $max-width-insurable-riim-widget;
+  }
+
+  .bills-to-secure-widget {
+    min-width: $min-width-bills-to-secure-widget;
+    max-width: $max-width-bills-to-secure-widget;
+  }
+}*/
+
+@media screen and (max-width: 1650px) {
+  .insurable-riim-widget {
+    display: none !important;
+  }
+}
+
+// Insurable invoices - I want to insure
+.circle-for-step {
+  position: relative;
+  z-index: 10;
+
+  .ax-step-circles {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  p {
+    font-size: $font-size-p-circle-for-step;
+    width: 100%;
+    min-width: max-content;
+  }
+
+  li {
+    display: inline-block;
+    position: relative;
+    width: $width-li-circle-for-step;
+    height: $height-li-circle-for-step;
+    border-radius: $height-li-circle-for-step;
+    background: $corporative-white;
+    color: $background-circle-for-step;
+    border: $border-width-medium solid $background-circle-for-step;
+    text-align: center;
+    line-height: $line-height-li-circle-for-step;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 13px;
+      left: $left-space-step !important;
+      width: $width-space-step !important;
+      height: $border-width-medium;
+      z-index: -1;
+      background: $background-circle-for-step;
+    }
+    &:first-child::before {
+      display: none;
+    }
+  }
+  .active {
+    width: $width-li-active-circle-for-step;
+    height: $height-li-active-circle-for-step;
+    line-height: $line-height-li-active-circle-for-step;
+    border-radius: $border-radius-li-active-circle-for-step;
+    color: $background-active-circle-for-step;
+    background: $background-modal;
+    border-color: $background-active-circle-for-step;
+
+    &::before {
+      top: calc(1.5em - 1px);
+      background: $background-active-circle-for-step;
+    }
+
+    & ~ li {
+      border-color: $background-desactive-circle-for-step;
+      color: $background-desactive-circle-for-step;
+      background: $background-modal;
+      &::before {
+        border-color: $background-desactive-circle-for-step;
+        color: $background-desactive-circle-for-step;
+        background: $background-desactive-circle-for-step;
+      }
+    }
+  }
+
+  .dots {
+    top: $top-dots-circle-for-step;
+    margin-left: $margin-left-space-step;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &.active {
+      p {
+        color: $color-body;
+      }
+    }
+
+    &.done {
+      background-color: $primary;
+      border-color: $primary;
+
+
+      svg {
+        color: $corporative-white;
+        height: $height-icon-small;
+      }
+    }
+  }
+
+  // Paso 1
+  .vuejs-countdown {
+    ul {
+      padding: $padding-small;
+      margin-top: $margin-top-first-circle;
+    }
+    span {
+      display: inline-block;
+      margin: 0 $margin-medium;
+      text-align: center;
+      position: relative;
+      font-size: 12px;
+
+      &:not(.clock-outline-icon):after {
+        content: ':';
+        position: absolute;
+        top: 0;
+        right: $right-content-two-points-clock;
+        font-size: $font-size-digit-step;
+      }
+
+      &:first-of-type {
+        margin: 0;
+      }
+      &:last-of-type {
+        margin-right: 0;
+        &:after {
+          content: '';
+        }
+      }
+    }
+    .digit {
+      font-size: $font-size-digit-step;
+      font-weight: bold;
+      color: $color-title-digit;
+      //line-height: 1.4;
+      margin-bottom: 0;
+    }
+    .title-digit {
+      font-size: $font-size-title-digit;
+      color: $color-title-digit;
+      font-weight: bold;
+    }
+    svg {
+      color: $color-title-digit;
+      width: $width-svg-digit;
+      height: $height-svg-digit;
+    }
+  }
+
+  .capsule {
+    border-radius: $border-radius-capsule;
+    border: $border-width-medium solid $primary;
+    background: $corporative-white;
+    z-index: 1;
+
+    .active {
+      width: $width-li-active-capsule-circle-for-step;
+      height: $height-li-active-capsule-circle-for-step;
+      line-height: $line-height-li-active-capsule-circle-for-step;
+      border-radius: $border-radius-li-active-capsule-circle-for-step;
+      background: $primary;
+      color: $corporative-white;
+    }
+  }
+}
+
+// Paso 2
+.unnax-widget {
+  height: $height-unnax-widget;
+  width: $width-unnax-widget;
+  //box-shadow: 0px 0px 5px 5px $secondary-light;
+}
+
+// Insurable debtors
+
+.widget-circle-canvas {
+  min-width: $min-width-widget-circle-canvas;
+
+  .prec {
+    top: $top-prec-insured-debtor;
+    position: relative;
+    font-size: $font-size-circle-insured-debtor;
+    font-weight: bold;
+    color: $success;
+  }
+
+  .circle {
+    position: relative;
+    top: $top-circle-insured-debtor;
+    left: $top-circle-insured-debtor;
+    text-align: center;
+    width: $width-circle-insured-debtor;
+    height: $height-circle-insured-debtor;
+    border-radius: 100%;
+    background-color: $white-smoke;
+  }
+
+  .active-border {
+    position: relative;
+    text-align: center;
+    width: $width-active-border-insured-debtor;
+    height: $height-active-border-insured-debtor;
+    border-radius: 100%;
+
+    background-color: $success;
+    background-image: linear-gradient(91deg, transparent 50%, $secondary-lighter 50%),
+      linear-gradient(90deg, $success 50%, transparent 50%);
+  }
+}
+
+// Insured Operations
+/*.insured-operation {
+  .card {
+    border: 0;
+    background: none;
+
+    .card-header {
+      justify-content: flex-end;
+      background: none;
+      margin-bottom: $margin-small;
+    }
+  }
+}*/
+
+.contractCode,
+.debtorName,
+.amount {
+  font-weight: bold;
+}
+
+.contractCode {
+  text-decoration: underline;
+}
+
+.title-table-information {
+  position: absolute;
+  top: $top-title-table-information;
+  background: $corporative-white;
+  padding: 0 $padding-medium;
+  font-weight: bold;
+  z-index: 999;
+}
+
+.container-information-modal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: $border-left-insurance-summary;
+  border-radius: $border-radius-container-modal;
+  //height: $height-container-information-modal;
+  height: max-content;
+
+  .lx-keyvalue {
+    .title {
+      font-weight: bold;
+      font-size: $font-size-normal;
+    }
+  }
+
+  .form-control {
+    color: $detail-dark !important;
+    color: $primary !important;
+  }
+
+  &.sm {
+    .lx-keyvalue .title, .lx-keyvalue .value {
+      font-size: 0.75rem !important;
+    }
+  }
+}
+
+.cell-information-group {
+    display: flex;
+    background: $background-last-child-cell-information;
+    border-radius: $border-radius-container-modal;
+
+    .form-control {
+      height: max-content;
+      border-radius: 0;
+      display: block;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .cell-information {
+      border-left: $border-left-insurance-summary;
+      background-color: $background-modal;
+      min-height: $height-cell-information;
+
+      &:first-child {
+        border-left: 0;
+        border-radius: 0 0 0 $border-radius-container-modal;
+      }
+
+      &:last-child {
+        display: flex;
+        color: $corporative-white;
+        border-left: 0;
+        top: calc(0px - #{$top-table-information-conditions});
+        //height: $height-table-information-conditions;
+        background: $background-last-child-cell-information;
+        padding-top: $padding-top-table-information-conditions !important;
+        border-radius: 0 $border-radius-container-modal $border-radius-container-modal 0;
+        font-size: $font-size-table-information-conditions;
+
+        * {
+          display: initial;
+          background: $background-last-child-cell-information;
+          border: 0;
+          text-align: left;
+        }
+
+        a:hover {
+          color: $primary-dark;
+          text-decoration: underline;
+        }
+      }
+
+      .payment-result {
+        font-size: 0.875rem;
+        .field {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: $margin-small;
+
+          //.title {
+          //  color: $primary;
+          //}
+          .value {
+            color: $detail;
+           // font-weight: bold;
+          }
+        }
+      }
+    }
+
+    &.horizontal-white {
+      background-color: $corporative-white;
+
+      .cell-information {
+        border-left:  $border-left-insurance-summary;
+        min-height: $min-height-cell-information-horizontal-white;
+
+        &:first-child {
+          border-left:  0;
+        }
+      }
+  
+      .cell-information:last-child,
+      .cell-information:last-child * {
+        background: $corporative-white !important;
+        //color: $color-body;
+        border-bottom: 0;
+        display: block;
+        top: 0;
+        padding-top: 0 !important;
+        border-radius: 0;
+      }
+
+      .value {
+        display: flex !important;
+        font-size: initial;
+        color: $detail-dark;
+      }
+    }
+}
+
+.verticalWhite {
+  .cell-information-group {
+    flex-direction: column;
+  }
+  .cell-information {
+    border-bottom: 0 !important;
+    border-top: $border-left-insurance-summary;
+    border-radius: 0 0  $border-radius-container-modal $border-radius-container-modal;;
+  }
+  .cell-information:first-child {
+    border-top: 0;
+  }
+}
+
+.secondstep, .verticalWhite {
+    //border: 0;
+    .cell-information {
+      border-left: 0 !important;
+      border-bottom: $border-left-insurance-summary;
+
+      &:first-child {
+        border-radius: 0;
+      }
+      &:last-child {
+        border-bottom: 0;
+        padding-top: 0 !important;
+      }
+    }
+
+    .value {
+      font-size: $font-size-normal !important;
+
+      .form-control {
+        font-size: $font-size-h4 !important;
+      }
+    }
+
+    .cell-information-group,
+    .cell-information:last-child,
+    .cell-information:last-child * {
+      background: $corporative-white !important;
+      //color: $color-body;
+      //border-bottom: 0;
+      display: inherit;
+    }
+    .cell-information:last-child .field {
+      //height: 75px;
+      display: inherit;
+      top: 0;
+    }
+}
+
+.thirdstep {
+    .cell-information-group,
+    .cell-information:last-child,
+    .cell-information:last-child * {
+      background: $corporative-white !important;
+      display: block;
+    }
+    .cell-information:last-child {
+      padding-top: $padding-medium !important;
+      top: 0 !important;
+      border-left: $border-left-insurance-summary;
+    }
+}
+
+.border-left-resumen-aseguramiento {
+    border-left: $border-left-insurance-summary;
+}
+
+// Insured debtor
+.insured-debtor {
+  .field {
+    min-width: 25%;
+    max-width: 20%;
+  }
+  .credit-non-insured {
+    color: $error;
+  }
+}
+
+.insurable-riim-check {
+  .custom-control-label {
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+}
+
+// Insured Record
+.insured-record {
+  min-height: $insured-record-minheight;
+
+  .card-body {
+    overflow: hidden;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .dots {
+    margin-left: $margin-left-space-step-responsive !important;
+  }
+
+  .circle-for-step {
+    li::before {
+      left: $left-space-step-responsive !important;
+      width: $width-space-step-responsive !important;
+    }
+  }
+
+  .cell-information{
+    &.col-3 {
+      width: 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+      border-top: $border-left-insurance-summary;
+      border-left: 0 !important;
+    }
+    &:first-child {
+      border-radius: 0 !important;
+    }
+    &:last-child {
+      top: 0 !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .circle-for-step {
+    .ax-step-circles {
+      flex-direction: column !important;
+      .dots {
+        margin-left: 0;
+        margin-top: $width-space-step-small;
+        display: flex;
+
+        &.counter {
+          margin-top: 0;
+        }
+      }
+      .inside-dots {
+        min-width: calc(#{$width-li-circle-for-step} - 0.2em);
+        margin-right: $margin-big;
+      }
+      li::before {
+        top: calc(0px - (#{$width-space-step-small} + 6px) /2) !important;
+        width: $width-space-step-small !important;
+        margin-left: 0;
+        transform: rotate(90deg);
+        left: 2px !important;
+      }
+    }
+  }
+}

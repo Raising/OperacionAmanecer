@@ -1,0 +1,27 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the home page.
+// -----------------------------------------------------------------------------
+
+.buttons-bar {
+    border: $border-width-small solid $secondary-light;
+    border-radius: $border-radius-medium;
+    width: $width-button-bar !important;
+    padding: $padding-buttons-bar;
+
+    &.big {
+        width: $width-button-bar-big !important;
+    }
+
+    .title-buttons-bar {
+        position: absolute;
+        top: $top-title-buttons-bar;
+        background: $corporative-white;
+        padding: 0 $padding-title-buttons-bar;
+        font-weight: bold;
+    }
+
+    button {
+        margin: $margin-medium;
+        height: $height-button-bar;
+    }
+}

@@ -1,0 +1,105 @@
+$countryDotSize: 8px;
+$hoverSizeProportion: 1.6;
+.dashboard-landing {
+    position: relative;
+
+    .dashboard-dynamic-component-wrapper {
+        position: absolute;
+        box-sizing: border-box;
+        background-color: rgb(221, 226, 255);
+        border: solid black 1px;
+        border-radius: 3px;
+
+        //LX-DYNAMIC-COMPONENT-CONTAINER
+        .lx-dynamic-component-container{
+            height: 100%;
+            width: 100%;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+
+            .lx-dynamic-component-container-header{
+                background-color: turquoise;
+                display: flex;
+                justify-content: space-between;
+                h5{
+                    padding-top: 3px;
+                    padding-left: 6px;
+                }
+                .drop-down-dynamic-component{
+                    button{
+                        background-color: transparent;
+                        border: 0;
+                    }
+                    img{
+                        height: 20px;
+                    }
+                }
+            }
+
+            .lx-dynamic-component-container-body{
+                position: relative;
+                overflow: auto;
+                flex-grow: 1;
+            }
+            
+        }
+       
+
+        //MAP COMPONENT
+        .map-component{
+            .country-icon{
+                height: 0;
+                width: 0;
+                overflow: visible; 
+
+                .country-icon-content{
+                    border-radius: 100px;
+                    cursor: pointer;
+                    
+                    background-color: $success;
+                    width: $countryDotSize;
+                    height: $countryDotSize;
+                    left:  $countryDotSize/-2;
+                    top: $countryDotSize/-2;
+                    &:hover{
+                        width: $countryDotSize * $hoverSizeProportion;
+                        height: $countryDotSize * $hoverSizeProportion;
+                        left:  $countryDotSize/-2 * $hoverSizeProportion;
+                        top: $countryDotSize/-2 * $hoverSizeProportion;
+                    }
+
+                    &.selected {
+                       border: solid yellow 2px;
+                       width: $countryDotSize * $hoverSizeProportion;
+                        height: $countryDotSize * $hoverSizeProportion;
+                        left:  $countryDotSize/-2 * $hoverSizeProportion;
+                        top: $countryDotSize/-2 * $hoverSizeProportion;
+                    }
+
+                   
+                }           
+            }
+            
+            background-image: url('/map.jpg');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;  
+        }        
+        
+
+    }
+
+    .dashboard-dynamic-component-wrapper-shadow {
+        z-index: 25;
+        opacity: 50%;
+        transition: 0.25s;
+        
+        &.valid {
+            background-color: $success-lighter;
+        }
+
+        &.invalid {
+            background-color: $error-lighter;
+        }
+    }
+}

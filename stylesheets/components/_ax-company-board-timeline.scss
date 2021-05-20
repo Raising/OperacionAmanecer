@@ -1,0 +1,51 @@
+
+.ax-company-board-timeline {
+  cursor: pointer;
+
+  .swiper-container {
+    height: auto !important;
+    padding: unset !important;
+  }
+
+  .swiper-slide {
+    height: $max-height-timeline;
+  }
+
+  .timeline {
+    margin: unset !important;
+  }
+  
+  .selected {
+    color: $selected-color-timeline;
+  }
+
+  .status {
+    span:before {
+      top: $selected-ballon-top-position;
+      border: $border-height-timeline solid $selected-color-timeline;
+      background-color: $selected-color-timeline;
+    }
+    .select-line {
+      position: absolute;
+      width: $selected-line-with;
+      top: $selected-line-top-position;
+      border-top: $border-height-timeline solid $selected-color-timeline;
+    }
+    
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+  }
+
+  .status-empty {
+    .paint {
+      border: ($border-height-timeline/2) solid $selected-color-timeline;
+      width: 100%;
+      margin-top: $selected-line-top-position;
+    }
+  }
+}
