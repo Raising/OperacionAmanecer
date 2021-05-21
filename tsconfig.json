@@ -36,12 +36,7 @@
       "@NODEMODULES/*": [
         "node_modules/*"
       ],
-      "@DASHBOARD/*": [
-        "src/modules/dashboard/*"
-      ],
-      "@FLOWEDIT/*": [
-        "src/modules/flow-edit/*"
-      ],
+      
       "@HQ/*": [
         "src/modules/headquarters/*"
       ],

@@ -1,3 +1,3 @@
-import FieldEntities from './field-entities/store-field-entities';
+import Devices from './devices/store-devices';
 
-export default { FieldEntities };
+export default { Devices };

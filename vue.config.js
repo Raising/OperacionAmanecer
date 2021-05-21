@@ -17,8 +17,7 @@ module.exports = {
     config.resolve.alias['@MODELS'] = __dirname + '/models';
     config.resolve.alias['@SOLUTION'] = __dirname + '/src/solution';
     config.resolve.alias['@NODEMODULES'] = __dirname + '/node_modules';
-    config.resolve.alias['@DASHBOARD'] = __dirname + '/src/modules/dashboard';
-    config.resolve.alias['@FLOWEDIT'] = __dirname + '/src/modules/flow-edit';
+
     config.resolve.alias['@HQ'] = __dirname + '/src/modules/headquarters';
 
     config.resolve.alias['@DEFAULT'] = __dirname + '/src/modules/default';

@@ -1,7 +1,7 @@
 // import '@COMMONS/utils/main/js-enchancement';
 
 // import Vue from 'vue';
-// import { DynamicComponent } from '../field-entities/store-dynamic-dashboard
+// import { DynamicComponent } from '../devices/store-dynamic-dashboard
 
 // describe('act-dynamic-dashboard.ts', () => {
 //   describe(ACT.DynamicDashboard.addDynamicComponent, () => {

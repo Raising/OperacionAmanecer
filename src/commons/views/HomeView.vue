@@ -6,8 +6,9 @@
         <ax-navbar-toggle target="nav-collapse" class="menu-responsive">
           <hamburguer-menu-icon />
         </ax-navbar-toggle>
-        <ax-collapse id="nav-collapse" is-nav>
-          <ax-nav-item :key="'GameEditor'" :to="'/home/map/live'">{{ $t('Map') }}</ax-nav-item>
+        <ax-collapse class="header-tabs" id="nav-collapse" is-nav>
+          <ax-nav-item :key="'LiveMap'" :to="'/home/map/live'">{{ $t('Live Map') }}</ax-nav-item>
+          <ax-nav-item :key="'history'" :to="'/home/map/history'">{{ $t('History') }}</ax-nav-item>
           <!-- <ax-nav-item
             v-for="linkNode in childrenLinks.collection.filter((link) => link.showInMenu !== false)"
             :key="linkNode.name"
@@ -30,6 +31,7 @@
 
 <script lang="ts">
 import { ENUM, ACT, RES } from '@COMMONS/constants';
+
 import Factory from '@COMMONS/utils/factory/factory';
 import router from '@COMMONS/utils/main/router';
 import { getPermission } from '@COMMONS/utils/main/permission';
@@ -45,27 +47,15 @@ export default Factory.view({
     children: [...FunctionalModules],
   },
   data() {
-    return {
-      moduleLabel: undefined,
-    };
-  },
-
-  watch: {
-    $route(from: any, to: any) {
-      if (this.$router.getMatchedComponents().length > 2)
-        this.moduleLabel = this.$router.getMatchedComponents()[2].options.autoRouter.name;
-    },
+    return {};
   },
 
   components: { HamburguerMenuIcon, HomeHeader },
-  refProps: ['worldEndDate'],
+
+  refProps: [],
   computed: {},
   methods: {},
 
-  mounted() {
-    if (this.$router.getMatchedComponents().length > 2)
-      //cogemos el name del autorouter del componente nº 3 de la lista (el correspondiente al móddulo)
-      this.moduleLabel = this.$router.getMatchedComponents()[2].options.autoRouter.name;
-  },
+  mounted() {},
 });
 </script>

@@ -1,7 +1,6 @@
 <template>
-  <lx-empty ref="dashboardFrame" class="dashboard-landing">
-    MAP1
-    <ax-map/>
+  <lx-empty class="">
+    <oa-map :devices="devicePositions"/>
   </lx-empty>
 </template>
 
@@ -24,9 +23,7 @@ export default Factory.view({
     children: [],
   },
   data() {
-    return {
-    
-    };
+    return {};
   },
   resources: {
     dataLoads: {
@@ -36,18 +33,16 @@ export default Factory.view({
     },
   },
   computed: {
- 
+    devicePositions(){    
+      let devices =this.$store.getters.getDevicesCurrentPosition();
+      
+      return devices;
+    }
   },
-  methods: {
-    
-  },
+  methods: {},
 
-  mounted() {
-  
-  },
+  mounted() {},
 
-  beforeDestroy() {
-   
-  },
+  beforeDestroy() {},
 });
 </script>

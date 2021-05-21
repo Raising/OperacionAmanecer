@@ -19,8 +19,12 @@ interface Function {
 }
 
 interface String {
-  $pascalToKebabCase: () => String;
+  $pascalToKebabCase: () => string;
   $autoId: () => string;
+}
+
+interface Number {
+  $lerp: (min:number,max:number) => number
 }
 
 Object.defineProperty(Object.prototype, '_lastID', {
@@ -224,3 +228,12 @@ Object.defineProperty(String.prototype, '$autoId', {
     return this + '_' + CURRENT_ID++;
   },
 });
+
+
+Object.defineProperty(Number.prototype, '$lerp', {
+  value: function(min:number,max:number) {
+    let dif = (max - min);
+    return (this - min )/dif;
+  },
+});
+

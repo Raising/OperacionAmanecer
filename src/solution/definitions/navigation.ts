@@ -1,2 +1,2 @@
-let defaultPath = '/home/flowedit/strife';
+let defaultPath = '/home/map/live';
 export { defaultPath };

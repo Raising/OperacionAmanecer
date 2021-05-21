@@ -11,7 +11,6 @@ import Factory from '@COMMONS/utils/factory/factory';
 import router from '@COMMONS/utils/main/router';
 import store from '@COMMONS/utils/main/store';
 import '@COMMONS/components/hub-component';
-import '@MODELS/nodes/hub-nodes';
 
 import Home from '@COMMONS/views/HomeView.vue';
 import Login from '@COMMONS/views/LoginView.vue';

@@ -47,7 +47,9 @@
     {
         @include nav-link-navegator;
     }
-
+    .nav-item{
+        margin-right: $margin-medium ;
+    }
     .nav-link {
         border-radius: 0 !important;
         padding: $padding-small;

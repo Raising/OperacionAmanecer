@@ -1,7 +1,7 @@
 // import '@COMMONS/utils/main/js-enchancement';
 
 // import Vue from 'vue';
-// import { DashboardState, DynamicComponent } from '../field-entities/store-dynamic-dashboard
+// import { DashboardState, DynamicComponent } from '../devices/store-dynamic-dashboard
 
 // const placementTestDefinition = (
 //   id: string,

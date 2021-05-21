@@ -31,6 +31,14 @@ $homeHeaderHeight: $homeInfoHeight + $homeTabsHeight;
     }
 }
 
+.header-tabs{
+    .nav-item{
+        background: rgba($color: white, $alpha: 0.3);
+        border: white solid 1px;
+        border-radius: 3px;
+    }
+}
+
 
 .principal {
     height: $height-principal;

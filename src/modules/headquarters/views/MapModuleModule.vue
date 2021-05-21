@@ -9,7 +9,7 @@
 import Vue from 'vue';
 import router from '@COMMONS/utils/main/router';
 import Factory from '@COMMONS/utils/factory/factory';
-import { ENUM, RES } from '@COMMONS/constants';
+import { ACT } from '@HQ/constants';
 import LiveMap from './LiveMapView.vue';
 
 export default Factory.view({
@@ -23,8 +23,19 @@ export default Factory.view({
     path: 'map',
     children: [LiveMap],
   },
-  methods: {},
+  methods: {
+    connectToLiveDeviceData() {
+      let socket = new WebSocket('ws://localhost:' + 8082);
 
-  mounted() {},
+      socket.onmessage = (event) => {
+        //console.log(`[message] Data received from server: ${event.data}`);
+        this.$store.dispatch(ACT.Devices.AddBip, { bip: JSON.parse(event.data) });
+      };
+    },
+  },
+
+  mounted() {
+    this.connectToLiveDeviceData();
+  },
 });
 </script>
