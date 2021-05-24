@@ -14,10 +14,13 @@
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit",
     "start": "nodemon server/index.ts",
+    "start-altitude": "nodemon server/altitude-scrapper.js",
     "build-server": "tsc --project ./"
   },
   "nodemonConfig": {
-    "ignore": ["data-base/*"]
+    "ignore": [
+      "data-base/*"
+    ]
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
@@ -39,6 +42,7 @@
     "html2canvas": "^1.0.0-rc.7",
     "jspdf": "^2.1.1",
     "mermaid": "^8.5.2",
+    "node-fetch": "^2.6.1",
     "serialport": "^9.0.7",
     "splitpanes": "^2.0.0",
     "swiper": "^5.3.7",

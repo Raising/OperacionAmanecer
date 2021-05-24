@@ -1,8 +1,10 @@
 <template>
   <div class="map-frame">
-    <div class="map-holder">
+    <div class="map-holder"
+      :style="mapPosition"
+    >
     
-      <div class="map-terrain">
+      <div class="map-terrain" :style="mapSize">
         <div class="device-dot"
           v-for="device in devices"
           :key="device.deviceId"
@@ -24,10 +26,17 @@ export default Factory.component('oa-map', {
   data() {
     return {};
   },
-  props: ['devices'],
+  props: ['devices','mapSize','mapPosition'],
   components: {},
-  computed: {},
-  methods: {},
+  computed: {
+    
+  },
+  methods: {
+    
+
+      
+
+  },
 
   mounted() {},
 });

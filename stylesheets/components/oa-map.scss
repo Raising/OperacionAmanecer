@@ -22,25 +22,28 @@ $dotSize: 8px;
         width: $mapSize;
         height: $mapSize;
         background: url("/BoraMap.png");
-        background-repeat: no-repeat;
+        background-repeat: round;
         position: relative;
-        
-
-
               .device-dot{
                 position: absolute;
                 width: $dotSize;
                 height:$dotSize;
                 margin-left: $dotSize/-2;
-                margin-top: $dotSize/-2;
+                margin-bottom: $dotSize/-2;
                 border-radius: 50%;
                 background: rgb(124, 45, 32);
                 box-sizing: border-box;
                 border: solid rgb(15, 253, 27) 2px;
                 box-shadow: 0 0 2px 2px black;
-                transition: 0.8s;
+                transition: 0.2s;
 
-                
+                &:hover{
+                  border: solid rgb(15, 253, 27) 1px;
+                  width: $dotSize * 2;
+                  height:$dotSize * 2;
+                  margin-left: $dotSize/-1;
+                  margin-bottom: $dotSize/-1;
+                }
         
               }
       }

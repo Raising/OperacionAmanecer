@@ -28,7 +28,6 @@ export default Factory.view({
       let socket = new WebSocket('ws://localhost:' + 8082);
 
       socket.onmessage = (event) => {
-        //console.log(`[message] Data received from server: ${event.data}`);
         this.$store.dispatch(ACT.Devices.AddBip, { bip: JSON.parse(event.data) });
       };
     },

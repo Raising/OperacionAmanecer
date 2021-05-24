@@ -1,6 +1,6 @@
 <template>
-  <lx-empty class="">
-    <oa-map :devices="devicePositions"/>
+  <lx-empty class="MapLive">
+    <oa-map :devices="devicePositions" :mapSize="mapSize"/>
   </lx-empty>
 </template>
 
@@ -37,6 +37,12 @@ export default Factory.view({
       let devices =this.$store.getters.getDevicesCurrentPosition();
       
       return devices;
+    },
+    mapSize(){
+      return this.$store.getters.getMapSize();
+    },
+    mapPosition(){
+      return this.$store.getters.getMapPosition();
     }
   },
   methods: {},
