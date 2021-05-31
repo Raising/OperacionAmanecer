@@ -1,2 +1,2 @@
 NODE_ENV=PRO
-VUE_APP_TITLE=Reflexive Game Engine
+VUE_APP_TITLE=Operación Amanecer

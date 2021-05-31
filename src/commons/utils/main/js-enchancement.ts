@@ -24,7 +24,7 @@ interface String {
 }
 
 interface Number {
-  $lerp: (min:number,max:number) => number
+  $lerp: (min: number, max: number) => number;
 }
 
 Object.defineProperty(Object.prototype, '_lastID', {
@@ -229,11 +229,9 @@ Object.defineProperty(String.prototype, '$autoId', {
   },
 });
 
-
 Object.defineProperty(Number.prototype, '$lerp', {
-  value: function(min:number,max:number) {
-    let dif = (max - min);
-    return (this - min )/dif;
+  value: function(min: number, max: number) {
+    let dif = max - min;
+    return (this - min) / dif;
   },
 });
-

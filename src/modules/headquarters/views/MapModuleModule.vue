@@ -1,6 +1,6 @@
 <template>
   <lx-module>
-    <!-- <side-menu slot="side-menu" id="recovery-side-menu" :menuElements="childrenLinks" :title="$t('recovery')" /> -->
+    <devices-filter-view slot="side-menu" id="device-filters"  />
     <router-view />
   </lx-module>
 </template>
@@ -11,13 +11,14 @@ import router from '@COMMONS/utils/main/router';
 import Factory from '@COMMONS/utils/factory/factory';
 import { ACT } from '@HQ/constants';
 import LiveMap from './LiveMapView.vue';
+import DevicesFilterView from './DevicesFilterView.vue';
 
 export default Factory.view({
   name: 'Map',
   data() {
     return {};
   },
-  components: {},
+  components: {DevicesFilterView},
   autoRouter: {
     name: 'map',
     path: 'map',

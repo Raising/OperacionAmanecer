@@ -5,16 +5,14 @@
     @wheel="changeZoom"
     class="map-frame"
   >
-  
     <div class="map-holder" :style="mapPositionStyle">
       <div class="map-terrain" :style="mapSize" @dragstart="false">
-        <oa-device-dot
-          class="oa-device-dot"
+        <div
+          class="device-dot"
           v-for="device in devices"
           :key="device.deviceId"
-          :device="device"
-        ></oa-device-dot>
-        
+          :style="{ bottom: device.coords.y + '%', left: device.coords.x + '%' }"
+        ></div>
       </div>
     </div>
   </div>
@@ -41,7 +39,7 @@ export default Factory.component('oa-map', {
       },
     };
   },
-  props: ['devices'],
+  props: ['devices', 'mapSize', 'mapPerspective'],
   components: {},
   computed: {
      mapPerspective() {

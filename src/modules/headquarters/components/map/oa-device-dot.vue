@@ -1,22 +1,11 @@
 <template>
   <div
-    @mousedown="startDrag"
-    @mousemove="doDrag"
-    @wheel="changeZoom"
-    class="map-frame"
+    class="oa-device-dot"
   >
-  
-    <div class="map-holder" :style="mapPositionStyle">
-      <div class="map-terrain" :style="mapSize" @dragstart="false">
-        <oa-device-dot
-          class="oa-device-dot"
-          v-for="device in devices"
-          :key="device.deviceId"
-          :device="device"
-        ></oa-device-dot>
-        
-      </div>
-    </div>
+        <div
+          class="device-dot"
+          :style="{ bottom: device.coords.y + '%', left: device.coords.x + '%' }"
+        ></div>
   </div>
 </template>
 
@@ -41,7 +30,7 @@ export default Factory.component('oa-map', {
       },
     };
   },
-  props: ['devices'],
+  props: ['device'],
   components: {},
   computed: {
      mapPerspective() {

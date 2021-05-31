@@ -1,6 +1,8 @@
 <template>
   <lx-empty class="MapLive">
-    <oa-map :devices="devicePositions" :mapSize="mapSize"/>
+    <oa-map
+      :devices="devicePositions"
+    />
   </lx-empty>
 </template>
 
@@ -23,32 +25,25 @@ export default Factory.view({
     children: [],
   },
   data() {
-    return {};
+    return {
+     
+    };
   },
   resources: {
-    dataLoads: {
-      type: ENUM.CommonsResource.DATA_LOAD,
-      filters: [{ property: 'country' }],
-      mode: ENUM.ResourceMode.COLLECTION,
-    },
+  
   },
   computed: {
-    devicePositions(){    
-      let devices =this.$store.getters.getDevicesCurrentPosition();
-      
+    devicePositions() {
+      let devices = this.$store.getters.getDevicesCurrentPosition();
       return devices;
     },
-    mapSize(){
-      return this.$store.getters.getMapSize();
-    },
-    mapPosition(){
-      return this.$store.getters.getMapPosition();
-    }
   },
-  methods: {},
+  methods: {
+   
+  },
 
   mounted() {},
-
+ 
   beforeDestroy() {},
 });
 </script>
