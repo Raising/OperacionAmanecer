@@ -1,8 +1,11 @@
+import { AnyMxRecord } from 'dns';
+
 interface Bip {
     deviceId: string;
     coord: { x: number; y: number };
     time: number;
     intensity: number;
+    data?: any;
   }
   
   enum DeviceType {

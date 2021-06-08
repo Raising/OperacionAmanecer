@@ -13,6 +13,7 @@ import Readline from '@serialport/parser-readline';
 import { Bip } from './devices/device-model';
 import { saveBip } from './devices/data-persistence';
 import { broadcastBip } from './devices/bip-report';
+import { Color } from '@progress/kendo-drawing';
 
 
 let sockets:any[] = [];
@@ -41,17 +42,36 @@ SerialPort.list().then((ports:any[])=>{
 });
 
 
-const parseBip = (data:string):Bip => { 
-  let splitedData = data.split('/');
-      let bip :Bip = {
-        coord: {x : Number(splitedData[2]),y : Number(splitedData[1])},
-        deviceId: splitedData[0],
-        time: new Date().getTime(),
-        intensity: Number(splitedData[3].split('@')[1])
-  } 
-  return bip;
+const BipPropTranslation = {
+  lo: "longitude",
+  la: "latitude",
+  da: "data",
+  re: "repetidores",
 }
 
+//A01/lo:-3.12345/la:36.12345/da:0000/re:0000/@-34
+const parseBip = (data:string):Bip => { 
+  let splitedData = data.split('/');
+  
+  let buffer = splitedData.reduce((acc:any,el:string) => {
+    let keyValue = el.split(":");
+    if(keyValue.length > 1){
+      //@ts-ignore
+      acc[BipPropTranslation[keyValue[0]]] = keyValue[1];
+    };
+    return acc;
+  }, 
+  {});
+  
+  let bip :Bip = {
+    deviceId: splitedData[0],
+    intensity: Number(splitedData[splitedData.length-1].split('@')[1]),
+    time: new Date().getTime(),
+    coord: { x : Number(buffer.longitude), y: Number(buffer.latitude) } ,
+    data: buffer.data
+  }
+  return bip;
+}
 
 
 const StartMockDevices = () => {

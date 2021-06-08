@@ -15,7 +15,7 @@ import router from '@COMMONS/utils/main/router';
 import Factory from '@COMMONS/utils/factory/factory';
 import {  ACT } from '@HQ/constants';
 
-export default Factory.component('oa-map', {
+export default Factory.component('oa-device-dot', {
   data() {
     return {
        drag: {
