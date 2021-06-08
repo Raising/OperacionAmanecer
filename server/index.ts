@@ -16,28 +16,34 @@ import { broadcastBip } from './devices/bip-report';
 import { Color } from '@progress/kendo-drawing';
 
 
-let sockets:any[] = [];
+let sockets: any[] = [];
 let SessionId = "Session_Test";// + new Date().toLocaleString().split(" ").join("_").split(":").join("-"); 
 
 console.log("Server Started with sessionId = '" + SessionId + "'");
-SerialPort.list().then((ports:any[])=>{
-  if (ports.length < 1){
+SerialPort.list().then((ports: any[]) => {
+  if (ports.length < 1) {
     console.error("No serial port detected");
     StartMockDevices();
   }
-  
-  ports.forEach((portInfo)=>{
+
+  ports.forEach((portInfo) => {
     let port = new SerialPort(portInfo.path, {
       baudRate: 115200
     })
 
-    const parser = port.pipe(new Readline({  }))
-    parser.on('data', (data :string) => {
+    const parser = port.pipe(new Readline({}))
+    parser.on('data', (data: string) => {
       let bip = parseBip(data)
-      saveBip(SessionId,bip) ;
+      if (bip.deviceId.length > 4 || !bip.coord.x || !bip.coord.y) {
+        console.error("Error Package", data) 
+        return
+      }
+      // console.log(data)
+      saveBip(SessionId, bip);
+      // console.log(bip);
       broadcastBip(bip);
     })
-      
+
   });
 });
 
@@ -50,24 +56,24 @@ const BipPropTranslation = {
 }
 
 //A01/lo:-3.12345/la:36.12345/da:0000/re:0000/@-34
-const parseBip = (data:string):Bip => { 
+const parseBip = (data: string): Bip => {
   let splitedData = data.split('/');
-  
-  let buffer = splitedData.reduce((acc:any,el:string) => {
+
+  let buffer = splitedData.reduce((acc: any, el: string) => {
     let keyValue = el.split(":");
-    if(keyValue.length > 1){
+    if (keyValue.length > 1) {
       //@ts-ignore
       acc[BipPropTranslation[keyValue[0]]] = keyValue[1];
     };
     return acc;
-  }, 
-  {});
-  
-  let bip :Bip = {
+  },
+    {});
+
+  let bip: Bip = {
     deviceId: splitedData[0],
-    intensity: Number(splitedData[splitedData.length-1].split('@')[1]),
+    intensity: Number(splitedData[splitedData.length - 1].split('@')[1]),
     time: new Date().getTime(),
-    coord: { x : Number(buffer.longitude), y: Number(buffer.latitude) } ,
+    coord: { x: Number(buffer.longitude), y: Number(buffer.latitude) },
     data: buffer.data
   }
   return bip;
@@ -76,29 +82,29 @@ const parseBip = (data:string):Bip => {
 
 const StartMockDevices = () => {
   const moveStep = 0.00015;
-  let devices:{[name:string]:any} = {
-    M01:{"coord":{"y":36.9038478,"x":-3.55469184},"deviceId":"M01","time":0,"intensity":-34,direction:[-moveStep/2,-moveStep/2]},
-    M02:{"coord":{"y":36.9038478,"x":-3.55489184},"deviceId":"M02","time":0,"intensity":-34,direction:[-moveStep/2,-moveStep/2]},
-    M03:{"coord":{"y":36.9038478,"x":-3.5559184},"deviceId":"M03","time":0,"intensity":-34,direction:[-moveStep/2,-moveStep/2]},
-    K01:{"coord":{"y":36.8981569,"x":-3.5625983},"deviceId":"K01","time":0,"intensity":-34,direction:[moveStep/2,moveStep/2]},
-    K02:{"coord":{"y":36.8981569,"x":-3.5624983},"deviceId":"K02","time":0,"intensity":-34,direction:[moveStep/2,moveStep/2]},
-    K03:{"coord":{"y":36.8981569,"x":-3.5623983},"deviceId":"K03","time":0,"intensity":-34,direction:[moveStep/2,moveStep/2]},
+  let devices: { [name: string]: any } = {
+    M01: { "coord": { "y": 36.9038478, "x": -3.55469184 }, "deviceId": "M01", "time": 0, "intensity": -34, direction: [-moveStep / 2, -moveStep / 2] },
+    M02: { "coord": { "y": 36.9038478, "x": -3.55489184 }, "deviceId": "M02", "time": 0, "intensity": -34, direction: [-moveStep / 2, -moveStep / 2] },
+    M03: { "coord": { "y": 36.9038478, "x": -3.5559184 }, "deviceId": "M03", "time": 0, "intensity": -34, direction: [-moveStep / 2, -moveStep / 2] },
+    K01: { "coord": { "y": 36.8981569, "x": -3.5625983 }, "deviceId": "K01", "time": 0, "intensity": -34, direction: [moveStep / 2, moveStep / 2] },
+    K02: { "coord": { "y": 36.8981569, "x": -3.5624983 }, "deviceId": "K02", "time": 0, "intensity": -34, direction: [moveStep / 2, moveStep / 2] },
+    K03: { "coord": { "y": 36.8981569, "x": -3.5623983 }, "deviceId": "K03", "time": 0, "intensity": -34, direction: [moveStep / 2, moveStep / 2] },
   }
   setInterval(() => {
     for (let deviceId in devices) {
-      if (Math.random() > 0.8){
-        devices[deviceId].direction = devices[deviceId].direction.map((speed:number) => (speed +((Math.random()-0.5) * moveStep))/2 ); 
+      if (Math.random() > 0.8) {
+        devices[deviceId].direction = devices[deviceId].direction.map((speed: number) => (speed + ((Math.random() - 0.5) * moveStep)) / 2);
       }
       devices[deviceId].coord.x += devices[deviceId].direction[0];//ROUND
       devices[deviceId].coord.y += devices[deviceId].direction[1];//ROUND
       devices[deviceId].time = new Date().getTime();
-      let bip:Bip = {
-        coord:devices[deviceId].coord,
-        time:devices[deviceId].time,
+      let bip: Bip = {
+        coord: devices[deviceId].coord,
+        time: devices[deviceId].time,
         deviceId,
-        intensity : -34,
+        intensity: -34,
       }
-      saveBip(SessionId,bip) ;
+      saveBip(SessionId, bip);
       broadcastBip(bip);
     }
   }, 2000)
