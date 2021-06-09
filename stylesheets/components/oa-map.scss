@@ -1,5 +1,5 @@
 $mapSize: 1000px;
-$dotSize: 8px;
+$dotSize: 30px;
 
 .map-frame{
     width: 100%;
@@ -23,9 +23,13 @@ $dotSize: 8px;
         height: $mapSize;
         background: url("/BoraMap.png");
         
-        background-repeat: round;
+        background-repeat: no-repeat;
+        background-size: cover;
         position: relative;
               .device-dot{
+                color:white;
+                padding-top: 5px;
+                text-align: center;
                 position: absolute;
                 width: $dotSize;
                 height:$dotSize;

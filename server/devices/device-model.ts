@@ -1,5 +1,3 @@
-import { AnyMxRecord } from 'dns';
-
 interface Bip {
     deviceId: string;
     coord: { x: number; y: number };
