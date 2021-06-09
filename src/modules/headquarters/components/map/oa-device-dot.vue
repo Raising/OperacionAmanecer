@@ -5,7 +5,9 @@
         <div
           class="device-dot"
           :style="{ bottom: device.coords.y + '%', left: device.coords.x + '%' }"
-        ></div>
+        >
+        {{device.deviceId}}
+        </div>
   </div>
 </template>
 
