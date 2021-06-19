@@ -1,5 +1,6 @@
 <template>
   <lx-empty class="MapLive">
+   
     <oa-map
       :devices="devicePositions"
     />

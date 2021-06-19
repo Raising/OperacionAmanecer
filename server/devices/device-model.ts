@@ -21,6 +21,7 @@ interface Bip {
   }
   
   interface SessionData {
+    date: string;
     id: string;
     devices: { [deviceID: string]: DeviceData };
     tittle: string;

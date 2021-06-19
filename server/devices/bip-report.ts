@@ -1,6 +1,7 @@
 //@ts-ignore
 import WebSocket from 'ws';
 import { Bip } from './device-model';
+import { getCurrentSession } from './data-persistence';
 
 let sockets: WebSocket.socket[] = [];
 
@@ -28,6 +29,7 @@ socket.on('close', function() {
 });
   
 const broadcastBip = (bip:Bip) => {
+    if (!getCurrentSession()) return;
     sockets.forEach((s:any) => s.send(JSON.stringify(bip)));
 }
 

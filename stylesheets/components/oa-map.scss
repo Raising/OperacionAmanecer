@@ -1,5 +1,4 @@
 $mapSize: 1000px;
-$dotSize: 30px;
 
 .map-frame{
     width: 100%;
@@ -7,6 +6,7 @@ $dotSize: 30px;
     box-sizing: border-box;
     border:solid 4px gold;
     position: relative;
+    
     perspective: 2000px;
     .map-holder{
       top: 50%;
@@ -26,34 +26,7 @@ $dotSize: 30px;
         background-repeat: no-repeat;
         background-size: cover;
         position: relative;
-              .device-dot{
-                color:white;
-                padding-top: 5px;
-                text-align: center;
-                position: absolute;
-                color: white;
-                text-align: center;
-                padding-top: 5px;
-                width: $dotSize;
-                height:$dotSize;
-                margin-left: $dotSize/-2;
-                margin-bottom: $dotSize/-2;
-                border-radius: 50%;
-                background: rgb(124, 45, 32);
-                box-sizing: border-box;
-                border: solid rgb(15, 253, 27) 2px;
-                box-shadow: 0 0 2px 2px black;
-                transition: 0.2s;
-
-                &:hover{
-                  border: solid rgb(15, 253, 27) 1px;
-                  width: $dotSize * 2;
-                  height:$dotSize * 2;
-                  margin-left: $dotSize/-1;
-                  margin-bottom: $dotSize/-1;
-                }
-        
-              }
+             
       }
     }
 }

@@ -9,10 +9,12 @@ export interface deviceFilters {
 }
 
 export interface MapInfo{
+  [x: string]: any;
   timeRange: [number,number],
   areaRange:{x:[number,number],y:[number,number]},
 
   currentTime: number,
+  isLive: boolean,
   showTrail:boolean,
   filters:deviceFilters,
   rotation: {x:number,z:number},
@@ -35,9 +37,10 @@ export default {
      tittle: 'Session Tittle'
    },
    mapInfo:{
-     timeRange: [0,0],
-     currentTime: -1,
+     timeRange: [0,1000],
+     currentTime: 0,
      showTrail: false,
+     isLive:false,
      areaRange: {y:[36.89616,36.90616], x:[-3.563457,-3.55117]},    //  areaRange: {y:[37.16191,37.1696], x:[-3.60468,-3.59217]}, 
      rotation: {x:50,z:0},
      position: {left:0,top:0},

@@ -36,6 +36,8 @@ export default Factory.view({
 
   mounted() {
     this.connectToLiveDeviceData();
+    this.$store.dispatch(ACT.Devices.FetchCurrentSession);
+    
   },
 });
 </script>

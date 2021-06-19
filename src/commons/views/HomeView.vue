@@ -17,6 +17,8 @@
             >{{ $t(linkNode.name) }}</ax-nav-item
           > -->
         </ax-collapse>
+        <oa-time-manager/>
+        
       </ax-navbar>
     </header>
     <div class="bg-img-body MainContent">

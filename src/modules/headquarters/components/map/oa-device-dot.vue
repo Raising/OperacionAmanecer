@@ -4,9 +4,13 @@
   >
         <div
           class="device-dot"
+          :class="teamClass"
           :style="{ bottom: device.coords.y + '%', left: device.coords.x + '%' }"
         >
         {{device.deviceId}}
+        <div class="flag-stick" :style="reverseMapRotationStyle">
+          <div class="flag-info">{{device.deviceId}}</div>
+        </div>
         </div>
   </div>
 </template>
@@ -35,60 +39,27 @@ export default Factory.component('oa-device-dot', {
   props: ['device'],
   components: {},
   computed: {
+    teamClass(){
+      if (['A01','A02'].indexOf(this.device.deviceId) !== -1){
+        return 'team-a';
+      }
+      if (['A03','A04'].indexOf(this.device.deviceId) !== -1){
+        return 'team-b';
+      }
+      return 'team-no';
+      
+    },
      mapPerspective() {
       return this.$store.getters.getMapPerspective();
     },
     mapSize() {
       return this.$store.getters.getMapSize();
     },
-    mapPositionStyle() {
-      return this.$store.getters.getMapPerspectiveStyle();
+    reverseMapRotationStyle() {
+      return this.$store.getters.getReverseMapPerspectiveStyle();
     },
   },
   methods: {
-     changeZoom(event: WheelEvent) {
-        this.$store.dispatch(ACT.Devices.SetMapZoom, {
-            zoom: Math.max(-2000,Math.min(1500, this.mapPerspective.zoom - event.deltaY))
-          });
-    },
-    stopDrag() {
-      if (this.drag.active) {
-        this.drag.active = false;
-      }
-    },
-    startDrag(event: MouseEvent) {
-      if (event.button == 0) {
-        this.drag.active = true;
-        this.drag.isRotation = !!event.ctrlKey;
-        this.drag.mouseStartX = event.clientX;
-        this.drag.mouseStartY = event.clientY;
-        this.drag.rotationX = this.mapPerspective.rotation.x;
-        this.drag.rotationZ = this.mapPerspective.rotation.z;
-        this.drag.positionX = this.mapPerspective.position.left;
-        this.drag.positionY = this.mapPerspective.position.top;
-
-        event.stopPropagation();
-        return false;
-      }
-    },
-    doDrag(event: MouseEvent) {
-      if (this.drag.active) {
-        if (this.drag.isRotation) {
-          this.$store.dispatch(ACT.Devices.SetMapRotation, {
-            x: Math.max(0, Math.min(75, this.drag.rotationX - (event.clientY - this.drag.mouseStartY) * 0.5)),
-            z: this.drag.rotationZ - (event.clientX - this.drag.mouseStartX) * 0.5,
-          });
-        } else {
-          this.$store.dispatch(ACT.Devices.SetMapPosition, {
-            left: this.drag.positionX + (event.clientX - this.drag.mouseStartX) * 1.5,
-            top: this.drag.positionY + (event.clientY - this.drag.mouseStartY) * 1.5,
-          });
-        }
-
-        event.stopPropagation();
-        return false;
-      }
-    },
   },
 
   mounted() {},
@@ -97,3 +68,76 @@ export default Factory.component('oa-device-dot', {
   },
 });
 </script>
+
+
+<style lang="scss">
+    $dotSize: 20px;
+    $dotSizeExpanded: $dotSize * 2;
+
+   .device-dot{
+      color:white;
+      padding-top: 5px;
+      text-align: center;
+      position: absolute;
+      color: white;
+      text-align: center;
+      width: $dotSize;
+      height:$dotSize;
+      padding-top: $dotSize/7;
+      font-size: $dotSize/3;
+      margin-left: $dotSize/-2;
+      margin-bottom: $dotSize/-2;
+      border-radius: 50%;
+      background: rgb(51, 13, 8);
+      box-sizing: border-box;
+      border: solid rgb(239, 255, 10) 2px;
+      box-shadow: 0 0 0px 1px white , 0 0 6px 4px black;
+      transition: 0.1s;
+      &.team-a{
+        border: solid rgb(21, 216, 31) 4px;
+            .flag-info{
+          background:rgb(21, 216, 31) !important;
+         }
+      }
+      &.team-b{
+        border: solid rgb(7, 22, 238) 4px;
+         .flag-info{
+          background: rgb(7, 22, 238) !important;
+         }
+      }
+
+      &:hover{
+        padding-top: $dotSizeExpanded/5;
+        font-size: $dotSizeExpanded/3;
+        margin-left: $dotSizeExpanded/-2;
+        margin-bottom: $dotSizeExpanded/-2;
+        width: $dotSizeExpanded;
+        height:$dotSizeExpanded;
+      }
+
+      .flag-stick{
+        z-index: 200;
+        position: absolute;
+        bottom: 50%;
+        left:43%;
+        transform-origin: 50% 100%;
+        height: 70px;
+        width: 0px;
+        border-left:solid rgb(255, 255, 255) 2px ;
+        box-shadow: 0 0 0px 1px black;
+
+        .flag-info{
+          z-index: 300;
+          position: absolute;
+          top:0x;
+          width: 45px;
+          height: 30px;
+          font-size: 22px;
+          background: red;
+          padding: 2px;
+          border-radius: 0 4px 4px 0
+        }
+      }
+
+    }
+</style>

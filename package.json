@@ -19,7 +19,8 @@
   },
   "nodemonConfig": {
     "ignore": [
-      "data-base/*"
+      "data-base/*",
+      "src/*"
     ]
   },
   "dependencies": {
