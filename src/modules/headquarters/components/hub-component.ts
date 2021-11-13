@@ -1,5 +1,5 @@
 //@ts-ignore
-let importAllComponents = (components: any) => {
+const importAllComponents = (components: any) => {
   components.keys().forEach(components);
 };
 

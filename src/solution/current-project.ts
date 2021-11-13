@@ -5,8 +5,8 @@ import * as HQ from '@HQ/loader';
 // import * as DASHBOARD from '@DASHBOARD/loader';
 //import * as DEFAULT from '@DEFAULT/loader';
 
-let FunctionalModules = [...HQ.FunctionalModules];
-let StoreModules = { ...HQ.StoreModules };
-let EndPoints = { ...BaseEndPoints };
+const FunctionalModules = [...HQ.FunctionalModules];
+const StoreModules = { ...HQ.StoreModules };
+const EndPoints = { ...BaseEndPoints };
 
 export { FunctionalModules, StoreModules, EndPoints };

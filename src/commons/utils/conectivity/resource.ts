@@ -41,7 +41,7 @@ interface fullProperty extends RefProp, originalSource {
   definition?: FilterDefinition;
 }
 
-let createdResources: { [resourceId: string]: Resource } = {};
+const createdResources: { [resourceId: string]: Resource } = {};
 const reloadResources = (resourcesIds: string[]) => {
   resourcesIds.map((resourceId) => createdResources[resourceId].load());
 };
@@ -159,13 +159,13 @@ class Resource {
 
   addFilters(filtersDescription: FilterConfig[] = []) {
     this.setDefaultValues(filtersDescription);
-    let filters = this.createPropsAccesors('filters', filtersDescription);
+    const filters = this.createPropsAccesors('filters', filtersDescription);
     this.filters = { ...this.filters, ...filters };
   }
 
   setFilters(filtersDescription: FilterConfig[] = []) {
     this.setDefaultValues(filtersDescription);
-    let filters = this.createPropsAccesors('filters', filtersDescription);
+    const filters = this.createPropsAccesors('filters', filtersDescription);
     //redefine the filters but keep the original ones.
     this.filters = { ...this.filters.$filter((el: fullProperty) => el.config.original), ...filters };
   }
@@ -177,10 +177,10 @@ class Resource {
    * @param propsDescriptions collection of resource properties.
    */
   createPropsAccesors(propsType: resourceParam.propType, propsDescriptions: resourceParam.property[]): any {
-    let resource = this;
-    let propertyAccesors = propsDescriptions.reduce(
+    const resource = this;
+    const propertyAccesors = propsDescriptions.reduce(
       (acc: any, prop: resourceParam.property) => {
-        let propertySignature = { type: propsType, resourceId: resource.id, property: prop.property };
+        const propertySignature = { type: propsType, resourceId: resource.id, property: prop.property };
         acc.fullProperties[prop.property] = getConnectedProp({
           path: `${resource.id}.${prop.property}`,
           secondaryPathProp: '',
@@ -261,7 +261,7 @@ class Resource {
 
   //standarisation of the properies to be displayed as options in a selector component.
   asEnum({ key = 'value', text = 'text' }: { key: string; text: string }) {
-    let content = this.content();
+    const content = this.content();
     if (Array.isArray(content)) {
       return content.map((el) => ({
         [text]: [el.text, el.Label].$firstDefined(),
@@ -349,7 +349,7 @@ class Resource {
   }
 
   isReady(content?: any): boolean {
-    let currentContent = content || this.content();
+    const currentContent = content || this.content();
     return (
       currentContent !== undefined &&
       (typeof currentContent !== 'string' || !Object.keys(ENUM.ResourceState).includes(currentContent))
@@ -396,7 +396,7 @@ class Resource {
 
   // used to allow a function to describe the default value of a property.
   extractDefaultValues(propsDescription: resourceParam.property[]): any {
-    let propsWithDefaultValue = propsDescription.filter((field: resourceParam.property) => field.value !== undefined);
+    const propsWithDefaultValue = propsDescription.filter((field: resourceParam.property) => field.value !== undefined);
     if (propsWithDefaultValue.length === 0) {
       return undefined;
     }
@@ -418,7 +418,7 @@ class WildcardResource extends Resource {
     return false;
   }
   content(path: string) {
-    let resourceName = path.split('@@')[1];
+    const resourceName = path.split('@@')[1];
     // if (resourceName === RES.WILDCARD) {
     // }
   }

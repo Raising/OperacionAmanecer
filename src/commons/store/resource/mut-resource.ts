@@ -17,7 +17,7 @@ const mutations: { [mutation in MUT.Resource]: Mutation<ResourceState> } = {
     { result, resource, freeze = true }: { result: any; resource: Resource; freeze: boolean },
   ) => {
     if (resource.mainProperty !== '') {
-      let propValue = resource.refProps[resource.mainProperty].get();
+      const propValue = resource.refProps[resource.mainProperty].get();
       if (state.loaded[resource.id] === undefined) {
         Vue.set(state.loaded, resource.id, {});
       }
@@ -31,7 +31,7 @@ const mutations: { [mutation in MUT.Resource]: Mutation<ResourceState> } = {
 
   [MUT.Resource.SET_RESOURCE_AS_LOADING]: (state, { resource }: { resource: Resource }) => {
     if (resource.mainProperty !== '') {
-      let propValue = resource.refProps[resource.mainProperty].get();
+      const propValue = resource.refProps[resource.mainProperty].get();
       if (state.loaded[resource.id] === undefined) {
         Vue.set(state.loaded, resource.id, {});
       }

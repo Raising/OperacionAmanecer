@@ -179,10 +179,10 @@ export default (viewDescription: axViewDescription) => {
   return navigationBeacon;
 };
 
-let lastVisitedPageInModule: any = {};
+const lastVisitedPageInModule: any = {};
 let lastVisitedPageOrder = '';
 const checkRerouting = (store: Store<any>) => (to: any, from: any, next: Function) => {
-  let moduleTravelNext = (path?: string) => {
+  const moduleTravelNext = (path?: string) => {
     if (path) {
       next(path);
     } else if (lastVisitedPageOrder !== to.path) {

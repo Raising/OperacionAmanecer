@@ -16,8 +16,8 @@ const mutations: { [mutation in MUT.Devices]: Mutation<DevicesState> } = {
     }
 
     state.sessionData.devices[params.bip.deviceId].bips.push(params.bip);
-    SetTimeRangeFromBip(state,params.bip);
-    
+    SetTimeRangeFromBip(state, params.bip);
+
   },
 
   [MUT.Devices.SET_MAP_POSITION]: (state, params: { top: number; left: number }) => {
@@ -34,14 +34,14 @@ const mutations: { [mutation in MUT.Devices]: Mutation<DevicesState> } = {
   [MUT.Devices.SET_TIME_MODE]: (state, isLive: boolean) => {
     state.mapInfo.isLive = isLive;
   },
-  [MUT.Devices.SET_CURRENT_TIME]: (state,time: number) => {
+  [MUT.Devices.SET_CURRENT_TIME]: (state, time: number) => {
     state.mapInfo.currentTime = time;
   },
-  [MUT.Devices.SET_CURRENT_SESSION_DATA]: (state,data:SessionData ) => {
-    Vue.set(state,'sessionData',data);
-    Object.values(state.sessionData.devices).forEach( (device:DeviceData) => {
-      SetTimeRangeFromBip(state,device.bips[0]);
-      SetTimeRangeFromBip(state,device.bips[device.bips.length-1]);
+  [MUT.Devices.SET_CURRENT_SESSION_DATA]: (state, data: SessionData) => {
+    Vue.set(state, 'sessionData', data);
+    Object.values(state.sessionData.devices).forEach((device: DeviceData) => {
+      SetTimeRangeFromBip(state, device.bips[0]);
+      SetTimeRangeFromBip(state, device.bips[device.bips.length - 1]);
     });
   },
 
@@ -70,12 +70,12 @@ const mutations: { [mutation in MUT.Devices]: Mutation<DevicesState> } = {
   // },
 };
 
-const SetTimeRangeFromBip = (state:DevicesState,bip:Bip) => {
-  let [startTime,endTime] = state.mapInfo.timeRange;
-  if (startTime == 0){
-    Vue.set(state.mapInfo,"timeRange",[bip.time,bip.time]);
-  }else{
-    Vue.set(state.mapInfo,"timeRange",[Math.min(startTime,bip.time),Math.max(endTime,bip.time)]);
+const SetTimeRangeFromBip = (state: DevicesState, bip: Bip) => {
+  const [startTime, endTime] = state.mapInfo.timeRange;
+  if (startTime == 0) {
+    Vue.set(state.mapInfo, "timeRange", [bip.time, bip.time]);
+  } else {
+    Vue.set(state.mapInfo, "timeRange", [Math.min(startTime, bip.time), Math.max(endTime, bip.time)]);
   }
 }
 

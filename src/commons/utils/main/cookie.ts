@@ -1,20 +1,20 @@
 export default {
-  get: function(propName: string) {
-    var name = propName + '=',
+  get: function (propName: string) {
+    const name = propName + '=',
       ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-      var c = ca[i];
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
       while (c.charAt(0) == ' ') c = c.substring(1);
       if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
     }
     return '';
   },
 
-  set: function(propName: string, propValue: string, exdate: string) {
-    var d = new Date(parseInt(exdate) || 0),
-      expires = 'expires=',
-      domain = 'domain=',
+  set: function (propName: string, propValue: string, exdate: string) {
+    const d = new Date(parseInt(exdate) || 0),
       path = 'path=/';
+    let domain = 'domain=',
+      expires = 'expires=';
     expires = expires.concat(d.toUTCString());
     domain = domain.concat(this.extractDomain(document.location.hostname));
 
@@ -29,8 +29,8 @@ export default {
       path,
     );
   },
-  extractDomain: function(url: string) {
-    var domain, subdomain;
+  extractDomain: function (url: string) {
+    let domain;
     if (url.indexOf('://') > -1) {
       domain = url.split('/')[2];
     } else {
@@ -38,7 +38,7 @@ export default {
     }
     domain = domain.split(':')[0];
 
-    subdomain = domain.split('.');
+    const subdomain = domain.split('.');
     if (subdomain.length > 2) {
       domain = subdomain[subdomain.length - 2].concat('.', subdomain[subdomain.length - 1]);
     }
@@ -47,11 +47,11 @@ export default {
   },
 
   //   updateExpiration: function(exSessionDate: string, exLongDate: string, sessionCookies: any) {
-  //     var cookies = document.cookie.split('; ');
+  //     let cookies = document.cookie.split('; ');
   //     cookies = _.without(cookies, 'i18next=es');
   //     _.each(cookies, (cookie: string) => {
-  //       var item = cookie.split('=');
-  //       var exdate = sessionCookies && sessionCookies.indexOf(item[0]) != -1 ? exSessionDate : exLongDate;
+  //       let item = cookie.split('=');
+  //       let exdate = sessionCookies && sessionCookies.indexOf(item[0]) != -1 ? exSessionDate : exLongDate;
   //       this.set(item[0], item[1], exdate);
   //     });
   //   },

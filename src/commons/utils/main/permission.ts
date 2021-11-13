@@ -52,7 +52,7 @@ const getPermission = (context: any, code: ENUM.Permission | string | string[] |
     code = code.substr(6);
   }
 
-  let permisions = getPermisionResource(context, isModule);
+  const permisions = getPermisionResource(context, isModule);
   if (isModule) {
     if (permisions.isReady()) {
       return permisions.content(`${code}.Access`) === true;

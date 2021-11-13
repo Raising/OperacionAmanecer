@@ -143,11 +143,11 @@ function formatearTexto(valor: string): string {
 // si traducir fecha est
 function formatearFecha(valor: string): string {
   let valorAux: string = valor.replace(/^\/|\/$/g, '');
-  let valorAuxSplitted = valorAux.split('/');
+  const valorAuxSplitted = valorAux.split('/');
 
   if (valorAuxSplitted.length === 3) {
     //Formato dia/mes/año
-    let stringDate = valorAux;
+    const stringDate = valorAux;
     let date = new Date(`${valorAuxSplitted[1]}/${valorAuxSplitted[0]}/${valorAuxSplitted[2]}`);
 
     if (isNaN(date.getTime())) date = new Date(stringDate);
@@ -157,7 +157,7 @@ function formatearFecha(valor: string): string {
     return new Date(valor).toLocaleDateString().replace(/\b(\d\/)/g, '0$1');
   } else {
     valorAux = valorAux.slice(5, -6);
-    let dateAux = new Date(parseInt(valorAux));
+    const dateAux = new Date(parseInt(valorAux));
     return dateAux.toLocaleDateString().replace(/\b(\d\/)/g, '0$1');
   }
 }

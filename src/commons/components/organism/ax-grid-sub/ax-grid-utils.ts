@@ -67,15 +67,15 @@ function GetIcon(row: any) {
 }
 
 function ControlFormatField(field: any, row: any, resource: any) {
-  let value = row.item[field.key];
-  let type: ENUM.FormatType = field.valueType;
-  let style: ENUM.FormatStyle = field.columnStyle;
+  const value = row.item[field.key];
+  const type: ENUM.FormatType = field.valueType;
+  const style: ENUM.FormatStyle = field.columnStyle;
   let extraParameter: any = undefined;
   if (field.valueType === ENUM.FormatType.IMAGE && row.field.key === ENUM.ColumnName.ADMSTATUS_ID) {
-    let status: Array<any> = resource
+    const status: Array<any> = resource
       .content()
       .groupedData.Menus[0].MenuItems.concat(resource.content().groupedData.Menus[1].MenuItems);
-    let menuAux: any = status.find((menu: any) => menu.Cod === row.item[ENUM.ColumnName.ADMSTATUS_ID]);
+    const menuAux: any = status.find((menu: any) => menu.Cod === row.item[ENUM.ColumnName.ADMSTATUS_ID]);
     extraParameter = menuAux.Result;
   }
 

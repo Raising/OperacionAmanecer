@@ -27,11 +27,11 @@ const conectedPropPrototype = {
 };
 
 const getConnectedProp = (config: ConnectedRefPropConfig): RefProp => {
-  let get = getComputedGetter(config);
-  let set = getComputedSetter(config, get);
-  let validate = getValidationConfig(config, get);
+  const get = getComputedGetter(config);
+  const set = getComputedSetter(config, get);
+  const validate = getValidationConfig(config, get);
 
-  let subField: { [name: string]: any } = {};
+  const subField: { [name: string]: any } = {};
   return Object.assign(Object.create(conectedPropPrototype), {
     get: get,
     set: set,
@@ -53,19 +53,19 @@ const getConnectedProp = (config: ConnectedRefPropConfig): RefProp => {
   });
 };
 
-let getComputedGetter = ({ context, path, secondaryPathProp }: ConnectedRefPropConfig) => (innerPath?: string) =>
+const getComputedGetter = ({ context, path, secondaryPathProp }: ConnectedRefPropConfig) => (innerPath?: string) =>
   context.$store.getters.fieldByPath(
     `${path}${secondaryPathProp ? '_' + context[secondaryPathProp] : ''}` + (innerPath ? `.${innerPath}` : ''),
   );
 
-let getComputedSetter = (
+const getComputedSetter = (
   { context, propConfig, secondaryPathProp, path, onSetCallback }: ConnectedRefPropConfig,
   getter: Function,
 ) => {
   //return (value: any, overwrite: boolean = true) => {
   return function(this: RefProp, value: any, overwrite: boolean = true) {
     if (!overwrite) {
-      let currentValue = getter();
+      const currentValue = getter();
       if (typeof currentValue === 'object' && typeof value === 'object') {
         value = { ...currentValue, ...value };
       }
@@ -82,7 +82,7 @@ let getComputedSetter = (
   };
 };
 
-let getValidationConfig = ({ context, propConfig }: ConnectedRefPropConfig, getter: Function) => {
+const getValidationConfig = ({ context, propConfig }: ConnectedRefPropConfig, getter: Function) => {
   return propConfig.validation !== undefined ? GetValidateFunction(context, getter, propConfig.validation) : () => true;
 };
 

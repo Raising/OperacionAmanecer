@@ -44,7 +44,7 @@ Object.defineProperty(Object.prototype, '$id', {
 Object.defineProperty(Object.prototype, '$setCamelCasePropertyNamesRecursive', {
   writable: false,
   value: function(type: 'upper' | 'lower', maps?: { [newProp: string]: string }) {
-    let newObject: { [pop: string]: any } = {};
+    const newObject: { [pop: string]: any } = {};
     if (typeof this !== 'object' || this === null) {
       return this;
     } else if (Array.isArray(this)) {
@@ -99,7 +99,7 @@ Object.defineProperty(Object.prototype, '$singleDeepMerge', {
   writable: false,
   value: function(this: any, firstObj: any) {
     Object.keys(firstObj).map((key) => {
-      let objectTypeName = Object.prototype.toString.call(firstObj[key]);
+      const objectTypeName = Object.prototype.toString.call(firstObj[key]);
 
       if (objectTypeName !== '[object Object]' && objectTypeName !== '[object Array]') {
         // nodo hoja
@@ -148,7 +148,7 @@ Object.defineProperty(Object.prototype, '$getPropertyByPath', {
     if (!path) return this;
     return path.split(/[.]+/).reduce(function(prev, key) {
       if (Array.isArray(prev) && key.startsWith('[[') && key.endsWith(']]')) {
-        let [idPropertyName, value] = key.slice(2, -2).split('||');
+        const [idPropertyName, value] = key.slice(2, -2).split('||');
         return prev.find((el) => el[idPropertyName] == value);
       }
       return prev !== undefined && prev !== null && prev !== null ? prev[key] : undefined;
@@ -231,7 +231,7 @@ Object.defineProperty(String.prototype, '$autoId', {
 
 Object.defineProperty(Number.prototype, '$lerp', {
   value: function(min: number, max: number) {
-    let dif = max - min;
+    const dif = max - min;
     return (this - min) / dif;
   },
 });

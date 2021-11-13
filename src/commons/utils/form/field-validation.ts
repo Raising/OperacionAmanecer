@@ -419,15 +419,15 @@ const ValidationImplementation: { [name in ENUM.ValidationRule]: (value: any, pa
     if (typeof value === 'undefined' || value === null || value === '') {
       return true;
     }
-    let regex = /^(\+34|0034|34)?[6|7|8|9][0-9]{8}$/;
+    const regex = /^(\+34|0034|34)?[6|7|8|9][0-9]{8}$/;
     return regex.test(value);
   },
   [ENUM.ValidationRule.IS_CURRENCY]: (value, params, view) => {
     if (typeof value === 'undefined' || value === null || value === '') {
       return true;
     }
-    let regexEn = /^[-]?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\.[0-9][0-9])?$/gm;
-    let regexEs = /^[-]?([0-9]{1,3}\.([0-9]{3}\.)*[0-9]{3}|[0-9]+)(,[0-9][0-9])?$/gm;
+    const regexEn = /^[-]?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\.[0-9][0-9])?$/gm;
+    const regexEs = /^[-]?([0-9]{1,3}\.([0-9]{3}\.)*[0-9]{3}|[0-9]+)(,[0-9][0-9])?$/gm;
     return regexEn.test(value) || regexEs.test(value);
   },
   [ENUM.ValidationRule.IS_DATE]: (value, params, view) => {
@@ -443,9 +443,9 @@ const ValidationImplementation: { [name in ENUM.ValidationRule]: (value: any, pa
       console.error('date separator incorrect');
       return false;
     }
-    let stringdate = value.split(separator);
+    const stringdate = value.split(separator);
 
-    let dateddmmyyyy =
+    const dateddmmyyyy =
       stringdate.length == 3 &&
       stringdate[2].length == 4 &&
       stringdate[2] > 0 &&
@@ -454,7 +454,7 @@ const ValidationImplementation: { [name in ENUM.ValidationRule]: (value: any, pa
       stringdate[1] > 0 &&
       stringdate[1] <= 12;
 
-    let dateyyyymmdd =
+    const dateyyyymmdd =
       stringdate.length == 3 &&
       stringdate[0].length == 4 &&
       stringdate[0] > 0 &&
@@ -471,7 +471,6 @@ const ValidationImplementation: { [name in ENUM.ValidationRule]: (value: any, pa
     }
   },
   [ENUM.ValidationRule.IS_DATE_FORMATED_IN_DD_MM_YYYY]: (value, params, view) => {
-    let stringdate;
     let separator;
     if (typeof value === 'undefined' || value === null) {
       return false;
@@ -484,7 +483,7 @@ const ValidationImplementation: { [name in ENUM.ValidationRule]: (value: any, pa
       console.error('date separator incorrect');
       return false;
     }
-    stringdate = value.split(separator);
+    const stringdate = value.split(separator);
     if (
       stringdate.length == 3 &&
       stringdate[2].length == 4 &&
@@ -501,7 +500,6 @@ const ValidationImplementation: { [name in ENUM.ValidationRule]: (value: any, pa
     }
   },
   [ENUM.ValidationRule.IS_DATE_FORMATED_IN_YYYY_MM_DD]: (value, params, view) => {
-    let stringdate;
     let separator;
     if (typeof value === 'undefined' || value === null) {
       return false;
@@ -514,7 +512,7 @@ const ValidationImplementation: { [name in ENUM.ValidationRule]: (value: any, pa
       console.error('date separator incorrect');
       return false;
     }
-    stringdate = value.split(separator);
+    const stringdate = value.split(separator);
     if (
       stringdate.length == 3 &&
       stringdate[0].length == 4 &&
@@ -535,7 +533,7 @@ const ValidationImplementation: { [name in ENUM.ValidationRule]: (value: any, pa
     if (typeof value === 'undefined' || value === null) {
       return false;
     }
-    let regex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/gm;
+    const regex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/gm;
     return regex.test(value);
   },
   [ENUM.ValidationRule.IS_IDENTITY_DOCUMENT]: (value, params, view) => {
@@ -543,8 +541,8 @@ const ValidationImplementation: { [name in ENUM.ValidationRule]: (value: any, pa
       return false;
     }
 
-    let regexNIENIF = /^((([x-zX-Z])|([lmLM])){1}([-]?)((\d){7})([-]?)([a-zA-Z]{1}))|((\d{8})([-]?)([a-zA-Z]))$/gm;
-    let regexCIF = /^([abcdefghjklmnpqrsuvmABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9a-jA-J])$/gm;
+    const regexNIENIF = /^((([x-zX-Z])|([lmLM])){1}([-]?)((\d){7})([-]?)([a-zA-Z]{1}))|((\d{8})([-]?)([a-zA-Z]))$/gm;
+    const regexCIF = /^([abcdefghjklmnpqrsuvmABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9a-jA-J])$/gm;
 
     return regexNIENIF.test(value) || regexCIF.test(value);
   },
@@ -552,18 +550,18 @@ const ValidationImplementation: { [name in ENUM.ValidationRule]: (value: any, pa
     if (typeof value === 'undefined' || value === null) {
       return false;
     }
-    let regex = /^[a-zA-Z]{2}[0-9]{2}\s?[a-zA-Z0-9]{4}\s?[0-9]{4}\s?[0-9]{4}\s?[0-9]{4}\s?[0-9]{4}\s?$/gm;
+    const regex = /^[a-zA-Z]{2}[0-9]{2}\s?[a-zA-Z0-9]{4}\s?[0-9]{4}\s?[0-9]{4}\s?[0-9]{4}\s?[0-9]{4}\s?$/gm;
     return regex.test(value);
   },
   [ENUM.ValidationRule.IS_EMAIL]: (value, params, view) => {
     if (typeof value === 'undefined' || value === null) {
       return false;
     }
-    let regex = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+\.([a-z0-9-]+.)*([a-z]{2,4})$/gm;
+    const regex = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+\.([a-z0-9-]+.)*([a-z]{2,4})$/gm;
     return regex.test(value);
   },
   [ENUM.ValidationRule.IS_EQUAL_THAN_VIEW_PROP]: (value, params, view) => {
-    let viewProp = view.$getPropertyByPath(params);
+    const viewProp = view.$getPropertyByPath(params);
 
     if (typeof viewProp === 'object') {
       return viewProp.get() === value;
@@ -594,7 +592,7 @@ const ValidationImplementation: { [name in ENUM.ValidationRule]: (value: any, pa
       excludedIndex = params.excludeIndex;
     }
     value.map((row: any) => {
-      let sumRowNumberElement: any = Object.keys(row)
+      const sumRowNumberElement: any = Object.keys(row)
         .map((element: any) => row[element])
         .filter((elementNumber: any, index: number) => !isNaN(elementNumber) && !excludedIndex.includes(index))
         .reduce((a: number, b: number) => Number(a) + Number(b), 0);
@@ -664,7 +662,7 @@ const countArrayValuesHigherThan = (array: any, value: number) => {
  * @param description
  */
 const GetValidateFunction = (view: any, fieldValueGetter: Function, description: ValidationDescription[] | boolean) =>
-  function(): boolean {
+  function (): boolean {
     if (typeof description === 'boolean') return description;
     //if (description[0] === undefined) return true;
 
@@ -675,7 +673,7 @@ const GetValidateFunction = (view: any, fieldValueGetter: Function, description:
     ) {
       return true;
     }
-    let validation = description.reduce((acc: boolean, des: ValidationDescription) => {
+    const validation = description.reduce((acc: boolean, des: ValidationDescription) => {
       return acc
         ? des !== undefined
           ? ValidationImplementation[des.rule](fieldValueGetter(), des.params, view)

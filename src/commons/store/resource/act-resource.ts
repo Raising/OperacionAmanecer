@@ -140,7 +140,7 @@ const tokenIsExpired = (error: string) => {
 };
 
 const initCookies = function(initialLoad: any) {
-  var expirationSessionDate = new Date().getTime() + 24 * 60 * 60 * 1000;
+  let expirationSessionDate = new Date().getTime() + 24 * 60 * 60 * 1000;
   cookie.set('i18next', 'es', expirationSessionDate.toString());
 };
 

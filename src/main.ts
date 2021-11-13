@@ -12,7 +12,7 @@ Vue.config.productionTip = true;
 Vue.use(BootstrapVue);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
-let initializedStore = store(true);
+const initializedStore = store(true);
 sync(initializedStore, router);
 
 new Vue({

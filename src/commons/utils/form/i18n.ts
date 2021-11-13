@@ -20,8 +20,8 @@ function loadCommonLocale(): LocaleMessages {
   return messages;
 }
 
-let commonsLocale = loadCommonLocale();
-let defaultLanguaje = cookie.get('i18next') || process.env.VUE_APP_I18N_LOCALE;
+const commonsLocale = loadCommonLocale();
+const defaultLanguaje = cookie.get('i18next') || process.env.VUE_APP_I18N_LOCALE;
 
 const i18nInstance = new VueI18n({
   locale: defaultLanguaje || 'en',

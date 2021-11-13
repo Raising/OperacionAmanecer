@@ -1,2 +1,2 @@
-let defaultPath = '/home/map/live';
+const defaultPath = '/home/map/live';
 export { defaultPath };

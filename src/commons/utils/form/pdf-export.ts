@@ -116,15 +116,15 @@ const createPDF = async (
 };
 
 const getBlob = (data: any) => {
-  var blob = data;
+  let blob = data;
 
   if (typeof data === 'string') {
-    var parts = data.split(';base64,');
-    var contentType = parts[0];
-    var base64 = atob(parts[1]);
-    var array = new Uint8Array(base64.length);
+    let parts = data.split(';base64,');
+    let contentType = parts[0];
+    let base64 = atob(parts[1]);
+    let array = new Uint8Array(base64.length);
 
-    for (var idx = 0; idx < base64.length; idx++) {
+    for (let idx = 0; idx < base64.length; idx++) {
       array[idx] = base64.charCodeAt(idx);
     }
 
@@ -214,7 +214,7 @@ const beforePDFPrinting = async (element: Element) => {
   // @ts-ignore
   if (window.initialLoad) element.classList.add('new-platform');
 
-  var cc: any = element.querySelectorAll('svg:not(.converted-to-img)');
+  let cc: any = element.querySelectorAll('svg:not(.converted-to-img)');
 
   let promises: Array<Promise<any>> = [];
   cc.forEach((svg: any) => {
@@ -226,12 +226,12 @@ const beforePDFPrinting = async (element: Element) => {
 
 const svgToCanvas = (svg: Element) => {
   return new Promise((resolve: any, reject: any) => {
-    var svgData = new XMLSerializer().serializeToString(svg);
+    let svgData = new XMLSerializer().serializeToString(svg);
 
-    var canvas = document.createElement('canvas');
-    var ctx: any = canvas.getContext('2d');
+    let canvas = document.createElement('canvas');
+    let ctx: any = canvas.getContext('2d');
 
-    var img = document.createElement('img');
+    let img = document.createElement('img');
     img.setAttribute('src', 'data:image/svg+xml;base64,' + btoa(svgData));
     img.classList.add('only-pdf');
     img.setAttribute('style', 'display: none');

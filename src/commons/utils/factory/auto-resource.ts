@@ -1,6 +1,6 @@
 import { axViewDescription } from '@COMMONS/utils/factory/factory';
 import Resource, { resourceConfig } from '../conectivity/resource';
-var InitializedSingletonResources: { [name: string]: Resource } = {};
+let InitializedSingletonResources: { [name: string]: Resource } = {};
 
 const initResources = (viewDescription: Partial<axViewDescription>) => {
   if (viewDescription.resources !== undefined) {

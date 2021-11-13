@@ -18,7 +18,7 @@ const actions: { [mutation in ACT.Session]: Action<SessionState, any> } = {
       localStorage.ActiveSessions++;
     }
 
-    var expirationSessionDate = new Date().getTime() + 24 * 60 * 60 * 1000;
+    let expirationSessionDate = new Date().getTime() + 24 * 60 * 60 * 1000;
     cookie.set('UserNameToken', userSessionObject.Token, expirationSessionDate.toString());
     cookie.set('UserNameToken_expires', expirationSessionDate.toString(), expirationSessionDate.toString());
     resetPermisionResources();
