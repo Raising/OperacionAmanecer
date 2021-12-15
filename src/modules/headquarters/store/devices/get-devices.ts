@@ -4,10 +4,25 @@ import { Bip, DeviceData } from 'server/devices/device-model';
 
 const searchTimedBip = (bips: Bip[], time: number): Bip => {
   let timedBip = bips[0];
-  bips.some(bip => {
+  let lastValidBipIndex = 0;
+  bips.some((bip, index) => {
     timedBip = bip;
+    lastValidBipIndex = index;
     return bip.time > time;
   })
+
+  if (lastValidBipIndex > 0 && bips[lastValidBipIndex]) {
+    const timePercentile = time.$inverseLerp(bips[lastValidBipIndex - 1].time, bips[lastValidBipIndex].time);
+   
+    timedBip = {
+      ...timedBip,
+      coord: {
+        x: timePercentile.$lerp(bips[lastValidBipIndex - 1].coord.x, bips[lastValidBipIndex].coord.x),
+        y: timePercentile.$lerp(bips[lastValidBipIndex - 1].coord.y, bips[lastValidBipIndex].coord.y),
+      },
+      time
+    }
+  }
 
   return timedBip;
 
@@ -40,8 +55,8 @@ export default {
       devicesPositions.push({
         deviceId: key,
         coords: {
-          x: timedBip.coord.x.$lerp(state.mapInfo.areaRange.x[0], state.mapInfo.areaRange.x[1]) * 100,
-          y: timedBip.coord.y.$lerp(state.mapInfo.areaRange.y[0], state.mapInfo.areaRange.y[1]) * 100,
+          x: timedBip.coord.x.$inverseLerp(state.mapInfo.areaRange.x[0], state.mapInfo.areaRange.x[1]) * 100,
+          y: timedBip.coord.y.$inverseLerp(state.mapInfo.areaRange.y[0], state.mapInfo.areaRange.y[1]) * 100,
         },
         time: timedBip.time,
       });

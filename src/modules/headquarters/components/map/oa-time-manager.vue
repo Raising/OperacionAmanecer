@@ -1,87 +1,107 @@
 <template>
-<div  class="time-manager">
-  <ax-form-tagged-slider
+  <div class="time-manager">
+    <ax-form-tagged-slider
       class="time-slider"
-        :style="{  }"
-        :direction="'ltr'"
-        :min="timeRange[0]"
-        :max="timeRange[1]"
-        :value="currentTime"
-        @input="setCurrentTime"
-      />
-<div class="time-buttons">
-    <ax-button 
-      @click="toggleTimeMode"
-      class="timeToggler"
-      :class="{live:isLiveTime,controlled:!isLiveTime}"
-    >{{isLiveTime ? "LIVE" : "Controled"}}</ax-button>
-</div>
-</div>
+      :style="{  }"
+      :direction="'ltr'"
+      :min="timeRange[0]"
+      :max="timeRange[1]"
+      :value="currentTime"
+      @input="setCurrentTime"
+    />
+    <div class="time-buttons">
+      <ax-button
+        @click="toggleTimeMode"
+        class="timeToggler"
+        :class="{live:isLiveTime,controlled:!isLiveTime}"
+      >{{isLiveTime ? "LIVE" : "Controled " + readableTime}}</ax-button>
+      <ax-button v-if="!isLiveTime" @click="reproduce" class="timeToggler">{{"Play"}}</ax-button>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import router from '@COMMONS/utils/main/router';
 import Factory from '@COMMONS/utils/factory/factory';
-import {  ACT } from '@HQ/constants';
+import { ACT } from '@HQ/constants';
 
 export default Factory.component('oa-time-manager', {
   data() {
     return {
-   
+      step: 10000,
+      idPlay: "",
     };
   },
   props: ['device'],
   components: {},
   computed: {
-    isLiveTime(){
+    readableTime() {
+      const date = new Date(this.currentTime);
+      return date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+    },
+    isLiveTime() {
       return this.$store.getters.getTimeIsLive;
     },
-    currentTime(){
+    currentTime() {
       return this.$store.getters.getCurrentTime;
     },
-    timeRange(){
+    timeRange() {
       return this.$store.getters.getTimeRange;
-    }
-
+    },
   },
   methods: {
-    toggleTimeMode(){
+    reproduce() {
+      const interation = this.playIteration;
+      this.idPlay = setInterval(() => {
+        interation();
+      }, 50);
+    },
+    playIteration() {
+        if (this.currentTime < this.timeRange[1] - this.step){
+          this.setCurrentTime(this.currentTime + this.step);
+        }
+        else{
+          clearInterval(this.idPlay);
+        }
+    },
+    toggleTimeMode() {
       return this.$store.dispatch(ACT.Devices.ToggleTimeMode);
     },
-    setCurrentTime(timeValue:number){
-      return this.$store.dispatch(ACT.Devices.SetCurrentTime,{time:timeValue});
-    }
+    setCurrentTime(timeValue: number) {
+      return this.$store.dispatch(ACT.Devices.SetCurrentTime, { time: timeValue });
+    },
   },
 
   mounted() {},
-   created() {
-  
-  },
+  created() {},
 });
 </script>
 
 <style lang="scss">
 .time-manager {
   position: absolute;
-  right:0;
+  right: 0;
   height: 100%;
   width: 85%;
-  top:0px;
+  top: 0px;
 
-  .time-slider{
-    position:absolute;
-    bottom:5px;
-    left:0px;
+  .time-slider {
+    position: absolute;
+    bottom: 5px;
+    left: 0px;
     width: 80% !important;
   }
 
-  .time-buttons{
+  .time-buttons {
     position: absolute;
     right: 0px;
     width: 20%;
     height: 100%;
     background: rgba(255, 255, 255, 0.52);
+    .btn {
+      font-size: 24px;
+    }
   }
 }
 </style>

@@ -24,6 +24,7 @@ interface String {
 }
 
 interface Number {
+  $inverseLerp: (min: number, max: number) => number;
   $lerp: (min: number, max: number) => number;
 }
 
@@ -229,9 +230,16 @@ Object.defineProperty(String.prototype, '$autoId', {
   },
 });
 
-Object.defineProperty(Number.prototype, '$lerp', {
+Object.defineProperty(Number.prototype, '$inverseLerp', {
   value: function(min: number, max: number) {
     const dif = max - min;
     return (this - min) / dif;
+  },
+});
+
+Object.defineProperty(Number.prototype, '$lerp', {
+  value: function(min: number, max: number) {
+    const dif = max - min;
+    return min + dif*this;
   },
 });

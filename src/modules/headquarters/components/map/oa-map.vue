@@ -44,7 +44,7 @@ export default Factory.component('oa-map', {
   props: ['devices'],
   components: {},
   computed: {
-     mapPerspective() {
+    mapPerspective() {
       return this.$store.getters.getMapPerspective();
     },
     mapSize() {
